@@ -1,0 +1,50 @@
+# Project information
+site_name: 'OMIM Dokumentation'
+site_description: 'Virtuelle Ausstellungen der Deutschen Digitalen Bibliothek'
+site_author: 'Viktor Grandgeorg <viktor@grandgeorg.de>'
+
+# Copyright
+copyright: 'Copyright &copy; 2017 Viktor Grandgeorg, Grandgeorg Websolutions'
+
+# Structure
+pages:
+    - Einleitung: index.md
+    - Anforderungen: install.md
+    - Entwicklungsserver: dev-srv.md
+    - Produktionsserver: prod-srv.md
+
+# Theme
+theme: readthedocs
+theme_dir: themes/readthedocs
+
+# Options
+# extra:
+  # logo: 'img/logo.svg'
+
+# extra_css:
+#     - css/extra.css
+
+# extra_javascript:
+#     - js/jquery-3.1.1.min.js
+#     - js/extra.js
+
+use_directory_urls: false
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite(guess_lang=false)
+  - footnotes
+  - meta
+  - toc(permalink=true)
+  - sane_lists
+  - attr_list
+  - custom_span_class
+  - figureAltCaption
+  - pymdownx.betterem(smart_enable=all)
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - pymdownx.tasklist(custom_checkbox=true)
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.inlinehilite
