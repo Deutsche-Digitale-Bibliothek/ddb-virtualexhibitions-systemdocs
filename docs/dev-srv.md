@@ -26,7 +26,7 @@ Klonen Sie zunächst das [Repository](https://github.com/Deutsche-Digitale-Bibli
 
 
 !!! note "Verzeichnis- und Dateirechte"
-    Es muss gewährleistet sein, dass der Benutzer bzw. die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff die Verzeichnisse und Dateien hat. Dazu sollten die Berechtigungen gesetzt sein, indem die **Gruppe** gleich der primären Gruppe von Apache / PHP ist (i.d.R. ``www-data``) und die Rechte für Verzeichnisse auf ``775`` und für Dateien auf ``664`` gesetzt sind.
+    Es muss gewährleistet sein, dass der Benutzer bzw. die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf alle erstellten Verzeichnisse und Dateien hat. Dazu sollten die Berechtigungen gesetzt sein, indem die **Gruppe** gleich der primären Gruppe von Apache / PHP ist (i.d.R. ``www-data``) und die Rechte für Verzeichnisse auf ``775`` und für Dateien auf ``664`` gesetzt sind.
 
 Klonen jetzt Sie das [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions) direkt in den Unterordner ``lib``.
 Verwenden sie dazu den Befehl ```git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions.git .```

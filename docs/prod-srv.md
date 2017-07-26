@@ -33,8 +33,12 @@ Speichern Sie aus der [Repository des DDB Virtual-Exhibitions-Manager](https://g
     Bitte klonen Sie auf Produktionsservern das Repository des DDB Virtual-Exhibitions-Manager **nicht** in das Stammverzeichnis!
     Die zwei Dateien aus dem Repository müssen nur einmalig per Hand kopiert werden. Später werden beim Veröffentlichen die Dateien ggf. automatisch erstzt.
 
+Klonen jetzt Sie das [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions) direkt in den Unterordner ``lib``.
+Verwenden sie dazu den Befehl ```git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions.git .```
+um das Repositorium direkt in den Ordner zu klonen (es muss am Ende ein Pfad exisiteren mit ``lib/omeka``)
+
 !!! note "Verzeichnis- und Dateirechte"
-    Es muss gewährleistet sein, dass einerseits der Benutzer, mit dessen Konto sich der Entwicklungsserver per SSH verbindet und andererseits die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf die entpackten Verzeichnisse und Dateien haben.
+    Es muss gewährleistet sein, dass einerseits der Benutzer, mit dessen Konto sich der Entwicklungsserver per SSH verbindet und andererseits die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf alle erstellten Verzeichnisse und Dateien haben.
     Setzen Sie dazu den Benutzer für alle betreffenden Verzeichnisse und Dateien auf den SSH-Benutzer und die Gruppe auf die Gruppe von Apache / PHP (i.d.R. www-data) und die Rechte für Verzeichnisse auf 775 und für Dateien auf 664.
 
 Falls Sie ein Update vornehmen kopieren Sie die gesicherten Unterordner von ``public`` wieder dort hin.
