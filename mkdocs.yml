@@ -21,12 +21,12 @@ theme_dir: themes/readthedocs
 # extra:
   # logo: 'img/logo.svg'
 
-# extra_css:
-#     - css/extra.css
+extra_css:
+    - css/extra.css
 
-# extra_javascript:
-#     - js/jquery-3.1.1.min.js
-#     - js/extra.js
+extra_javascript:
+    - js/jquery-3.1.1.min.js
+    - js/extra.js
 
 use_directory_urls: false
 
