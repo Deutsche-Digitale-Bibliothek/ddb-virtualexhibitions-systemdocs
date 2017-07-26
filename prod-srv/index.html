@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Viktor Grandgeorg <viktor@grandgeorg.de>">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Produktionsserver - OMIM Dokumentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Produktionsserver";
+    var mkdocs_page_input_path = "prod-srv.md";
+    var mkdocs_page_url = "/prod-srv/index.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> OMIM Dokumentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">Einleitung</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../install/index.html">Anforderungen</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../dev-srv/index.html">Entwicklungsserver</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="index.html">Produktionsserver</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#produktionsserver">Produktionsserver</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#mysql-datenbank">MySQL Datenbank</a></li>
+        
+            <li><a class="toctree-l3" href="#dateien">Dateien</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">OMIM Dokumentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Produktionsserver</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="produktionsserver">Produktionsserver<a class="headerlink" href="#produktionsserver" title="Permanent link">&para;</a></h1>
+<h2 id="mysql-datenbank">MySQL Datenbank<a class="headerlink" href="#mysql-datenbank" title="Permanent link">&para;</a></h2>
+<h3 id="bei-updates">Bei Updates<a class="headerlink" href="#bei-updates" title="Permanent link">&para;</a></h3>
+<p>Die bereits existierende Datenabnk kann weiter verwendet werden.</p>
+<h3 id="erst-installation">Erst-Installation<a class="headerlink" href="#erst-installation" title="Permanent link">&para;</a></h3>
+<p>Legen Sie bitte eine leere Datenbank mit der Kollation <code>utf8_unicode_ci</code> und einen MySQL Benutzer an. Gewähren Sie dem MySQL Benutzer alle Rechte auf die Datenbank.
+Die Datenbank bleibt leer und wird bei der Aktion "Veröffentlichen" des OMIM vom Entwicklungsserver aus mit Daten befüllt.</p>
+<h2 id="dateien">Dateien<a class="headerlink" href="#dateien" title="Permanent link">&para;</a></h2>
+<h3 id="bei-updates_1">Bei Updates<a class="headerlink" href="#bei-updates_1" title="Permanent link">&para;</a></h3>
+<p>Erstellen Sie eine Kopie von allen Unterordnern von <code>public</code>.</p>
+<h3 id="installation-und-konfiguration">Installation und Konfiguration<a class="headerlink" href="#installation-und-konfiguration" title="Permanent link">&para;</a></h3>
+<p>Erstellen Sie in einem leeren Ordner drei Unterordner:</p>
+<ul>
+<li><code>data</code></li>
+<li><code>lib</code></li>
+<li><code>public</code></li>
+</ul>
+<p>Speichern Sie aus der <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/tree/master/data/production">Repository des DDB Virtual-Exhibitions-Manager</a> die Dateien <code>.htaccees</code> und <code>deploy.tar.gz</code>. (Sie konnen die ganze Repository als ZIP herunter laden und die Dateien dann aus dem Ordner <code>ddb-virtualexhibitions-manager/data/production/</code> extrahieren.). Speichern Sie dabei die Datei <code>.htaccees</code> im Ordner <code>public</code> und die Datei <code>deploy.tar.gz</code> im Ordner <code>data</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Repository für Repository des DDB Virtual-Exhibitions-Manager nicht klonen!</p>
+<p>Bitte klonen Sie auf Produktionsservern das Repository des DDB Virtual-Exhibitions-Manager <strong>nicht</strong> in das Stammverzeichnis!
+Die zwei Dateien aus dem Repository müssen nur einmalig per Hand kopiert werden. Später werden beim Veröffentlichen die Dateien ggf. automatisch erstzt.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Verzeichnis- und Dateirechte</p>
+<p>Es muss gewährleistet sein, dass einerseits der Benutzer, mit dessen Konto sich der Entwicklungsserver per SSH verbindet und andererseits die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf die entpackten Verzeichnisse und Dateien haben.
+Setzen Sie dazu den Benutzer für alle betreffenden Verzeichnisse und Dateien auf den SSH-Benutzer und die Gruppe auf die Gruppe von Apache / PHP (i.d.R. www-data) und die Rechte für Verzeichnisse auf 775 und für Dateien auf 664.</p>
+</div>
+<p>Falls Sie ein Update vornehmen kopieren Sie die gesicherten Unterordner von <code>public</code> wieder dort hin.</p>
+<p>Das Verzeichnis <code>public</code> muss in der Apache-Konfiguration des Servers das <code>DOCUMENT_ROOT</code> der Domäne sein.</p>
+<p>Denken Sie daran, den öffentlichen Schlüssel des SSH Benutzers vom Entwicklungsserver in die <code>authorized_keys</code> Datei einzutragen.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../dev-srv/index.html" class="btn btn-neutral" title="Entwicklungsserver"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2017 Viktor Grandgeorg, Grandgeorg Websolutions</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../dev-srv/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+      <script src="../js/extra.js"></script>
+      <script src="../js/jquery-3.1.1.min.js"></script>
+
+</body>
+</html>
