@@ -137,9 +137,12 @@ Die Datenbank bleibt leer und wird bei der Aktion "Veröffentlichen" des OMIM vo
 <p>Bitte klonen Sie auf Produktionsservern das Repository des DDB Virtual-Exhibitions-Manager <strong>nicht</strong> in das Stammverzeichnis!
 Die zwei Dateien aus dem Repository müssen nur einmalig per Hand kopiert werden. Später werden beim Veröffentlichen die Dateien ggf. automatisch erstzt.</p>
 </div>
+<p>Klonen jetzt Sie das <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions">Repository</a> direkt in den Unterordner <code>lib</code>.
+Verwenden sie dazu den Befehl <code>git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions.git .</code>
+um das Repositorium direkt in den Ordner zu klonen (es muss am Ende ein Pfad exisiteren mit <code>lib/omeka</code>)</p>
 <div class="admonition note">
 <p class="admonition-title">Verzeichnis- und Dateirechte</p>
-<p>Es muss gewährleistet sein, dass einerseits der Benutzer, mit dessen Konto sich der Entwicklungsserver per SSH verbindet und andererseits die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf die entpackten Verzeichnisse und Dateien haben.
+<p>Es muss gewährleistet sein, dass einerseits der Benutzer, mit dessen Konto sich der Entwicklungsserver per SSH verbindet und andererseits die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf alle erstellten Verzeichnisse und Dateien haben.
 Setzen Sie dazu den Benutzer für alle betreffenden Verzeichnisse und Dateien auf den SSH-Benutzer und die Gruppe auf die Gruppe von Apache / PHP (i.d.R. www-data) und die Rechte für Verzeichnisse auf 775 und für Dateien auf 664.</p>
 </div>
 <p>Falls Sie ein Update vornehmen kopieren Sie die gesicherten Unterordner von <code>public</code> wieder dort hin.</p>
