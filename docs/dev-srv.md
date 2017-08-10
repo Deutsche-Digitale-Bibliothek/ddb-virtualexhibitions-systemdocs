@@ -29,8 +29,13 @@ Klonen Sie zunächst das [Repository](https://github.com/Deutsche-Digitale-Bibli
     Es muss gewährleistet sein, dass der Benutzer bzw. die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf alle erstellten Verzeichnisse und Dateien hat. Dazu sollten die Berechtigungen gesetzt sein, indem die **Gruppe** gleich der primären Gruppe von Apache / PHP ist (i.d.R. ``www-data``) und die Rechte für Verzeichnisse auf ``775`` und für Dateien auf ``664`` gesetzt sind.
 
 Klonen jetzt Sie das [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions) direkt in den Unterordner ``lib``.
-Verwenden sie dazu den Befehl ```git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions.git .```
-um das Repositorium direkt in den Ordner zu klonen (es muss am Ende ein Pfad exisiteren mit ``lib/omeka``)
+Verwenden sie dazu den Befehl ```git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions.git . --branch omeka-2.5```
+um das Repositorium direkt in den Ordner zu klonen (es muss am Ende ein Pfad exisiteren mit ``lib/omeka``).
+Ween Sie das Attribut ```--branch omeka-2.5``` am Ende weggelassen haben, wechseln Sie jetzt in den Branch omeka-2.5 mit ```git checkout omeka-2.5```.
+
+!!! warning "Der aktuelle Branch ist omeka-2.5"
+    Beachten Sie, dass Sie bis auf Weiteres immer nur mit der omeka-2.5 Branch arbeiten. Nur dort sind die Dateien aktualisiert.
+    Die Masterbranch ist noch die alte Omeka-Version.
 
 Bei einer **Upgrade-Installation** Verschieben oder kopieren Sie jetzt, die im vorigen Schritt gesicherten, Dateien und Ordner an Ihre jeweiligen Orte (``app\config``, ``data/rsa/``, ``public``)!
 
