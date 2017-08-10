@@ -35,7 +35,7 @@ Falls Sie das Argument ```--branch omeka-2.5``` am Ende weggelassen haben, wechs
 
 !!! warning "Der aktuelle Branch ist omeka-2.5"
     Beachten Sie, dass Sie bis auf Weiteres immer nur mit der omeka-2.5 Branch arbeiten. Nur dort sind die Dateien aktualisiert.
-    Die Masterbranch ist noch die alte Omeka-Version.
+    Der Master-Branch ist noch die alte Omeka-Version.
 
 Bei einer **Upgrade-Installation** Verschieben oder kopieren Sie jetzt, die im vorigen Schritt gesicherten, Dateien und Ordner an Ihre jeweiligen Orte (``app\config``, ``data/rsa/``, ``public``)!
 
