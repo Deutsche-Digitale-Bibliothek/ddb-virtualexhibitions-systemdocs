@@ -31,7 +31,7 @@ Klonen Sie zunächst das [Repository](https://github.com/Deutsche-Digitale-Bibli
 Klonen jetzt Sie das [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions) direkt in den Unterordner ``lib``.
 Verwenden sie dazu den Befehl ```git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions.git . --branch omeka-2.5```
 um das Repositorium direkt in den Ordner zu klonen (es muss am Ende ein Pfad exisiteren mit ``lib/omeka``).
-Ween Sie das Attribut ```--branch omeka-2.5``` am Ende weggelassen haben, wechseln Sie jetzt in den Branch omeka-2.5 mit ```git checkout omeka-2.5```.
+Falls Sie das Argument ```--branch omeka-2.5``` am Ende weggelassen haben, wechseln Sie jetzt in den Branch omeka-2.5 mit ```git checkout omeka-2.5```.
 
 !!! warning "Der aktuelle Branch ist omeka-2.5"
     Beachten Sie, dass Sie bis auf Weiteres immer nur mit der omeka-2.5 Branch arbeiten. Nur dort sind die Dateien aktualisiert.
