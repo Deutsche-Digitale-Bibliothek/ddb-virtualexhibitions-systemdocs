@@ -12,6 +12,7 @@ pages:
     - Anforderungen: install.md
     - Entwicklungsserver: dev-srv.md
     - Produktionsserver: prod-srv.md
+    - Aktualisierungen: updates.md
 
 # Theme
 theme: readthedocs
