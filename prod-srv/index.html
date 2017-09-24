@@ -82,6 +82,11 @@
     </ul>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../updates/index.html">Aktualisierungen</a>
+	    </li>
+          
         </ul>
       </div>
       &nbsp;
@@ -138,8 +143,14 @@ Die Datenbank bleibt leer und wird bei der Aktion "Veröffentlichen" des OMIM vo
 Die zwei Dateien aus dem Repository müssen nur einmalig per Hand kopiert werden. Später werden beim Veröffentlichen die Dateien ggf. automatisch erstzt.</p>
 </div>
 <p>Klonen jetzt Sie das <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions">Repository</a> direkt in den Unterordner <code>lib</code>.
-Verwenden sie dazu den Befehl <code>git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions.git .</code>
-um das Repositorium direkt in den Ordner zu klonen (es muss am Ende ein Pfad exisiteren mit <code>lib/omeka</code>)</p>
+Verwenden sie dazu den Befehl <code>git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions.git . --branch omeka-2.5</code>
+um das Repositorium direkt in den Ordner zu klonen (es muss am Ende ein Pfad exisiteren mit <code>lib/omeka</code>).
+Falls Sie das Argument <code>--branch omeka-2.5</code> am Ende weggelassen haben, wechseln Sie jetzt in den Branch omeka-2.5 mit <code>git checkout omeka-2.5</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Der aktuelle Branch ist omeka-2.5</p>
+<p>Beachten Sie, dass Sie bis auf Weiteres immer nur mit der omeka-2.5 Branch arbeiten. Nur dort sind die Dateien aktualisiert.
+Der Master-Branch ist noch die alte Omeka-Version.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Verzeichnis- und Dateirechte</p>
 <p>Es muss gewährleistet sein, dass einerseits der Benutzer, mit dessen Konto sich der Entwicklungsserver per SSH verbindet und andererseits die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf alle erstellten Verzeichnisse und Dateien haben.
@@ -154,6 +165,8 @@ Setzen Sie dazu den Benutzer für alle betreffenden Verzeichnisse und Dateien au
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../updates/index.html" class="btn btn-neutral float-right" title="Aktualisierungen">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../dev-srv/index.html" class="btn btn-neutral" title="Entwicklungsserver"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -186,6 +199,8 @@ Setzen Sie dazu den Benutzer für alle betreffenden Verzeichnisse und Dateien au
       
         <span><a href="../dev-srv/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../updates/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
