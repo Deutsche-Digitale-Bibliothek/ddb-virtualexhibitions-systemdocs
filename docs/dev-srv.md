@@ -78,9 +78,8 @@ Allgemeine Konfiguration des OMIM
 Datenbankeinstellungen des **Entwicklungsservers**
 Relevanter Konfigurationsabschnitt:
 
-``` php
+``` php linenums="43"
 <?php
-return array(
 
     // ...
 
@@ -99,8 +98,7 @@ return array(
     ),
 
     // ...
-);
-?>
+
 ```
 
 - Tragen Sie unter ``database``, ``username`` und ``password`` die Angaben für die MySQL-Datenbank auf dem Entwicklungsserver ein (s.o. unter "MySQL Datenbank").
@@ -119,9 +117,9 @@ Verwenden Sie als Vorlage die [omim.sample.php](https://github.com/Deutsche-Digi
     ```'common' => 'db' => 'tables'``` mit ihrer Konfiguration übereinstimmen müssen!
 
 Relevanter Konfigurationsabschnitt für Development- und Remote-Server:
-``` php
+
+``` php linenums="49"
 <?php
-return array(
 
     // ...
 
@@ -183,8 +181,9 @@ return array(
             )
         ),
     )
-);
-?>
+
+    // ...
+
 ```
 
 
