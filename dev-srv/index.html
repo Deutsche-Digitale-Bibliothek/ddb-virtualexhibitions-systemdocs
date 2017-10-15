@@ -199,8 +199,25 @@ Der Master-Branch ist noch die alte Omeka-Version.</p>
 <h4 id="appconfigdatabasephp">app/config/database.php<a class="headerlink" href="#appconfigdatabasephp" title="Permanent link">&para;</a></h4>
 <p>Datenbankeinstellungen des <strong>Entwicklungsservers</strong>
 Relevanter Konfigurationsabschnitt:</p>
-<div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="c1">// ...</span>
 
@@ -219,10 +236,8 @@ Relevanter Konfigurationsabschnitt:</p>
     <span class="p">),</span>
 
     <span class="c1">// ...</span>
-<span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
-
+</td></tr></table>
 
 <ul>
 <li>Tragen Sie unter <code>database</code>, <code>username</code> und <code>password</code> die Angaben für die MySQL-Datenbank auf dem Entwicklungsserver ein (s.o. unter "MySQL Datenbank").</li>
@@ -238,9 +253,71 @@ Relevanter Konfigurationsabschnitt:</p>
 <p>Beachten Sie, dass die Einträge in der aktuellen omim.sample.php, unter dem Schlüssel<br />
 <code>'common' =&gt; 'db' =&gt; 'tables'</code> mit ihrer Konfiguration übereinstimmen müssen!</p>
 </div>
-<p>Relevanter Konfigurationsabschnitt für Development- und Remote-Server:
-<div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+<p>Relevanter Konfigurationsabschnitt für Development- und Remote-Server:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="c1">// ...</span>
 
@@ -302,10 +379,11 @@ Relevanter Konfigurationsabschnitt:</p>
             <span class="p">)</span>
         <span class="p">),</span>
     <span class="p">)</span>
-<span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+
+    <span class="c1">// ...</span>
 </pre></div>
-</p>
+</td></tr></table>
+
 <ul>
 <li>Tragen Sie unter <code>['development']['user']['group']</code> die Apache Benutzergruppe des Entwicklungsservers ein.</li>
 <li>Tragen Sie unter <code>['remote']['n']['production']['http']['url']</code> die URL des jeweiligen Produktionsservers ein.</li>
