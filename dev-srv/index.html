@@ -199,19 +199,28 @@ Der Master-Branch ist noch die alte Omeka-Version.</p>
 <h4 id="appconfigdatabasephp">app/config/database.php<a class="headerlink" href="#appconfigdatabasephp" title="Permanent link">&para;</a></h4>
 <p>Datenbankeinstellungen des <strong>Entwicklungsservers</strong>
 Relevanter Konfigurationsabschnitt:</p>
-<div class="codehilite"><pre><span></span>&#39;connections&#39; =&gt; array(
-    &#39;mysql&#39; =&gt; array(
-        &#39;driver&#39;    =&gt; &#39;mysql&#39;,
-        &#39;host&#39;      =&gt; &#39;localhost&#39;,
-        &#39;unix_socket&#39; =&gt; &#39;/tmp/mysql5.sock&#39;,
-        &#39;database&#39;  =&gt; &#39;Name der Datenbank&#39;,
-        &#39;username&#39;  =&gt; &#39;Benutzername&#39;,
-        &#39;password&#39;  =&gt; &#39;Passwort&#39;,
-        &#39;charset&#39;   =&gt; &#39;utf8&#39;,
-        &#39;collation&#39; =&gt; &#39;utf8_unicode_ci&#39;,
-        &#39;prefix&#39;    =&gt; &#39;&#39;,
-    ),
-),
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="s1">&#39;connections&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;mysql&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;driver&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;mysql&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;host&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;unix_socket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/tmp/mysql5.sock&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;database&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Name der Datenbank&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;username&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Benutzername&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;password&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Passwort&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;charset&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;collation&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;utf8_unicode_ci&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;prefix&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+
+    <span class="c1">// ...</span>
+<span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 
 
@@ -222,69 +231,81 @@ Relevanter Konfigurationsabschnitt:</p>
 <h5 id="appconfigmailphp">app/config/mail.php<a class="headerlink" href="#appconfigmailphp" title="Permanent link">&para;</a></h5>
 <p>Sollten Sie wünschen, dass OMIM E-Mails versenden kann, tragen Sie hier bitte die entsprechenden Werte ein.</p>
 <h5 id="appconfigomimphp">app/config/omim.php<a class="headerlink" href="#appconfigomimphp" title="Permanent link">&para;</a></h5>
-<p>Spezifische Konfiguration für die OMIM Anwendung.
-Relevanter Konfigurationsabschnitt:</p>
-<div class="codehilite"><pre><span></span>&#39;development&#39; =&gt; array(
-    &#39;user&#39; =&gt; array(
-        &#39;group&#39; =&gt; &#39;www-data&#39;
-    )
-),
+<p>Spezifische Konfiguration für die OMIM Anwendung.</p>
+<p>Verwenden Sie als Vorlage die <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/blob/master/app/config/omim.sample.php">omim.sample.php</a></p>
+<div class="admonition warning">
+<p class="admonition-title">Aktualisierungen und neue Versionen von OMIM</p>
+<p>Beachten Sie, dass die Einträge in der aktuellen omim.sample.php, unter dem Schlüssel<br />
+<code>'common' =&gt; 'db' =&gt; 'tables'</code> mit ihrer Konfiguration übereinstimmen müssen!</p>
+</div>
+<p>Relevanter Konfigurationsabschnitt für Development- und Remote-Server:
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="k">array</span><span class="p">(</span>
 
-&#39;remote&#39; =&gt; array(
-    0 =&gt; array(
-        &#39;production&#39; =&gt; array(
-            &#39;http&#39; =&gt; array(
-                &#39;url&#39; =&gt; &#39;http://live.tld&#39;
-            ),
-            &#39;ssh&#39; =&gt; array(
-                &#39;host&#39; =&gt; &#39;live.tld&#39;,
-                &#39;port&#39; =&gt; &#39;22&#39;,
-                &#39;username&#39; =&gt; &#39;Benutzername für SSH&#39;,
-                &#39;key&#39; =&gt; &#39;/path/to/private/rsa/key/file&#39;,
-                &#39;docroot&#39; =&gt; &#39;/path/to/document_root/on/live/server&#39;,
-                &#39;datadir&#39; =&gt; &#39;/path/to/data/dir/on/live/server&#39;,
-                &#39;group&#39; =&gt; &#39;www-data&#39;
-            ),
-                &#39;db&#39; =&gt; array(
-                &#39;host&#39;      =&gt; &#39;localhost&#39;,
-                &#39;database&#39;  =&gt; &#39;Name der Datenbank&#39;,
-                &#39;username&#39;  =&gt; &#39;Benutzername&#39;,
-                &#39;password&#39;  =&gt; &#39;Passwort&#39;,
-                &#39;charset&#39;   =&gt; &#39;utf8&#39;,
-                &#39;collation&#39; =&gt; &#39;utf8_unicode_ci&#39;,
-                &#39;unix_socket&#39; =&gt; &#39;/tmp/mysql5.sock&#39;,
-            )
-        )
-    ),
-    1 =&gt; array(
-        &#39;production&#39; =&gt; array(
-            &#39;http&#39; =&gt; array(
-                &#39;url&#39; =&gt; &#39;http://live-two.tld&#39;
-            ),
-            &#39;ssh&#39; =&gt; array(
-                &#39;host&#39; =&gt; &#39;live-two.tld&#39;,
-                &#39;port&#39; =&gt; &#39;22&#39;,
-                &#39;username&#39; =&gt; &#39;Benutzername für SSH&#39;,
-                &#39;key&#39; =&gt; &#39;/path/to/private/rsa/key/file&#39;,
-                &#39;docroot&#39; =&gt; &#39;/path/to/document_root/on/live/server&#39;,
-                &#39;datadir&#39; =&gt; &#39;/path/to/data/dir/on/live/server&#39;,
-                &#39;group&#39; =&gt; &#39;www-data&#39;
-            ),
-            &#39;db&#39; =&gt; array(
-                &#39;host&#39;      =&gt; &#39;localhost&#39;,
-                &#39;database&#39;  =&gt; &#39;Name der Datenbank&#39;,
-                &#39;username&#39;  =&gt; &#39;Benutzername&#39;,
-                &#39;password&#39;  =&gt; &#39;Passwort&#39;,
-                &#39;charset&#39;   =&gt; &#39;utf8&#39;,
-                &#39;collation&#39; =&gt; &#39;utf8_unicode_ci&#39;,
-                &#39;unix_socket&#39; =&gt; &#39;/tmp/mysql5.sock&#39;,
-            )
-        )
-    ),
-)
+    <span class="c1">// ...</span>
+
+    <span class="s1">&#39;development&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;group&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;www-data&#39;</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
+
+    <span class="s1">&#39;remote&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="mi">0</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;production&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;http&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://live.tld&#39;</span>
+                <span class="p">),</span>
+                <span class="s1">&#39;ssh&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;live.tld&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;22&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Benutzername für SSH&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/private/rsa/key/file&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;docroot&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/document_root/on/live/server&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;datadir&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/data/dir/on/live/server&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;group&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;www-data&#39;</span>
+                <span class="p">),</span>
+                    <span class="s1">&#39;db&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;host&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;database&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Name der Datenbank&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;username&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Benutzername&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;password&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Passwort&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;charset&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;collation&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;utf8_unicode_ci&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;unix_socket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/tmp/mysql5.sock&#39;</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+        <span class="mi">1</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;production&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;http&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://live-two.tld&#39;</span>
+                <span class="p">),</span>
+                <span class="s1">&#39;ssh&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;live-two.tld&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;22&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Benutzername für SSH&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/private/rsa/key/file&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;docroot&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/document_root/on/live/server&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;datadir&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/data/dir/on/live/server&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;group&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;www-data&#39;</span>
+                <span class="p">),</span>
+                <span class="s1">&#39;db&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;host&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;database&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Name der Datenbank&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;username&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Benutzername&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;password&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Passwort&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;charset&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;collation&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;utf8_unicode_ci&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;unix_socket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/tmp/mysql5.sock&#39;</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
-
-
+</p>
 <ul>
 <li>Tragen Sie unter <code>['development']['user']['group']</code> die Apache Benutzergruppe des Entwicklungsservers ein.</li>
 <li>Tragen Sie unter <code>['remote']['n']['production']['http']['url']</code> die URL des jeweiligen Produktionsservers ein.</li>
