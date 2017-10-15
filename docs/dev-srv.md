@@ -78,6 +78,12 @@ Allgemeine Konfiguration des OMIM
 Datenbankeinstellungen des **Entwicklungsservers**
 Relevanter Konfigurationsabschnitt:
 
+``` php
+<?php
+return array(
+
+    // ...
+
     'connections' => array(
         'mysql' => array(
             'driver'    => 'mysql',
@@ -92,6 +98,11 @@ Relevanter Konfigurationsabschnitt:
         ),
     ),
 
+    // ...
+);
+?>
+```
+
 - Tragen Sie unter ``database``, ``username`` und ``password`` die Angaben für die MySQL-Datenbank auf dem Entwicklungsserver ein (s.o. unter "MySQL Datenbank").
 - Passen Sie ggf. den Pfad ``unix_socket`` zu der Unix Socket Datei an.
 
@@ -100,7 +111,19 @@ Sollten Sie wünschen, dass OMIM E-Mails versenden kann, tragen Sie hier bitte d
 
 ##### app/config/omim.php
 Spezifische Konfiguration für die OMIM Anwendung.
-Relevanter Konfigurationsabschnitt:
+
+Verwenden Sie als Vorlage die [omim.sample.php](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/blob/master/app/config/omim.sample.php)
+
+!!! warning "Aktualisierungen und neue Versionen von OMIM"
+    Beachten Sie, dass die Einträge in der aktuellen omim.sample.php, unter dem Schlüssel  
+    ```'common' => 'db' => 'tables'``` mit ihrer Konfiguration übereinstimmen müssen!
+
+Relevanter Konfigurationsabschnitt für Development- und Remote-Server:
+``` php
+<?php
+return array(
+
+    // ...
 
     'development' => array(
         'user' => array(
@@ -160,7 +183,9 @@ Relevanter Konfigurationsabschnitt:
             )
         ),
     )
-
+);
+?>
+```
 
 
 - Tragen Sie unter ``['development']['user']['group']`` die Apache Benutzergruppe des Entwicklungsservers ein.

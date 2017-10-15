@@ -13,6 +13,7 @@ pages:
     - Entwicklungsserver: dev-srv.md
     - Produktionsserver: prod-srv.md
     - Aktualisierungen: updates.md
+    # - Cheatsheet: cheatsheet.md
 
 # Theme
 theme: readthedocs
