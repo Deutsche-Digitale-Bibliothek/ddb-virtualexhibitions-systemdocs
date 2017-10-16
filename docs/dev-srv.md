@@ -219,3 +219,36 @@ Um bereits vorhandene Ausstellungen zu konvertieren, kopieren Sie aus ``data/dep
 - index.php
 
 in alle Verzeichnisse von Ausstellungs-Instanzen unter ``public`` und ersetzen so alle alten Dateien.
+
+
+## Cronjobs
+
+Um erzeugte Download-Dateien regelmäßig automatisch löschen zu lassen, richten Sie einen Cronjob ein.
+
+Für den Cronjob finden Sie im OMIM die [cron.php](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/blob/master/cron.php). Aktualisieren Sie Ihr Repository, falls die Datei auf Ihrem Server noch nicht vorhanden ist.
+
+Sie können in der cron.php-Datei unter  `#!php $threshold = 1 * 24 * 60 * 60; // a day;` die Zeit in Sekunden einstellen, die bestimmt, wie alt die Dateien maximal sein dürfen, um nicht gelöscht zu werden. Standardmäßig steht der Wert auf einem Tag, d.h. alle Dateien, die älter als ein Tag sind, werden, bei Aufruf der cron.php, aus dem Verzeichnis ```public/downloads``` gelöscht.
+
+Damit die cron.php als Cronjpb ausgeführt werden kann, muss auf dem Server php-cli >= v.5.x installiert sein. Das sollte i.d.R. der Fall sein. Überprüfen Sie das, indem Sie auf der Kommandozeile den Befehl ```php -v``` eingeben. Sollte php nicht im Pfad stehen, suchen Sie php mit dem Befehl ```whereis php```. Die Ausgabe sollte i.d.R. den Pfad ```/usr/bin/php ``` enthalten. Für diesen Pfad sollte der Versionstest entsprechend funktionieren: ```/usr/bin/php -v```.
+
+Richten Sie Crontab (```crontab -e```) ein. Fügen Sie eine Zeile hinzu mit:
+
+```sh linenums="1"
+
+0 0 * * * php /pfad/auf/server/zu/cron.php
+
+```
+Alternativ setzen sie den vollen Pfad zur PHP-Executable:
+
+```sh linenums="1"
+
+0 0 * * * /usr/bin/php /pfad/auf/server/zu/cron.php
+
+```
+
+In dem Beispiel wird der Job einmal täglich ausgeführt. Sie können die Frequenz natürlich ändern.
+
+!!! warning "Lese- und Schreibrechte des Benutzers"
+    Beachten Sie, dass der Benutzer, der den Cronjob ausführt, Lese- und Schreibrechte 
+    für die Dateien im Verzeichnis ```public/downloads``` haben muss! Sollte das nicht der Fall sein,
+    konfigurieren Sie den Cronjob in einem Benutzerkontext, der über entsprechende Rechte verfügt.
