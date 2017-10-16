@@ -73,6 +73,8 @@
         
             <li><a class="toctree-l3" href="#konvertieren-vorhander-ausstellungen">Konvertieren vorhander Ausstellungen</a></li>
         
+            <li><a class="toctree-l3" href="#cronjobs">Cronjobs</a></li>
+        
         </ul>
     
 
@@ -416,6 +418,27 @@ Bitte generieren Sie aus Sicherheitsgründen selbst ein Schlüsselpaar (s.o.).</
 <li>index.php</li>
 </ul>
 <p>in alle Verzeichnisse von Ausstellungs-Instanzen unter <code>public</code> und ersetzen so alle alten Dateien.</p>
+<h2 id="cronjobs">Cronjobs<a class="headerlink" href="#cronjobs" title="Permanent link">&para;</a></h2>
+<p>Um erzeugte Download-Dateien regelmäßig automatisch löschen zu lassen, richten Sie einen Cronjob ein.</p>
+<p>Für den Cronjob finden Sie im OMIM die <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/blob/master/cron.php">cron.php</a>. Aktualisieren Sie Ihr Repository, falls die Datei auf Ihrem Server noch nicht vorhanden ist.</p>
+<p>Sie können in der cron.php-Datei unter  <code class="codehilite"><span class="x">$threshold = 1 * 24 * 60 * 60; // a day;</span></code> die Zeit in Sekunden einstellen, die bestimmt, wie alt die Dateien maximal sein dürfen, um nicht gelöscht zu werden. Standardmäßig steht der Wert auf einem Tag, d.h. alle Dateien, die älter als ein Tag sind, werden, bei Aufruf der cron.php, aus dem Verzeichnis <code>public/downloads</code> gelöscht.</p>
+<p>Damit die cron.php als Cronjpb ausgeführt werden kann, muss auf dem Server php-cli &gt;= v.5.x installiert sein. Das sollte i.d.R. der Fall sein. Überprüfen Sie das, indem Sie auf der Kommandozeile den Befehl <code>php -v</code> eingeben. Sollte php nicht im Pfad stehen, suchen Sie php mit dem Befehl <code>whereis php</code>. Die Ausgabe sollte i.d.R. den Pfad <code>/usr/bin/php</code> enthalten. Für diesen Pfad sollte der Versionstest entsprechend funktionieren: <code>/usr/bin/php -v</code>.</p>
+<p>Richten Sie Crontab (<code>crontab -e</code>) ein. Fügen Sie eine Zeile hinzu mit:</p>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="m">0</span> <span class="m">0</span> * * * php /pfad/auf/server/zu/cron.php
+</pre></div>
+</td></tr></table>
+Alternativ setzen sie den vollen Pfad zur PHP-Executable:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="m">0</span> <span class="m">0</span> * * * /usr/bin/php /pfad/auf/server/zu/cron.php
+</pre></div>
+</td></tr></table>
+
+<p>In dem Beispiel wird der Job einmal täglich ausgeführt. Sie können die Frequenz natürlich ändern.</p>
+<div class="admonition warning">
+<p class="admonition-title">Lese- und Schreibrechte des Benutzers</p>
+<p>Beachten Sie, dass der Benutzer, der den Cronjob ausführt, Lese- und Schreibrechte 
+für die Dateien im Verzeichnis <code>public/downloads</code> haben muss! Sollte das nicht der Fall sein,
+konfigurieren Sie den Cronjob in einem Benutzerkontext, der über entsprechende Rechte verfügt.</p>
+</div>
               
             </div>
           </div>
