@@ -3,7 +3,7 @@ Aktualisierungen
 
 Aktualisierungen erhalten alle Server über die GitHub-Repositories.
 Bei Updates von OMIM über dieses [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager) auf der "master" Branch.
-Bei Updates von Omeka über dieses [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions) auf der "omeka-2.5" Branch..
+Bei Updates von Omeka über dieses [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions) auf der "master" Branch..
 
 Bei Updates die lokalen Repositories dann entsprechend mit ```git pull``` aktualisieren.
 

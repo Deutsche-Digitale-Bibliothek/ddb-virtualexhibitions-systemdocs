@@ -34,13 +34,12 @@ Speichern Sie aus der [Repository des DDB Virtual-Exhibitions-Manager](https://g
     Die zwei Dateien aus dem Repository müssen nur einmalig per Hand kopiert werden. Später werden beim Veröffentlichen die Dateien ggf. automatisch erstzt.
 
 Klonen jetzt Sie das [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions) direkt in den Unterordner ``lib``.
-Verwenden sie dazu den Befehl ```git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions.git . --branch omeka-2.5```
+Verwenden sie dazu den Befehl ```git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions.git . --branch master```
 um das Repositorium direkt in den Ordner zu klonen (es muss am Ende ein Pfad exisiteren mit ``lib/omeka``).
-Falls Sie das Argument ```--branch omeka-2.5``` am Ende weggelassen haben, wechseln Sie jetzt in den Branch omeka-2.5 mit ```git checkout omeka-2.5```.
+Falls Sie das Argument ```--branch master``` am Ende weggelassen haben und Sie noch nicht im master Branch sind, wechseln Sie jetzt in den Branch master mit ```git checkout master```.
 
-!!! warning "Der aktuelle Branch ist omeka-2.5"
-    Beachten Sie, dass Sie bis auf Weiteres immer nur mit der omeka-2.5 Branch arbeiten. Nur dort sind die Dateien aktualisiert.
-    Der Master-Branch ist noch die alte Omeka-Version.
+!!! warning "Der aktuelle Branch ist master"
+    Beachten Sie, dass Sie bis auf Weiteres immer nur mit der master Branch arbeiten. Nur dort sind die Dateien für die stabilen Releases enthalten.
 
 !!! note "Verzeichnis- und Dateirechte"
     Es muss gewährleistet sein, dass einerseits der Benutzer, mit dessen Konto sich der Entwicklungsserver per SSH verbindet und andererseits die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf alle erstellten Verzeichnisse und Dateien haben.
