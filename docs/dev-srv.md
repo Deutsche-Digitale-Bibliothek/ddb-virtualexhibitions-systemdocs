@@ -1,4 +1,4 @@
-# Entwicklungsserver
+# Redaktionsserver
 
 ## MySQL Datenbank
 
@@ -7,7 +7,7 @@ Die bereits existierende Datenabnk kann weiter verwendet werden.
 
 ### Erst-Installation
 Legen Sie bitte eine leere Datenbank mit der Kollation ``utf8_unicode_ci`` und einen MySQL Benutzer an. Gewähren Sie dem MySQL Benutzer alle Rechte auf die Datenbank.
-Sie erhalten initial eine MySQL-Datenbank-Dump-Datei, die Sie **einmalig** auf dem Entwicklungsserver in die von Ihnen erstellte Datenbank einlesen müssen.
+Sie erhalten initial eine MySQL-Datenbank-Dump-Datei, die Sie **einmalig** auf dem Redaktionsserver in die von Ihnen erstellte Datenbank einlesen müssen.
 
 ## Dateien
 
@@ -71,10 +71,10 @@ Allgemeine Konfiguration des OMIM
     - Falls ``true`` werden bei Fehlern des OMIM detaillierte Meldungen angezeigt
 - 'url'
     -  Standardwert: ``'http://redaktion.tld'``
-    -  Hier bitte die URL des Entwicklungsservers angeben
+    -  Hier bitte die URL des Redaktionsservers angeben
 
 #### app/config/database.php
-Datenbankeinstellungen des **Entwicklungsservers**
+Datenbankeinstellungen des **Redaktionsservers**
 Relevanter Konfigurationsabschnitt:
 
 ``` php linenums="43"
@@ -100,7 +100,7 @@ Relevanter Konfigurationsabschnitt:
 
 ```
 
-- Tragen Sie unter ``database``, ``username`` und ``password`` die Angaben für die MySQL-Datenbank auf dem Entwicklungsserver ein (s.o. unter "MySQL Datenbank").
+- Tragen Sie unter ``database``, ``username`` und ``password`` die Angaben für die MySQL-Datenbank auf dem Redaktionsserver ein (s.o. unter "MySQL Datenbank").
 - Passen Sie ggf. den Pfad ``unix_socket`` zu der Unix Socket Datei an.
 
 ##### app/config/mail.php
@@ -186,26 +186,26 @@ Relevanter Konfigurationsabschnitt für Development- und Remote-Server:
 ```
 
 
-- Tragen Sie unter ``['development']['user']['group']`` die Apache Benutzergruppe des Entwicklungsservers ein.
-- Tragen Sie unter ``['remote']['n']['production']['http']['url']`` die URL des jeweiligen Produktionsservers ein.
-- Tragen Sie unter ``['remote']['n']['production']['ssh']['host']`` den Hostnamen oder die IP-Adresse des jeweiligen Produktionsservers ein.
-- Tragen Sie unter ``['remote']['n']['production']['ssh']['port']`` den SSH Port ein, über den der Produktionsserver per SSH erreichbar ist.
-- Tragen Sie unter ``['remote']['n']['production']['ssh']['username']`` den Namen des Benutzers, der sich per SSH mit dem jeweiligen Produktionsserver verbinden soll, ein.
-- Tragen Sie unter ``['remote']['n']['production']['ssh']['key']`` den absoluten Dateipfad zu der privaten Schlüsseldatei, mit dem sich der Benutzer am Entwicklungsserver anmeldet, ein. Es empfiehlt sich selbst einen neuen RSA-Key auf dem Entwicklungsserver zu erzeugen. Sie müssen dann den öffentlichen Schlüssel auf dem Produktionsserver in die ``authorized_keys`` Datei des Benutzers (unter ``home/benutzername/.ssh/authorized_keys``) importieren. Achten Sie darauf, dass der Schlüssel selbst nicht durch eine Passphrase geschützt sein darf, da die Server-zu-Server Anmeldung sonst nicht automatisiert ablaufen kann. Vergewissern sie sich ggf. auch, dass die Schlüsseldatei dem entsprechenden Benutzer (und der Gruppe) gehört und ändern Sie ggf. die Zugriffsrechte.
-- Tragen Sie unter ``['remote']['n']['production']['ssh']['docroot']`` den absoluten Pfad zu dem in der Apache-Konfiguration (Virtaul Host) festgelegten ``DOCUMENT_ROOT`` des Produktionsservers ein. Beachten sie, dass dieser zwingend auf das Verzeichnis ``public`` des Produktionsservers zeigen muss (s.u.)
-- Tragen Sie unter ``['remote']['n']['production']['ssh']['datadir']`` den absulten Pfad zu dem ``data`` Verzeichnis des Produktionsservers ein. Beachten Sie, dass dieser zwingend auf das Verzeichnis ``data`` des Produktionsservers zeigen muss.
-- Tragen Sie unter ``['remote']['n']['production']['ssh']['group']`` die Gruppe ein, unter der Apache / PHP auf dem Produktionsserver ausgeführt wird.
-- Tragen Sie in den Unterschlüsseln von ``['remote']['n']['production']['db']`` die Datenbankangaben für den **Produktionsserver** ein.
-    - Tragen Sie unter ``database``, ``username`` und ``password`` die Angaben für die MySQL-Datenbank auf dem Produktionsserver ein (s.u. unter "MySQL Datenbank").
+- Tragen Sie unter ``['development']['user']['group']`` die Apache Benutzergruppe des Redaktionsservers ein.
+- Tragen Sie unter ``['remote']['n']['production']['http']['url']`` die URL des jeweiligen Ausspielungsservers ein.
+- Tragen Sie unter ``['remote']['n']['production']['ssh']['host']`` den Hostnamen oder die IP-Adresse des jeweiligen Ausspielungsservers ein.
+- Tragen Sie unter ``['remote']['n']['production']['ssh']['port']`` den SSH Port ein, über den der Ausspielungsserver per SSH erreichbar ist.
+- Tragen Sie unter ``['remote']['n']['production']['ssh']['username']`` den Namen des Benutzers, der sich per SSH mit dem jeweiligen Ausspielungsserver verbinden soll, ein.
+- Tragen Sie unter ``['remote']['n']['production']['ssh']['key']`` den absoluten Dateipfad zu der privaten Schlüsseldatei, mit dem sich der Benutzer am Redaktionsserver anmeldet, ein. Es empfiehlt sich selbst einen neuen RSA-Key auf dem Redaktionsserver zu erzeugen. Sie müssen dann den öffentlichen Schlüssel auf dem Ausspielungsserver in die ``authorized_keys`` Datei des Benutzers (unter ``home/benutzername/.ssh/authorized_keys``) importieren. Achten Sie darauf, dass der Schlüssel selbst nicht durch eine Passphrase geschützt sein darf, da die Server-zu-Server Anmeldung sonst nicht automatisiert ablaufen kann. Vergewissern sie sich ggf. auch, dass die Schlüsseldatei dem entsprechenden Benutzer (und der Gruppe) gehört und ändern Sie ggf. die Zugriffsrechte.
+- Tragen Sie unter ``['remote']['n']['production']['ssh']['docroot']`` den absoluten Pfad zu dem in der Apache-Konfiguration (Virtaul Host) festgelegten ``DOCUMENT_ROOT`` des Ausspielungsservers ein. Beachten sie, dass dieser zwingend auf das Verzeichnis ``public`` des Ausspielungsservers zeigen muss (s.u.)
+- Tragen Sie unter ``['remote']['n']['production']['ssh']['datadir']`` den absulten Pfad zu dem ``data`` Verzeichnis des Ausspielungsservers ein. Beachten Sie, dass dieser zwingend auf das Verzeichnis ``data`` des Ausspielungsservers zeigen muss.
+- Tragen Sie unter ``['remote']['n']['production']['ssh']['group']`` die Gruppe ein, unter der Apache / PHP auf dem Ausspielungsserver ausgeführt wird.
+- Tragen Sie in den Unterschlüsseln von ``['remote']['n']['production']['db']`` die Datenbankangaben für den **Ausspielungsserver** ein.
+    - Tragen Sie unter ``database``, ``username`` und ``password`` die Angaben für die MySQL-Datenbank auf dem Ausspielungsserver ein (s.u. unter "MySQL Datenbank").
     - Passen Sie ggf. den Pfad ``unix_socket`` zu der Unix Socket Datei an.
-    - Beachten Sie, dass diese Einstellungen in die Omeka-DB-INI-Dateien auf dem Produktionsserver übernommen werden. Das bedeutet, dass sich z.B. die Angabe 'localhost' auf den Produktionsserver bezieht.
+    - Beachten Sie, dass diese Einstellungen in die Omeka-DB-INI-Dateien auf dem Ausspielungsserver übernommen werden. Das bedeutet, dass sich z.B. die Angabe 'localhost' auf den Ausspielungsserver bezieht.
 
 ##### data/rsa/ddb\_rsa und data/rsa/ddb\_rsa.pub
 Private und öffentliche Schlüsseldatei zur Verwendung für die Authentifizierung bei SSH-Verbindungen.
 Bitte generieren Sie aus Sicherheitsgründen selbst ein Schlüsselpaar (s.o.).
 
 ##### public
-Dieses Verzeichnis muss in der Apache-Konfiguration des Entwicklungsservers das ``DOCUMENT_ROOT`` der Domäne sein (s.o).
+Dieses Verzeichnis muss in der Apache-Konfiguration des Redaktionsservers das ``DOCUMENT_ROOT`` der Domäne sein (s.o).
 Übernehmen Sie bei einer Upgrade-Installation alle Verzeichnisse von bereits angelegten Instanzen.
 
 ## Konvertieren vorhander Ausstellungen

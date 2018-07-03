@@ -2,11 +2,11 @@
 
 Die Installation erfolgt auf [*nix-Servern] mit eingerichteter [LAMP] Konfiguration.
 
-Voraussetzung ist, dass der Entwicklungsserver mit den Produktionsservern per SSH mit schlüsselbasierter Authentifizierung kommunizieren kann.
+Voraussetzung ist, dass der Redaktionsserver mit den Ausspielungsservern per SSH mit schlüsselbasierter Authentifizierung kommunizieren kann.
 
 Die Server sollten jeweils über nicht weniger als 1GB RAM verfügen.
 
-Für diese Dokumentation wird für die Beispiele und Erläuterungen der Entwicklungsserver mit der Beispieldomäne ``redaktion.tld`` und der Produktionsserver mit ``live.tld`` sowie ``live-two.tld`` gleichgesetzt.
+Für diese Dokumentation wird für die Beispiele und Erläuterungen der Redaktionsserver mit der Beispieldomäne ``redaktion.tld`` und der Ausspielungsserver mit ``live.tld`` sowie ``live-two.tld`` gleichgesetzt.
 
 ## Apache Server
 Auf allen Apache http-Servern (Entwicklung und Produktion) müssen mindestens folgende Module installiert und aktiviert sein:
@@ -31,8 +31,9 @@ Erforderliche Module/Extensions:
 - MYSQLI und PDO_MySQL
 - EXIF
 - php-imagick
+- cURL
 
-Bitte die Einstellungen für große Dateiuploads innerhalb Omeka (z.B. Audiodateien) insbes. auf dem Entwicklungsserver in der php.ini anpassen.
+Bitte die Einstellungen für große Dateiuploads innerhalb Omeka (z.B. Audiodateien) insbes. auf dem Redaktionsserver in der php.ini anpassen.
 Empfohlene Werte:
 
 - max\_execution\_time = 7200

@@ -14,6 +14,6 @@ Es setzt dabei eine Produktionslinie von min. zwei Servern voraus.
 - Entwicklungs- bzw. Redaktionsserver (Ausstellungsredaktionssystem)
 - Produktions- bzw. Liveserver (Mutterinstanz) bzw. Produktions-Ausspielungsserver mit 1-n Servern (für Loadbalancing)
 
-OMIM wird auf dem Entwicklungsserver installiert und eingerichtet.
-Die Software ermöglicht das Veröffentlichen von Instanzen auf den Produktionsservern.
+OMIM wird auf dem Redaktionsserver installiert und eingerichtet.
+Die Software ermöglicht das Veröffentlichen von Instanzen auf den Ausspielungsservern.
 

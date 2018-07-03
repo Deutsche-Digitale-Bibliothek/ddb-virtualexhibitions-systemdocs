@@ -10,9 +10,10 @@ copyright: 'Copyright &copy; 2017 Viktor Grandgeorg, Grandgeorg Websolutions'
 pages:
     - Einleitung: index.md
     - Anforderungen: install.md
-    - Entwicklungsserver: dev-srv.md
-    - Produktionsserver: prod-srv.md
+    - Redaktionsserver: dev-srv.md
+    - Ausspielungsserver: prod-srv.md
     - Aktualisierungen: updates.md
+    - Konfiguration: config.md
     # - Cheatsheet: cheatsheet.md
 
 # Theme
