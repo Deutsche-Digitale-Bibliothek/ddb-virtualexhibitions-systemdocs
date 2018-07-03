@@ -13,7 +13,7 @@ können die Schlüssel der Eigenschaft ```$config``` geändert werden, um die Vi
 
 - ```ddbXmlSrv``` Server mit XML Daten
 - ```ddbIIFResHelperSrvPrefix``` Server mit JSON Daten für Videobildgrößen
-- ```ddbIIIFSrvPrefix``` IIF Server mit Bilddateien
+- ```ddbIIIFSrvPrefix``` IIIF Server mit Bilddateien
 - ```ddbVideoSrvPrefix``` Server mit Videodateien
 
 ## Lizenz-Shortcodes
