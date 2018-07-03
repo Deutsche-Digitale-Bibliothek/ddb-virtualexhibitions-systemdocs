@@ -48,7 +48,7 @@ CSS-Definitionen sind in der Datei:
 
 ```<root-der-installation>/lib/omeka/themes/ddb/css/style.css```
 
-Definierte CSS-Class-Selectoren:
+Definierte CSS-Class-Selektoren:
 
 - .license-by
 - .license-nd
