@@ -8,7 +8,7 @@
   
   <meta name="author" content="Viktor Grandgeorg <viktor@grandgeorg.de>">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Entwicklungsserver - OMIM Dokumentation</title>
+  <title>Redaktionsserver - OMIM Dokumentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Entwicklungsserver";
+    var mkdocs_page_name = "Redaktionsserver";
     var mkdocs_page_input_path = "dev-srv.md";
     var mkdocs_page_url = "/dev-srv/index.html";
   </script>
@@ -60,10 +60,10 @@
           
             <li class="toctree-l1 current">
 		
-    <a class="current" href="index.html">Entwicklungsserver</a>
+    <a class="current" href="index.html">Redaktionsserver</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#entwicklungsserver">Entwicklungsserver</a></li>
+    <li class="toctree-l2"><a href="#redaktionsserver">Redaktionsserver</a></li>
     
         <ul>
         
@@ -83,12 +83,17 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../prod-srv/index.html">Produktionsserver</a>
+    <a class="" href="../prod-srv/index.html">Ausspielungsserver</a>
 	    </li>
           
             <li class="toctree-l1">
 		
     <a class="" href="../updates/index.html">Aktualisierungen</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../config/index.html">Konfiguration</a>
 	    </li>
           
         </ul>
@@ -113,7 +118,7 @@
     
       
     
-    <li>Entwicklungsserver</li>
+    <li>Redaktionsserver</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -123,13 +128,13 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="entwicklungsserver">Entwicklungsserver<a class="headerlink" href="#entwicklungsserver" title="Permanent link">&para;</a></h1>
+                <h1 id="redaktionsserver">Redaktionsserver<a class="headerlink" href="#redaktionsserver" title="Permanent link">&para;</a></h1>
 <h2 id="mysql-datenbank">MySQL Datenbank<a class="headerlink" href="#mysql-datenbank" title="Permanent link">&para;</a></h2>
 <h3 id="bei-updates">Bei Updates<a class="headerlink" href="#bei-updates" title="Permanent link">&para;</a></h3>
 <p>Die bereits existierende Datenabnk kann weiter verwendet werden.</p>
 <h3 id="erst-installation">Erst-Installation<a class="headerlink" href="#erst-installation" title="Permanent link">&para;</a></h3>
 <p>Legen Sie bitte eine leere Datenbank mit der Kollation <code>utf8_unicode_ci</code> und einen MySQL Benutzer an. Gewähren Sie dem MySQL Benutzer alle Rechte auf die Datenbank.
-Sie erhalten initial eine MySQL-Datenbank-Dump-Datei, die Sie <strong>einmalig</strong> auf dem Entwicklungsserver in die von Ihnen erstellte Datenbank einlesen müssen.</p>
+Sie erhalten initial eine MySQL-Datenbank-Dump-Datei, die Sie <strong>einmalig</strong> auf dem Redaktionsserver in die von Ihnen erstellte Datenbank einlesen müssen.</p>
 <h2 id="dateien">Dateien<a class="headerlink" href="#dateien" title="Permanent link">&para;</a></h2>
 <h3 id="vorbereitung-bei-upgrade-auf-git-verion">Vorbereitung bei Upgrade auf Git-Verion<a class="headerlink" href="#vorbereitung-bei-upgrade-auf-git-verion" title="Permanent link">&para;</a></h3>
 <p>Falls Sie ein Upgrade auf die Git-Version durchführen, sichern Sie zunächst alle Dateien aus dem Verzeichnis <code>app\config</code> und die SSH-Schlüssel aus dem Verzeichnis <code>data/rsa/</code>, sowie die bereits vorhandenen Omneka Instanzen aus dem Ordner <code>public</code>!
@@ -193,12 +198,12 @@ Falls Sie das Argument <code>--branch master</code> am Ende weggelassen haben un
 </li>
 <li>'url'<ul>
 <li>Standardwert: <code>'http://redaktion.tld'</code></li>
-<li>Hier bitte die URL des Entwicklungsservers angeben</li>
+<li>Hier bitte die URL des Redaktionsservers angeben</li>
 </ul>
 </li>
 </ul>
 <h4 id="appconfigdatabasephp">app/config/database.php<a class="headerlink" href="#appconfigdatabasephp" title="Permanent link">&para;</a></h4>
-<p>Datenbankeinstellungen des <strong>Entwicklungsservers</strong>
+<p>Datenbankeinstellungen des <strong>Redaktionsservers</strong>
 Relevanter Konfigurationsabschnitt:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>43
 44
@@ -241,7 +246,7 @@ Relevanter Konfigurationsabschnitt:</p>
 </td></tr></table>
 
 <ul>
-<li>Tragen Sie unter <code>database</code>, <code>username</code> und <code>password</code> die Angaben für die MySQL-Datenbank auf dem Entwicklungsserver ein (s.o. unter "MySQL Datenbank").</li>
+<li>Tragen Sie unter <code>database</code>, <code>username</code> und <code>password</code> die Angaben für die MySQL-Datenbank auf dem Redaktionsserver ein (s.o. unter "MySQL Datenbank").</li>
 <li>Passen Sie ggf. den Pfad <code>unix_socket</code> zu der Unix Socket Datei an.</li>
 </ul>
 <h5 id="appconfigmailphp">app/config/mail.php<a class="headerlink" href="#appconfigmailphp" title="Permanent link">&para;</a></h5>
@@ -386,19 +391,19 @@ Relevanter Konfigurationsabschnitt:</p>
 </td></tr></table>
 
 <ul>
-<li>Tragen Sie unter <code>['development']['user']['group']</code> die Apache Benutzergruppe des Entwicklungsservers ein.</li>
-<li>Tragen Sie unter <code>['remote']['n']['production']['http']['url']</code> die URL des jeweiligen Produktionsservers ein.</li>
-<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['host']</code> den Hostnamen oder die IP-Adresse des jeweiligen Produktionsservers ein.</li>
-<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['port']</code> den SSH Port ein, über den der Produktionsserver per SSH erreichbar ist.</li>
-<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['username']</code> den Namen des Benutzers, der sich per SSH mit dem jeweiligen Produktionsserver verbinden soll, ein.</li>
-<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['key']</code> den absoluten Dateipfad zu der privaten Schlüsseldatei, mit dem sich der Benutzer am Entwicklungsserver anmeldet, ein. Es empfiehlt sich selbst einen neuen RSA-Key auf dem Entwicklungsserver zu erzeugen. Sie müssen dann den öffentlichen Schlüssel auf dem Produktionsserver in die <code>authorized_keys</code> Datei des Benutzers (unter <code>home/benutzername/.ssh/authorized_keys</code>) importieren. Achten Sie darauf, dass der Schlüssel selbst nicht durch eine Passphrase geschützt sein darf, da die Server-zu-Server Anmeldung sonst nicht automatisiert ablaufen kann. Vergewissern sie sich ggf. auch, dass die Schlüsseldatei dem entsprechenden Benutzer (und der Gruppe) gehört und ändern Sie ggf. die Zugriffsrechte.</li>
-<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['docroot']</code> den absoluten Pfad zu dem in der Apache-Konfiguration (Virtaul Host) festgelegten <code>DOCUMENT_ROOT</code> des Produktionsservers ein. Beachten sie, dass dieser zwingend auf das Verzeichnis <code>public</code> des Produktionsservers zeigen muss (s.u.)</li>
-<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['datadir']</code> den absulten Pfad zu dem <code>data</code> Verzeichnis des Produktionsservers ein. Beachten Sie, dass dieser zwingend auf das Verzeichnis <code>data</code> des Produktionsservers zeigen muss.</li>
-<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['group']</code> die Gruppe ein, unter der Apache / PHP auf dem Produktionsserver ausgeführt wird.</li>
-<li>Tragen Sie in den Unterschlüsseln von <code>['remote']['n']['production']['db']</code> die Datenbankangaben für den <strong>Produktionsserver</strong> ein.<ul>
-<li>Tragen Sie unter <code>database</code>, <code>username</code> und <code>password</code> die Angaben für die MySQL-Datenbank auf dem Produktionsserver ein (s.u. unter "MySQL Datenbank").</li>
+<li>Tragen Sie unter <code>['development']['user']['group']</code> die Apache Benutzergruppe des Redaktionsservers ein.</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['http']['url']</code> die URL des jeweiligen Ausspielungsservers ein.</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['host']</code> den Hostnamen oder die IP-Adresse des jeweiligen Ausspielungsservers ein.</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['port']</code> den SSH Port ein, über den der Ausspielungsserver per SSH erreichbar ist.</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['username']</code> den Namen des Benutzers, der sich per SSH mit dem jeweiligen Ausspielungsserver verbinden soll, ein.</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['key']</code> den absoluten Dateipfad zu der privaten Schlüsseldatei, mit dem sich der Benutzer am Redaktionsserver anmeldet, ein. Es empfiehlt sich selbst einen neuen RSA-Key auf dem Redaktionsserver zu erzeugen. Sie müssen dann den öffentlichen Schlüssel auf dem Ausspielungsserver in die <code>authorized_keys</code> Datei des Benutzers (unter <code>home/benutzername/.ssh/authorized_keys</code>) importieren. Achten Sie darauf, dass der Schlüssel selbst nicht durch eine Passphrase geschützt sein darf, da die Server-zu-Server Anmeldung sonst nicht automatisiert ablaufen kann. Vergewissern sie sich ggf. auch, dass die Schlüsseldatei dem entsprechenden Benutzer (und der Gruppe) gehört und ändern Sie ggf. die Zugriffsrechte.</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['docroot']</code> den absoluten Pfad zu dem in der Apache-Konfiguration (Virtaul Host) festgelegten <code>DOCUMENT_ROOT</code> des Ausspielungsservers ein. Beachten sie, dass dieser zwingend auf das Verzeichnis <code>public</code> des Ausspielungsservers zeigen muss (s.u.)</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['datadir']</code> den absulten Pfad zu dem <code>data</code> Verzeichnis des Ausspielungsservers ein. Beachten Sie, dass dieser zwingend auf das Verzeichnis <code>data</code> des Ausspielungsservers zeigen muss.</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['group']</code> die Gruppe ein, unter der Apache / PHP auf dem Ausspielungsserver ausgeführt wird.</li>
+<li>Tragen Sie in den Unterschlüsseln von <code>['remote']['n']['production']['db']</code> die Datenbankangaben für den <strong>Ausspielungsserver</strong> ein.<ul>
+<li>Tragen Sie unter <code>database</code>, <code>username</code> und <code>password</code> die Angaben für die MySQL-Datenbank auf dem Ausspielungsserver ein (s.u. unter "MySQL Datenbank").</li>
 <li>Passen Sie ggf. den Pfad <code>unix_socket</code> zu der Unix Socket Datei an.</li>
-<li>Beachten Sie, dass diese Einstellungen in die Omeka-DB-INI-Dateien auf dem Produktionsserver übernommen werden. Das bedeutet, dass sich z.B. die Angabe 'localhost' auf den Produktionsserver bezieht.</li>
+<li>Beachten Sie, dass diese Einstellungen in die Omeka-DB-INI-Dateien auf dem Ausspielungsserver übernommen werden. Das bedeutet, dass sich z.B. die Angabe 'localhost' auf den Ausspielungsserver bezieht.</li>
 </ul>
 </li>
 </ul>
@@ -406,7 +411,7 @@ Relevanter Konfigurationsabschnitt:</p>
 <p>Private und öffentliche Schlüsseldatei zur Verwendung für die Authentifizierung bei SSH-Verbindungen.
 Bitte generieren Sie aus Sicherheitsgründen selbst ein Schlüsselpaar (s.o.).</p>
 <h5 id="public">public<a class="headerlink" href="#public" title="Permanent link">&para;</a></h5>
-<p>Dieses Verzeichnis muss in der Apache-Konfiguration des Entwicklungsservers das <code>DOCUMENT_ROOT</code> der Domäne sein (s.o).
+<p>Dieses Verzeichnis muss in der Apache-Konfiguration des Redaktionsservers das <code>DOCUMENT_ROOT</code> der Domäne sein (s.o).
 Übernehmen Sie bei einer Upgrade-Installation alle Verzeichnisse von bereits angelegten Instanzen.</p>
 <h2 id="konvertieren-vorhander-ausstellungen">Konvertieren vorhander Ausstellungen<a class="headerlink" href="#konvertieren-vorhander-ausstellungen" title="Permanent link">&para;</a></h2>
 <p>Um bereits vorhandene Ausstellungen zu konvertieren, kopieren Sie aus <code>data/deploy.tar.gz</code> die Dateien:</p>
@@ -445,7 +450,7 @@ konfigurieren Sie den Cronjob in einem Benutzerkontext, der über entsprechende 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../prod-srv/index.html" class="btn btn-neutral float-right" title="Produktionsserver">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../prod-srv/index.html" class="btn btn-neutral float-right" title="Ausspielungsserver">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../install/index.html" class="btn btn-neutral" title="Anforderungen"><span class="icon icon-circle-arrow-left"></span> Previous</a>

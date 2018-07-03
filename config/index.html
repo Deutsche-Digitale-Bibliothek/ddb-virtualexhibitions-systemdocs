@@ -8,7 +8,7 @@
   
   <meta name="author" content="Viktor Grandgeorg <viktor@grandgeorg.de>">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Aktualisierungen - OMIM Dokumentation</title>
+  <title>Konfiguration - OMIM Dokumentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Aktualisierungen";
-    var mkdocs_page_input_path = "updates.md";
-    var mkdocs_page_url = "/updates/index.html";
+    var mkdocs_page_name = "Konfiguration";
+    var mkdocs_page_input_path = "config.md";
+    var mkdocs_page_url = "/config/index.html";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -68,26 +68,30 @@
     <a class="" href="../prod-srv/index.html">Ausspielungsserver</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../updates/index.html">Aktualisierungen</a>
+	    </li>
+          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="index.html">Aktualisierungen</a>
+    <a class="current" href="index.html">Konfiguration</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#aktualisierungen">Aktualisierungen</a></li>
+    <li class="toctree-l2"><a href="#konfiguration">Konfiguration</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#sprachdateien-cache">Sprachdateien Cache</a></li>
+            <li><a class="toctree-l3" href="#ddb-video-quellen">DDB Video-Quellen</a></li>
+        
+            <li><a class="toctree-l3" href="#lizenz-shortcodes">Lizenz-Shortcodes</a></li>
+        
+            <li><a class="toctree-l3" href="#dbb-basis-url">DBB Basis-URL</a></li>
         
         </ul>
     
 
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../config/index.html">Konfiguration</a>
 	    </li>
           
         </ul>
@@ -112,7 +116,7 @@
     
       
     
-    <li>Aktualisierungen</li>
+    <li>Konfiguration</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -122,17 +126,59 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="aktualisierungen">Aktualisierungen<a class="headerlink" href="#aktualisierungen" title="Permanent link">&para;</a></h1>
-<p>Aktualisierungen erhalten alle Server über die GitHub-Repositories.
-Bei Updates von OMIM über dieses <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager">Repository</a> auf der "master" Branch.
-Bei Updates von Omeka über dieses <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions">Repository</a> auf der "master" Branch..</p>
-<p>Bei Updates die lokalen Repositories dann entsprechend mit <code>git pull</code> aktualisieren.</p>
-<h2 id="sprachdateien-cache">Sprachdateien Cache<a class="headerlink" href="#sprachdateien-cache" title="Permanent link">&para;</a></h2>
-<p>Omeka (bzw. die Zend Framework Komponente) legt für die verwendeten Sprachdateien bzw. Übersetzungen einen Cache auf dem Server an.
-Dieser muss nach Updates von Omeka vom Server gelöscht werden, da sonst Änderungen in den Sprachdateien nicht (gleich) wirksam werden.</p>
-<p>Die Dateien liegen in dem Standard-Temp-Verzeichnis des Servers, was standardmäßig <code>/tmp</code> sein sollte.
-Die Dateinamen fangen immer mit der Zeichenfolge <code>omeka_i18n_cache---</code> an. Diese Dateien bitte auf allen Server nach jedem Omeka Update bitte einfach löschen.
-Sie werden beim nächsten Seitenaufruf automatisch wieder neu erstellt.</p>
+                <h1 id="konfiguration">Konfiguration<a class="headerlink" href="#konfiguration" title="Permanent link">&para;</a></h1>
+<p>Es können in den Skriptdateien verschiedene Konfigurationen vorgenommen werden.</p>
+<h2 id="ddb-video-quellen">DDB Video-Quellen<a class="headerlink" href="#ddb-video-quellen" title="Permanent link">&para;</a></h2>
+<p>In der Datei </p>
+<p><code>ddb-virtualexhibitions/omeka/plugins/ExhibitBuilder/helpers/ExhibitDdbHelper.php</code></p>
+<p>können die Schlüssel der Eigenschaft <code>$config</code> geändert werden, um die Videoquellen der DDB festzulegen. Folgende Schlüssel können angepasst werden:</p>
+<ul>
+<li><code>ddbXmlSrv</code> Server mit XML Daten</li>
+<li><code>ddbIIFResHelperSrvPrefix</code> Server mit JSON Daten für Videobildgrößen</li>
+<li><code>ddbIIIFSrvPrefix</code> IIF Server mit Bilddateien</li>
+<li><code>ddbVideoSrvPrefix</code> Server mit Videodateien</li>
+</ul>
+<h2 id="lizenz-shortcodes">Lizenz-Shortcodes<a class="headerlink" href="#lizenz-shortcodes" title="Permanent link">&para;</a></h2>
+<p>In der Datei </p>
+<p><code>ddb-virtualexhibitions/omeka/plugins/ExhibitBuilder/helpers/ExhibitDdbHelper.php</code></p>
+<p>in der Methode <code>getLicenseFromShortcode</code> können in der Variable <code>$licenses</code> die Lizenz-Shortcodes angepasst werden.</p>
+<p>Der Aufbau der jeweiligen Einträge ist:
+<div class="codehilite"><pre><span></span>&#39;SHORTCODE&#39; =&gt; array(
+    &#39;name&#39; =&gt; &#39;Name der Lizenz&#39;,
+    &#39;link&#39; =&gt; &#39;URL zu der Lizenzdefinition&#39;,
+    &#39;icon&#39; =&gt; &#39;HTML Markup für die Ausgabe von Icons&#39;
+)
+</pre></div>
+</p>
+<p>Beim Schlüssel icon können mehrere Icons angegeben werden.<br />
+HTML Format für Icons:</p>
+<div class="codehilite"><pre><span></span>&lt;i class=&quot;license CSS-KLASSE-DES-JEWEILGEN-ICONS&quot;&gt; &lt;/i&gt;
+</pre></div>
+
+
+<p>Die Grafikdatei für die Icons befindet sich unter:</p>
+<p><code>&lt;root-der-installation&gt;/lib/omeka/themes/ddb/images/licenses.png</code></p>
+<p>CSS-Definitionen sind in der Datei:</p>
+<p><code>&lt;root-der-installation&gt;/lib/omeka/themes/ddb/css/style.css</code></p>
+<p>Definierte CSS-Class-Selectoren:</p>
+<ul>
+<li>.license-by</li>
+<li>.license-nd</li>
+<li>.license-nc</li>
+<li>.license-sa</li>
+<li>.license-pd</li>
+<li>.license-pdzero</li>
+<li>.license-rr</li>
+<li>.license-or</li>
+<li>.license-vw</li>
+</ul>
+<h2 id="dbb-basis-url">DBB Basis-URL<a class="headerlink" href="#dbb-basis-url" title="Permanent link">&para;</a></h2>
+<p>Zur Verlinkung mit der DDB in der Top-Navigation und im Footer kann die Variable <code>$ddbBaseDomain</code> in den Dateien </p>
+<ul>
+<li><code>ddb-virtualexhibitions/omeka/themes/ddb/common/header.php</code></li>
+<li><code>ddb-virtualexhibitions/omeka/themes/ddb/common/footer.php</code></li>
+</ul>
+<p>angepasst werden.</p>
               
             </div>
           </div>
@@ -140,10 +186,8 @@ Sie werden beim nächsten Seitenaufruf automatisch wieder neu erstellt.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../config/index.html" class="btn btn-neutral float-right" title="Konfiguration">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../prod-srv/index.html" class="btn btn-neutral" title="Ausspielungsserver"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../updates/index.html" class="btn btn-neutral" title="Aktualisierungen"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -171,10 +215,8 @@ Sie werden beim nächsten Seitenaufruf automatisch wieder neu erstellt.</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../prod-srv/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../updates/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../config/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

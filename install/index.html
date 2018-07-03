@@ -78,17 +78,22 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../dev-srv/index.html">Entwicklungsserver</a>
+    <a class="" href="../dev-srv/index.html">Redaktionsserver</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../prod-srv/index.html">Produktionsserver</a>
+    <a class="" href="../prod-srv/index.html">Ausspielungsserver</a>
 	    </li>
           
             <li class="toctree-l1">
 		
     <a class="" href="../updates/index.html">Aktualisierungen</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../config/index.html">Konfiguration</a>
 	    </li>
           
         </ul>
@@ -125,9 +130,9 @@
               
                 <h2 id="allgemeine-anforderungen">Allgemeine Anforderungen<a class="headerlink" href="#allgemeine-anforderungen" title="Permanent link">&para;</a></h2>
 <p>Die Installation erfolgt auf <a href="http://en.wikipedia.org/wiki/Unix-like">*nix-Servern</a> mit eingerichteter <a href="http://de.wikipedia.org/wiki/LAMP_%28Softwarepaket%29">LAMP</a> Konfiguration.</p>
-<p>Voraussetzung ist, dass der Entwicklungsserver mit den Produktionsservern per SSH mit schlüsselbasierter Authentifizierung kommunizieren kann.</p>
+<p>Voraussetzung ist, dass der Redaktionsserver mit den Ausspielungsservern per SSH mit schlüsselbasierter Authentifizierung kommunizieren kann.</p>
 <p>Die Server sollten jeweils über nicht weniger als 1GB RAM verfügen.</p>
-<p>Für diese Dokumentation wird für die Beispiele und Erläuterungen der Entwicklungsserver mit der Beispieldomäne <code>redaktion.tld</code> und der Produktionsserver mit <code>live.tld</code> sowie <code>live-two.tld</code> gleichgesetzt.</p>
+<p>Für diese Dokumentation wird für die Beispiele und Erläuterungen der Redaktionsserver mit der Beispieldomäne <code>redaktion.tld</code> und der Ausspielungsserver mit <code>live.tld</code> sowie <code>live-two.tld</code> gleichgesetzt.</p>
 <h2 id="apache-server">Apache Server<a class="headerlink" href="#apache-server" title="Permanent link">&para;</a></h2>
 <p>Auf allen Apache http-Servern (Entwicklung und Produktion) müssen mindestens folgende Module installiert und aktiviert sein:</p>
 <ul>
@@ -148,8 +153,9 @@ Erforderliche Module/Extensions:</p>
 <li>MYSQLI und PDO_MySQL</li>
 <li>EXIF</li>
 <li>php-imagick</li>
+<li>cURL</li>
 </ul>
-<p>Bitte die Einstellungen für große Dateiuploads innerhalb Omeka (z.B. Audiodateien) insbes. auf dem Entwicklungsserver in der php.ini anpassen.
+<p>Bitte die Einstellungen für große Dateiuploads innerhalb Omeka (z.B. Audiodateien) insbes. auf dem Redaktionsserver in der php.ini anpassen.
 Empfohlene Werte:</p>
 <ul>
 <li>max_execution_time = 7200</li>
@@ -167,7 +173,7 @@ Empfohlene Werte:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../dev-srv/index.html" class="btn btn-neutral float-right" title="Entwicklungsserver">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../dev-srv/index.html" class="btn btn-neutral float-right" title="Redaktionsserver">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral" title="Einleitung"><span class="icon icon-circle-arrow-left"></span> Previous</a>

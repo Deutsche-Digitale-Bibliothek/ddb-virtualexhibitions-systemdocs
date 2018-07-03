@@ -8,7 +8,7 @@
   
   <meta name="author" content="Viktor Grandgeorg <viktor@grandgeorg.de>">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Produktionsserver - OMIM Dokumentation</title>
+  <title>Ausspielungsserver - OMIM Dokumentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Produktionsserver";
+    var mkdocs_page_name = "Ausspielungsserver";
     var mkdocs_page_input_path = "prod-srv.md";
     var mkdocs_page_url = "/prod-srv/index.html";
   </script>
@@ -60,15 +60,15 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../dev-srv/index.html">Entwicklungsserver</a>
+    <a class="" href="../dev-srv/index.html">Redaktionsserver</a>
 	    </li>
           
             <li class="toctree-l1 current">
 		
-    <a class="current" href="index.html">Produktionsserver</a>
+    <a class="current" href="index.html">Ausspielungsserver</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#produktionsserver">Produktionsserver</a></li>
+    <li class="toctree-l2"><a href="#ausspielungsserver">Ausspielungsserver</a></li>
     
         <ul>
         
@@ -85,6 +85,11 @@
             <li class="toctree-l1">
 		
     <a class="" href="../updates/index.html">Aktualisierungen</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../config/index.html">Konfiguration</a>
 	    </li>
           
         </ul>
@@ -109,7 +114,7 @@
     
       
     
-    <li>Produktionsserver</li>
+    <li>Ausspielungsserver</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -119,13 +124,13 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="produktionsserver">Produktionsserver<a class="headerlink" href="#produktionsserver" title="Permanent link">&para;</a></h1>
+                <h1 id="ausspielungsserver">Ausspielungsserver<a class="headerlink" href="#ausspielungsserver" title="Permanent link">&para;</a></h1>
 <h2 id="mysql-datenbank">MySQL Datenbank<a class="headerlink" href="#mysql-datenbank" title="Permanent link">&para;</a></h2>
 <h3 id="bei-updates">Bei Updates<a class="headerlink" href="#bei-updates" title="Permanent link">&para;</a></h3>
 <p>Die bereits existierende Datenabnk kann weiter verwendet werden.</p>
 <h3 id="erst-installation">Erst-Installation<a class="headerlink" href="#erst-installation" title="Permanent link">&para;</a></h3>
 <p>Legen Sie bitte eine leere Datenbank mit der Kollation <code>utf8_unicode_ci</code> und einen MySQL Benutzer an. Gewähren Sie dem MySQL Benutzer alle Rechte auf die Datenbank.
-Die Datenbank bleibt leer und wird bei der Aktion "Veröffentlichen" des OMIM vom Entwicklungsserver aus mit Daten befüllt.</p>
+Die Datenbank bleibt leer und wird bei der Aktion "Veröffentlichen" des OMIM vom Redaktionsserver aus mit Daten befüllt.</p>
 <h2 id="dateien">Dateien<a class="headerlink" href="#dateien" title="Permanent link">&para;</a></h2>
 <h3 id="bei-updates_1">Bei Updates<a class="headerlink" href="#bei-updates_1" title="Permanent link">&para;</a></h3>
 <p>Erstellen Sie eine Kopie von allen Unterordnern von <code>public</code>.</p>
@@ -139,7 +144,7 @@ Die Datenbank bleibt leer und wird bei der Aktion "Veröffentlichen" des OMIM vo
 <p>Speichern Sie aus der <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/tree/master/data/production">Repository des DDB Virtual-Exhibitions-Manager</a> die Dateien <code>.htaccees</code> und <code>deploy.tar.gz</code>. (Sie konnen die ganze Repository als ZIP herunter laden und die Dateien dann aus dem Ordner <code>ddb-virtualexhibitions-manager/data/production/</code> extrahieren.). Speichern Sie dabei die Datei <code>.htaccees</code> im Ordner <code>public</code> und die Datei <code>deploy.tar.gz</code> im Ordner <code>data</code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Repository für Repository des DDB Virtual-Exhibitions-Manager nicht klonen!</p>
-<p>Bitte klonen Sie auf Produktionsservern das Repository des DDB Virtual-Exhibitions-Manager <strong>nicht</strong> in das Stammverzeichnis!
+<p>Bitte klonen Sie auf Ausspielungsservern das Repository des DDB Virtual-Exhibitions-Manager <strong>nicht</strong> in das Stammverzeichnis!
 Die zwei Dateien aus dem Repository müssen nur einmalig per Hand kopiert werden. Später werden beim Veröffentlichen die Dateien ggf. automatisch erstzt.</p>
 </div>
 <p>Klonen jetzt Sie das <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions">Repository</a> direkt in den Unterordner <code>lib</code>.
@@ -152,12 +157,12 @@ Falls Sie das Argument <code>--branch master</code> am Ende weggelassen haben un
 </div>
 <div class="admonition note">
 <p class="admonition-title">Verzeichnis- und Dateirechte</p>
-<p>Es muss gewährleistet sein, dass einerseits der Benutzer, mit dessen Konto sich der Entwicklungsserver per SSH verbindet und andererseits die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf alle erstellten Verzeichnisse und Dateien haben.
+<p>Es muss gewährleistet sein, dass einerseits der Benutzer, mit dessen Konto sich der Redaktionsserver per SSH verbindet und andererseits die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf alle erstellten Verzeichnisse und Dateien haben.
 Setzen Sie dazu den Benutzer für alle betreffenden Verzeichnisse und Dateien auf den SSH-Benutzer und die Gruppe auf die Gruppe von Apache / PHP (i.d.R. www-data) und die Rechte für Verzeichnisse auf 775 und für Dateien auf 664.</p>
 </div>
 <p>Falls Sie ein Update vornehmen kopieren Sie die gesicherten Unterordner von <code>public</code> wieder dort hin.</p>
 <p>Das Verzeichnis <code>public</code> muss in der Apache-Konfiguration des Servers das <code>DOCUMENT_ROOT</code> der Domäne sein.</p>
-<p>Denken Sie daran, den öffentlichen Schlüssel des SSH Benutzers vom Entwicklungsserver in die <code>authorized_keys</code> Datei einzutragen.</p>
+<p>Denken Sie daran, den öffentlichen Schlüssel des SSH Benutzers vom Redaktionsserver in die <code>authorized_keys</code> Datei einzutragen.</p>
               
             </div>
           </div>
@@ -168,7 +173,7 @@ Setzen Sie dazu den Benutzer für alle betreffenden Verzeichnisse und Dateien au
         <a href="../updates/index.html" class="btn btn-neutral float-right" title="Aktualisierungen">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../dev-srv/index.html" class="btn btn-neutral" title="Entwicklungsserver"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dev-srv/index.html" class="btn btn-neutral" title="Redaktionsserver"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
