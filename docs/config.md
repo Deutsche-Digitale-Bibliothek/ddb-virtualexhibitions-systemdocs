@@ -60,7 +60,7 @@ Definierte CSS-Class-Selektoren:
 - .license-or
 - .license-vw
 
-## DBB Basis-URL
+## DDB Basis-URL
 
 Zur Verlinkung mit der DDB in der Top-Navigation und im Footer kann die Variable ```$ddbBaseDomain``` in den Dateien 
 
