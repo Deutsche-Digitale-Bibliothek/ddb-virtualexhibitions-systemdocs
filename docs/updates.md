@@ -2,8 +2,11 @@ Aktualisierungen
 ================
 
 Aktualisierungen erhalten alle Server über die GitHub-Repositories.
-Bei Updates von OMIM über dieses [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager) auf der "master" Branch.
-Bei Updates von Omeka über dieses [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions) auf der "master" Branch..
+Bei Updates von OMIM über dieses [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager) auf der __"master"__-Branch.
+Bei Updates von Omeka über dieses [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions) auf der __"master"__-Branch.
+
+!!! danger "Aktualisierungen von Testservern"
+    Bei der Aktualisierungen von Testservern, verwenden Sie bitte immer die __develop-Branch__!
 
 Bei Updates die lokalen Repositories dann entsprechend mit ```git pull``` aktualisieren.
 

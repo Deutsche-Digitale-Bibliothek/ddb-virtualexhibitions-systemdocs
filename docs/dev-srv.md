@@ -24,6 +24,8 @@ Das sind alle Verzeichnisse unter ``public`` außer diesen:
 ### Installation
 Klonen Sie zunächst das [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager) für OMIM in eine **leeres** Verzeichnis auf Server.
 
+!!! danger "Installation von Testservern"
+    Bei der installation von Testservern, verwenden Sie bitte immer von beiden Repositorien die __develop-Branch__!
 
 !!! note "Verzeichnis- und Dateirechte"
     Es muss gewährleistet sein, dass der Benutzer bzw. die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf alle erstellten Verzeichnisse und Dateien hat. Dazu sollten die Berechtigungen gesetzt sein, indem die **Gruppe** gleich der primären Gruppe von Apache / PHP ist (i.d.R. ``www-data``) und die Rechte für Verzeichnisse auf ``775`` und für Dateien auf ``664`` gesetzt sind.

@@ -41,6 +41,9 @@ Falls Sie das Argument ```--branch master``` am Ende weggelassen haben und Sie n
 !!! warning "Der aktuelle Branch ist master"
     Beachten Sie, dass Sie bis auf Weiteres immer nur mit der master Branch arbeiten. Nur dort sind die Dateien für die stabilen Releases enthalten.
 
+!!! danger "Installation von Testservern"
+    Bei der installation von Testservern, verwenden Sie bitte immer die __develop-Branch__!
+
 !!! note "Verzeichnis- und Dateirechte"
     Es muss gewährleistet sein, dass einerseits der Benutzer, mit dessen Konto sich der Redaktionsserver per SSH verbindet und andererseits die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf alle erstellten Verzeichnisse und Dateien haben.
     Setzen Sie dazu den Benutzer für alle betreffenden Verzeichnisse und Dateien auf den SSH-Benutzer und die Gruppe auf die Gruppe von Apache / PHP (i.d.R. www-data) und die Rechte für Verzeichnisse auf 775 und für Dateien auf 664.
