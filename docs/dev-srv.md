@@ -12,7 +12,7 @@ Sie erhalten initial eine MySQL-Datenbank-Dump-Datei, die Sie **einmalig** auf d
 ## Dateien
 
 ### Vorbereitung bei Upgrade auf Git-Verion
-Falls Sie ein Upgrade auf die Git-Version durchführen, sichern Sie zunächst alle Dateien aus dem Verzeichnis ``app\config`` und die SSH-Schlüssel aus dem Verzeichnis ``data/rsa/``, sowie die bereits vorhandenen Omneka Instanzen aus dem Ordner ``public``!
+Falls Sie ein Upgrade auf die Git-Version durchführen, sichern Sie zunächst alle Dateien aus dem Verzeichnis ``app/config`` und die SSH-Schlüssel aus dem Verzeichnis ``data/rsa/``, sowie die bereits vorhandenen Omneka Instanzen aus dem Ordner ``public``!
 Das sind alle Verzeichnisse unter ``public`` außer diesen:
 
 - js
@@ -36,17 +36,25 @@ um das Repositorium direkt in den Ordner zu klonen (es muss am Ende ein Pfad exi
 Falls Sie das Argument ```--branch master``` am Ende weggelassen haben und Sie noch nicht im master Branch sind, wechseln Sie jetzt in den Branch master mit ```git checkout master```.
 
 !!! warning "Der aktuelle Branch ist master"
-    Beachten Sie, dass Sie bis auf Weiteres immer nur mit der master Branch arbeiten. Nur dort sind die Dateien für die stabilen Releases enthalten.
+    Beachten Sie, dass Sie bis auf Weiteres immer nur mit der master-Branch arbeiten. Nur dort sind die Dateien für die stabilen Releases enthalten. Nur bei der Installation auf Testservern verwenden Sie bitte die develop-Branch.
 
-Bei einer **Upgrade-Installation** Verschieben oder kopieren Sie jetzt, die im vorigen Schritt gesicherten, Dateien und Ordner an Ihre jeweiligen Orte (``app\config``, ``data/rsa/``, ``public``)!
+Bei einer **Upgrade-Installation** Verschieben oder kopieren Sie jetzt, die im vorigen Schritt gesicherten, Dateien und Ordner an Ihre jeweiligen Orte (``app/config``, ``data/rsa/``, ``public``)!
 
 Achten Sie darauf, dass in der Apache Serverkonfiguration das ``DOCUMENT_ROOT`` von der Domäne auf das ``public`` Verzeichnis zeigt.
 
 ### Konfiguration
 
-Wenn Sie eine Upgrade Installation durchführen, brauchen Sie die Konfigurationsdateien nicht weiter anzupassen, sondern nur aus der Sicherung zu übernehmen.
+!!! note "Upgrade Installation"
+    Wenn Sie eine Upgrade Installation durchführen, brauchen Sie die Konfigurationsdateien nicht weiter anzupassen, sondern nur aus der Sicherung zu übernehmen.
 
-Hier der für die Konfiguration relevanten Dateien:
+Benennen Sie zunächst in dem Ornder ``app/config`` folgende Dateien um:
+
+- ``app.sample.php`` zu ``app.php``
+- ``database.sample.php`` zu ``database.php``
+- ``omim.sample.php`` zu ``omim.php``
+
+Hier der für die Konfiguration relevanten Dateien:  
+<small>(Alle anderen Konfigurationsdateien könnnen mit den Standardeinstellungen beibehalten werden)</small>
 
 * * *
 
@@ -74,6 +82,9 @@ Allgemeine Konfiguration des OMIM
 - 'url'
     -  Standardwert: ``'http://redaktion.tld'``
     -  Hier bitte die URL des Redaktionsservers angeben
+- 'key'
+    -  Standardwert: ``'R5rt8vDRd3z75QyPqwEk1q88y5sCIH08'``
+    - Hier bitte einen 32 Zeichen lange Zeichenkette eingeben
 
 #### app/config/database.php
 Datenbankeinstellungen des **Redaktionsservers**
@@ -110,8 +121,6 @@ Sollten Sie wünschen, dass OMIM E-Mails versenden kann, tragen Sie hier bitte d
 
 ##### app/config/omim.php
 Spezifische Konfiguration für die OMIM Anwendung.
-
-Verwenden Sie als Vorlage die [omim.sample.php](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/blob/master/app/config/omim.sample.php)
 
 !!! warning "Aktualisierungen und neue Versionen von OMIM"
     Beachten Sie, dass die Einträge in der aktuellen omim.sample.php, unter dem Schlüssel  
@@ -202,7 +211,7 @@ Relevanter Konfigurationsabschnitt für Development- und Remote-Server:
     - Passen Sie ggf. den Pfad ``unix_socket`` zu der Unix Socket Datei an.
     - Beachten Sie, dass diese Einstellungen in die Omeka-DB-INI-Dateien auf dem Ausspielungsserver übernommen werden. Das bedeutet, dass sich z.B. die Angabe 'localhost' auf den Ausspielungsserver bezieht.
 
-##### data/rsa/ddb\_rsa und data/rsa/ddb\_rsa.pub
+##### data/rsa/ddb/_rsa und data/rsa/ddb/_rsa.pub
 Private und öffentliche Schlüsseldatei zur Verwendung für die Authentifizierung bei SSH-Verbindungen.
 Bitte generieren Sie aus Sicherheitsgründen selbst ein Schlüsselpaar (s.o.).
 
