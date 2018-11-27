@@ -137,7 +137,7 @@
 Sie erhalten initial eine MySQL-Datenbank-Dump-Datei, die Sie <strong>einmalig</strong> auf dem Redaktionsserver in die von Ihnen erstellte Datenbank einlesen müssen.</p>
 <h2 id="dateien">Dateien<a class="headerlink" href="#dateien" title="Permanent link">&para;</a></h2>
 <h3 id="vorbereitung-bei-upgrade-auf-git-verion">Vorbereitung bei Upgrade auf Git-Verion<a class="headerlink" href="#vorbereitung-bei-upgrade-auf-git-verion" title="Permanent link">&para;</a></h3>
-<p>Falls Sie ein Upgrade auf die Git-Version durchführen, sichern Sie zunächst alle Dateien aus dem Verzeichnis <code>app\config</code> und die SSH-Schlüssel aus dem Verzeichnis <code>data/rsa/</code>, sowie die bereits vorhandenen Omneka Instanzen aus dem Ordner <code>public</code>!
+<p>Falls Sie ein Upgrade auf die Git-Version durchführen, sichern Sie zunächst alle Dateien aus dem Verzeichnis <code>app/config</code> und die SSH-Schlüssel aus dem Verzeichnis <code>data/rsa/</code>, sowie die bereits vorhandenen Omneka Instanzen aus dem Ordner <code>public</code>!
 Das sind alle Verzeichnisse unter <code>public</code> außer diesen:</p>
 <ul>
 <li>js</li>
@@ -162,13 +162,23 @@ um das Repositorium direkt in den Ordner zu klonen (es muss am Ende ein Pfad exi
 Falls Sie das Argument <code>--branch master</code> am Ende weggelassen haben und Sie noch nicht im master Branch sind, wechseln Sie jetzt in den Branch master mit <code>git checkout master</code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Der aktuelle Branch ist master</p>
-<p>Beachten Sie, dass Sie bis auf Weiteres immer nur mit der master Branch arbeiten. Nur dort sind die Dateien für die stabilen Releases enthalten.</p>
+<p>Beachten Sie, dass Sie bis auf Weiteres immer nur mit der master-Branch arbeiten. Nur dort sind die Dateien für die stabilen Releases enthalten. Nur bei der Installation auf Testservern verwenden Sie bitte die develop-Branch.</p>
 </div>
-<p>Bei einer <strong>Upgrade-Installation</strong> Verschieben oder kopieren Sie jetzt, die im vorigen Schritt gesicherten, Dateien und Ordner an Ihre jeweiligen Orte (<code>app\config</code>, <code>data/rsa/</code>, <code>public</code>)!</p>
+<p>Bei einer <strong>Upgrade-Installation</strong> Verschieben oder kopieren Sie jetzt, die im vorigen Schritt gesicherten, Dateien und Ordner an Ihre jeweiligen Orte (<code>app/config</code>, <code>data/rsa/</code>, <code>public</code>)!</p>
 <p>Achten Sie darauf, dass in der Apache Serverkonfiguration das <code>DOCUMENT_ROOT</code> von der Domäne auf das <code>public</code> Verzeichnis zeigt.</p>
 <h3 id="konfiguration">Konfiguration<a class="headerlink" href="#konfiguration" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Upgrade Installation</p>
 <p>Wenn Sie eine Upgrade Installation durchführen, brauchen Sie die Konfigurationsdateien nicht weiter anzupassen, sondern nur aus der Sicherung zu übernehmen.</p>
-<p>Hier der für die Konfiguration relevanten Dateien:</p>
+</div>
+<p>Benennen Sie zunächst in dem Ornder <code>app/config</code> folgende Dateien um:</p>
+<ul>
+<li><code>app.sample.php</code> zu <code>app.php</code></li>
+<li><code>database.sample.php</code> zu <code>database.php</code></li>
+<li><code>omim.sample.php</code> zu <code>omim.php</code></li>
+</ul>
+<p>Hier der für die Konfiguration relevanten Dateien:<br />
+<small>(Alle anderen Konfigurationsdateien könnnen mit den Standardeinstellungen beibehalten werden)</small></p>
 <hr />
 <ul>
 <li>app<ul>
@@ -203,6 +213,11 @@ Falls Sie das Argument <code>--branch master</code> am Ende weggelassen haben un
 <li>'url'<ul>
 <li>Standardwert: <code>'http://redaktion.tld'</code></li>
 <li>Hier bitte die URL des Redaktionsservers angeben</li>
+</ul>
+</li>
+<li>'key'<ul>
+<li>Standardwert: <code>'R5rt8vDRd3z75QyPqwEk1q88y5sCIH08'</code></li>
+<li>Hier bitte einen 32 Zeichen lange Zeichenkette eingeben</li>
 </ul>
 </li>
 </ul>
@@ -257,7 +272,6 @@ Relevanter Konfigurationsabschnitt:</p>
 <p>Sollten Sie wünschen, dass OMIM E-Mails versenden kann, tragen Sie hier bitte die entsprechenden Werte ein.</p>
 <h5 id="appconfigomimphp">app/config/omim.php<a class="headerlink" href="#appconfigomimphp" title="Permanent link">&para;</a></h5>
 <p>Spezifische Konfiguration für die OMIM Anwendung.</p>
-<p>Verwenden Sie als Vorlage die <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/blob/master/app/config/omim.sample.php">omim.sample.php</a></p>
 <div class="admonition warning">
 <p class="admonition-title">Aktualisierungen und neue Versionen von OMIM</p>
 <p>Beachten Sie, dass die Einträge in der aktuellen omim.sample.php, unter dem Schlüssel<br />
@@ -411,7 +425,7 @@ Relevanter Konfigurationsabschnitt:</p>
 </ul>
 </li>
 </ul>
-<h5 id="datarsaddb95rsa-und-datarsaddb95rsapub">data/rsa/ddb_rsa und data/rsa/ddb_rsa.pub<a class="headerlink" href="#datarsaddb95rsa-und-datarsaddb95rsapub" title="Permanent link">&para;</a></h5>
+<h5 id="datarsaddb_rsa-und-datarsaddb_rsapub">data/rsa/ddb/_rsa und data/rsa/ddb/_rsa.pub<a class="headerlink" href="#datarsaddb_rsa-und-datarsaddb_rsapub" title="Permanent link">&para;</a></h5>
 <p>Private und öffentliche Schlüsseldatei zur Verwendung für die Authentifizierung bei SSH-Verbindungen.
 Bitte generieren Sie aus Sicherheitsgründen selbst ein Schlüsselpaar (s.o.).</p>
 <h5 id="public">public<a class="headerlink" href="#public" title="Permanent link">&para;</a></h5>
