@@ -2,8 +2,8 @@
 Date:    2017-10-15
 ---
 
-*Stand:* 06.11.2018
-*Version:* 2.0.4
+*Stand:* 16.07.2019
+*Version:* 2.0.5
 
 Omeka Multiinstanz Manager - OMIM
 =================================

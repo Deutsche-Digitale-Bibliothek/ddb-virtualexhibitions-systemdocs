@@ -128,8 +128,11 @@ pre .cs, pre .c {
  * Additions specific to the search functionality provided by MkDocs
  */
 
-.search-results article {
+.search-results {
     margin-top: 23px;
+}
+
+.search-results article {
     border-top: 1px solid #E1E4E5;
     padding-top: 24px;
 }
@@ -176,7 +179,7 @@ form .search-query {
 /*
  * Account for wide tables which go off the side.
  * Override borders to avoid wierdness on narrow tables.
- * 
+ *
  * https://github.com/mkdocs/mkdocs/issues/834
  * https://github.com/mkdocs/mkdocs/pull/1034
  */
@@ -190,4 +193,41 @@ form .search-query {
 td, th {
    border: 1px solid #e1e4e5 !important; /* csslint allow: important */
    border-collapse: collapse;
+}
+
+.wy-side-nav-search {
+    z-index: 200;
+    background-color: #a5003b;
+    text-align: center;
+    padding: 0.809em;
+    display: block;
+    color: #fcfcfc;
+    margin-bottom: 0.809em
+}
+
+.wy-side-nav-search input[type=text] {
+    width: 100%;
+    border-radius: 50px;
+    padding: 6px 12px;
+    border-color: #880030
+}
+
+.wy-side-nav-search img {
+    display: block;
+    margin: auto auto 0.809em auto;
+    height: 45px;
+    width: 45px;
+    background-color: #a5003b;
+    padding: 5px;
+    border-radius: 100%
+}
+
+.wy-nav-content a, .wy-nav-content a:hover, .wy-nav-content a:active, .wy-nav-content a:focus {
+    color: #a5003b;
+}
+.wy-nav-content a:hover {
+    text-decoration: underline;
+}
+.wy-nav-content a:visited {
+    color: #740129;
 }

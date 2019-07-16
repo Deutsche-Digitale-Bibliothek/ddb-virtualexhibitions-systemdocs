@@ -27,7 +27,7 @@ Erstellen Sie in einem leeren Ordner drei Unterordner:
 - `lib`
 - `public`
 
-Speichern Sie aus der [Repository des DDB Virtual-Exhibitions-Manager](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/tree/master/data/production) die Dateien ``.htaccees`` und ``deploy.tar.gz``. (Sie konnen die ganze Repository als ZIP herunter laden und die Dateien dann aus dem Ordner ``ddb-virtualexhibitions-manager/data/production/`` extrahieren.). Speichern Sie dabei die Datei ``.htaccees`` im Ordner ``public`` und die Datei ``deploy.tar.gz`` im Ordner ``data``.
+Speichern Sie aus der [Repository des DDB Virtual-Exhibitions-Manager](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/tree/master/data/production) die Dateien ``.htaccees`` und ``deploy.tar.gz``. (Sie konnen die ganze Repository als ZIP herunter laden und die Dateien dann aus dem Ordner ``ddb-virtualexhibitions-manager/data/production/`` extrahieren.). Speichern Sie dabei die Datei ``.htaccees`` im Ordner ``public`` und die Dateien ``deploy.tar.gz`` und ``deploy_lf.tar.gz`` im Ordner ``data``.
 
 !!! warning "Repository für Repository des DDB Virtual-Exhibitions-Manager nicht klonen!"
     Bitte klonen Sie auf Ausspielungsservern das Repository des DDB Virtual-Exhibitions-Manager **nicht** in das Stammverzeichnis!

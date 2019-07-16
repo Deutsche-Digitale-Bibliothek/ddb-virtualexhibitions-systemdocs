@@ -7,7 +7,7 @@ site_author: 'Viktor Grandgeorg <viktor@grandgeorg.de>'
 copyright: 'Copyright &copy; 2017 Viktor Grandgeorg, Grandgeorg Websolutions'
 
 # Structure
-pages:
+nav:
     - Einleitung: index.md
     - Anforderungen: install.md
     - Redaktionsserver: dev-srv.md
@@ -17,8 +17,10 @@ pages:
     # - Cheatsheet: cheatsheet.md
 
 # Theme
-theme: readthedocs
-theme_dir: themes/readthedocs
+theme:
+  name: readthedocs
+  custom_dir: themes/readthedocs_ddb
+  highlightjs: False
 
 # Options
 # extra:
@@ -36,18 +38,22 @@ use_directory_urls: false
 # Extensions
 markdown_extensions:
   - admonition
-  - codehilite(guess_lang=false)
+  # - codehilite:
+  #     guess_lang: false
+  #     linenums: false
   - footnotes
   - meta
-  - toc(permalink=true)
+  - toc:
+      permalink: True
   - sane_lists
   - attr_list
-  - custom_span_class
-  - figureAltCaption
-  - pymdownx.betterem(smart_enable=all)
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.inlinehilite
   - pymdownx.magiclink
-  - pymdownx.superfences
-  - pymdownx.tasklist(custom_checkbox=true)
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - figureAltCaption

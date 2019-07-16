@@ -1,0 +1,55 @@
+figure {
+    display: block;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+}
+
+figcaption {
+    text-align: left;
+    font-size: .85em;
+    font-style: italic;
+	padding: .85em 0 1.25em;
+}
+
+.red-circle {
+    /*display: inline-block;
+    background-color: #ec0a3c;
+    padding: 0 .8rem;*/
+    color: #A7003A;
+    /*border-radius: 1.6rem;*/
+}
+
+figure > img {
+    cursor: pointer;
+}
+
+.lightbox {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: rgba(0,0,0,.8);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99999;
+    cursor: pointer;
+}
+
+.lightbox img {
+    max-width: 100%;
+}
+
+.copyright {
+    font-size: 0.8rem;
+}
+
+.task-list label,
+.task-list .task-list-control {
+    display: inline;
+}
