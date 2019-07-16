@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Viktor Grandgeorg <viktor@grandgeorg.de>">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Redaktionsserver - OMIM Dokumentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link href="css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Redaktionsserver";
+    var mkdocs_page_input_path = "dev-srv.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> OMIM Dokumentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">Einleitung</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="install.html">Anforderungen</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="dev-srv.html">Redaktionsserver</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#redaktionsserver">Redaktionsserver</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#mysql-datenbank">MySQL Datenbank</a></li>
+        
+            <li><a class="toctree-l3" href="#dateien">Dateien</a></li>
+        
+            <li><a class="toctree-l3" href="#konvertieren-vorhander-ausstellungen">Konvertieren vorhander Ausstellungen</a></li>
+        
+            <li><a class="toctree-l3" href="#cronjobs">Cronjobs</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="prod-srv.html">Ausspielungsserver</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="updates.html">Aktualisierungen</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="config.html">Konfiguration</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">OMIM Dokumentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html"></a> &raquo;</li>
+    
+      
+    
+    <li>Redaktionsserver</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="redaktionsserver">Redaktionsserver<a class="headerlink" href="#redaktionsserver" title="Permanent link">&para;</a></h1>
+<h2 id="mysql-datenbank">MySQL Datenbank<a class="headerlink" href="#mysql-datenbank" title="Permanent link">&para;</a></h2>
+<h3 id="bei-updates">Bei Updates<a class="headerlink" href="#bei-updates" title="Permanent link">&para;</a></h3>
+<p>Die bereits existierende Datenabnk kann weiter verwendet werden.</p>
+<h3 id="erst-installation">Erst-Installation<a class="headerlink" href="#erst-installation" title="Permanent link">&para;</a></h3>
+<p>Legen Sie bitte eine leere Datenbank mit der Kollation <code>utf8_unicode_ci</code> und einen MySQL Benutzer an. Gewähren Sie dem MySQL Benutzer alle Rechte auf die Datenbank.
+Sie erhalten initial eine MySQL-Datenbank-Dump-Datei, die Sie <strong>einmalig</strong> auf dem Redaktionsserver in die von Ihnen erstellte Datenbank einlesen müssen.</p>
+<h2 id="dateien">Dateien<a class="headerlink" href="#dateien" title="Permanent link">&para;</a></h2>
+<h3 id="vorbereitung-bei-upgrade-auf-git-verion">Vorbereitung bei Upgrade auf Git-Verion<a class="headerlink" href="#vorbereitung-bei-upgrade-auf-git-verion" title="Permanent link">&para;</a></h3>
+<p>Falls Sie ein Upgrade auf die Git-Version durchführen, sichern Sie zunächst alle Dateien aus dem Verzeichnis <code>app/config</code> und die SSH-Schlüssel aus dem Verzeichnis <code>data/rsa/</code>, sowie die bereits vorhandenen Omneka Instanzen aus dem Ordner <code>public</code>!
+Das sind alle Verzeichnisse unter <code>public</code> außer diesen:</p>
+<ul>
+<li>js</li>
+<li>css</li>
+<li>fonts</li>
+<li>assets</li>
+<li>packages</li>
+</ul>
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
+<p>Klonen Sie zunächst das <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager">Repository</a> für OMIM in eine <strong>leeres</strong> Verzeichnis auf Server.</p>
+<div class="admonition danger">
+<p class="admonition-title">Installation von Testservern</p>
+<p>Bei der installation von Testservern, verwenden Sie bitte immer von beiden Repositorien die <strong>develop-Branch</strong>!</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Verzeichnis- und Dateirechte</p>
+<p>Es muss gewährleistet sein, dass der Benutzer bzw. die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf alle erstellten Verzeichnisse und Dateien hat. Dazu sollten die Berechtigungen gesetzt sein, indem die <strong>Gruppe</strong> gleich der primären Gruppe von Apache / PHP ist (i.d.R. <code>www-data</code>) und die Rechte für Verzeichnisse auf <code>775</code> und für Dateien auf <code>664</code> gesetzt sind.</p>
+</div>
+<p>Klonen jetzt Sie das <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions">Repository</a> direkt in den Unterordner <code>lib</code>.
+Verwenden sie dazu den Befehl <code>git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions.git . --branch master</code>
+um das Repositorium direkt in den Ordner zu klonen (es muss am Ende ein Pfad exisiteren mit <code>lib/omeka</code>).
+Falls Sie das Argument <code>--branch master</code> am Ende weggelassen haben und Sie noch nicht im master Branch sind, wechseln Sie jetzt in den Branch master mit <code>git checkout master</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Der aktuelle Branch ist master</p>
+<p>Beachten Sie, dass Sie bis auf Weiteres immer nur mit der master-Branch arbeiten. Nur dort sind die Dateien für die stabilen Releases enthalten. Nur bei der Installation auf Testservern verwenden Sie bitte die develop-Branch.</p>
+</div>
+<p>Bei einer <strong>Upgrade-Installation</strong> Verschieben oder kopieren Sie jetzt, die im vorigen Schritt gesicherten, Dateien und Ordner an Ihre jeweiligen Orte (<code>app/config</code>, <code>data/rsa/</code>, <code>public</code>)!</p>
+<p>Achten Sie darauf, dass in der Apache Serverkonfiguration das <code>DOCUMENT_ROOT</code> von der Domäne auf das <code>public</code> Verzeichnis zeigt.</p>
+<h3 id="konfiguration">Konfiguration<a class="headerlink" href="#konfiguration" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Upgrade Installation</p>
+<p>Wenn Sie eine Upgrade Installation durchführen, brauchen Sie die Konfigurationsdateien nicht weiter anzupassen, sondern nur aus der Sicherung zu übernehmen.</p>
+</div>
+<p>Benennen Sie zunächst in dem Ornder <code>app/config</code> folgende Dateien um:</p>
+<ul>
+<li><code>app.sample.php</code> zu <code>app.php</code></li>
+<li><code>database.sample.php</code> zu <code>database.php</code></li>
+<li><code>omim.sample.php</code> zu <code>omim.php</code></li>
+</ul>
+<p>Hier der für die Konfiguration relevanten Dateien:<br />
+<small>(Alle anderen Konfigurationsdateien könnnen mit den Standardeinstellungen beibehalten werden)</small></p>
+<hr />
+<ul>
+<li>app<ul>
+<li>config<ul>
+<li>app.php</li>
+<li>database.php</li>
+<li>mail.php</li>
+<li>omim.php</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>data<ul>
+<li>rsa<ul>
+<li>ddb_rsa</li>
+<li>ddb_rsa.pub</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>public</li>
+</ul>
+<hr />
+<h4 id="appconfigappphp">app/config/app.php<a class="headerlink" href="#appconfigappphp" title="Permanent link">&para;</a></h4>
+<p>Allgemeine Konfiguration des OMIM</p>
+<ul>
+<li>'debug'<ul>
+<li>Standardwert: <code>false</code></li>
+<li>Falls <code>true</code> werden bei Fehlern des OMIM detaillierte Meldungen angezeigt</li>
+</ul>
+</li>
+<li>'url'<ul>
+<li>Standardwert: <code>'http://redaktion.tld'</code></li>
+<li>Hier bitte die URL des Redaktionsservers angeben</li>
+</ul>
+</li>
+<li>'key'<ul>
+<li>Standardwert: <code>'R5rt8vDRd3z75QyPqwEk1q88y5sCIH08'</code></li>
+<li>Hier bitte einen 32 Zeichen lange Zeichenkette eingeben</li>
+</ul>
+</li>
+</ul>
+<h4 id="appconfigdatabasephp">app/config/database.php<a class="headerlink" href="#appconfigdatabasephp" title="Permanent link">&para;</a></h4>
+<p>Datenbankeinstellungen des <strong>Redaktionsservers</strong>
+Relevanter Konfigurationsabschnitt:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="s1">&#39;connections&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;mysql&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;driver&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;mysql&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;host&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;unix_socket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/tmp/mysql5.sock&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;database&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Name der Datenbank&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;username&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Benutzername&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;password&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Passwort&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;charset&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;collation&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;utf8_unicode_ci&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;prefix&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+
+    <span class="c1">// ...</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>Tragen Sie unter <code>database</code>, <code>username</code> und <code>password</code> die Angaben für die MySQL-Datenbank auf dem Redaktionsserver ein (s.o. unter "MySQL Datenbank").</li>
+<li>Passen Sie ggf. den Pfad <code>unix_socket</code> zu der Unix Socket Datei an.</li>
+</ul>
+<h5 id="appconfigmailphp">app/config/mail.php<a class="headerlink" href="#appconfigmailphp" title="Permanent link">&para;</a></h5>
+<p>Sollten Sie wünschen, dass OMIM E-Mails versenden kann, tragen Sie hier bitte die entsprechenden Werte ein.</p>
+<h5 id="appconfigomimphp">app/config/omim.php<a class="headerlink" href="#appconfigomimphp" title="Permanent link">&para;</a></h5>
+<p>Spezifische Konfiguration für die OMIM Anwendung.</p>
+<div class="admonition warning">
+<p class="admonition-title">Aktualisierungen und neue Versionen von OMIM</p>
+<p>Beachten Sie, dass die Einträge in der aktuellen omim.sample.php, unter dem Schlüssel<br />
+<code>'common' =&gt; 'db' =&gt; 'tables'</code> mit ihrer Konfiguration übereinstimmen müssen!</p>
+</div>
+<p>Relevanter Konfigurationsabschnitt für Development- und Remote-Server:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="s1">&#39;development&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;group&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;www-data&#39;</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
+
+    <span class="s1">&#39;remote&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="mi">0</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;production&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;http&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://live.tld&#39;</span>
+                <span class="p">),</span>
+                <span class="s1">&#39;ssh&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;live.tld&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;22&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Benutzername für SSH&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/private/rsa/key/file&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;docroot&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/document_root/on/live/server&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;datadir&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/data/dir/on/live/server&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;group&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;www-data&#39;</span>
+                <span class="p">),</span>
+                    <span class="s1">&#39;db&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;host&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;database&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Name der Datenbank&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;username&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Benutzername&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;password&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Passwort&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;charset&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;collation&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;utf8_unicode_ci&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;unix_socket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/tmp/mysql5.sock&#39;</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+        <span class="mi">1</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;production&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;http&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://live-two.tld&#39;</span>
+                <span class="p">),</span>
+                <span class="s1">&#39;ssh&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;live-two.tld&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;22&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Benutzername für SSH&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/private/rsa/key/file&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;docroot&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/document_root/on/live/server&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;datadir&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/data/dir/on/live/server&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;group&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;www-data&#39;</span>
+                <span class="p">),</span>
+                <span class="s1">&#39;db&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;host&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;database&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Name der Datenbank&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;username&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Benutzername&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;password&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Passwort&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;charset&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;collation&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;utf8_unicode_ci&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;unix_socket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/tmp/mysql5.sock&#39;</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="c1">// ...</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>Tragen Sie unter <code>['development']['user']['group']</code> die Apache Benutzergruppe des Redaktionsservers ein.</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['http']['url']</code> die URL des jeweiligen Ausspielungsservers ein.</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['host']</code> den Hostnamen oder die IP-Adresse des jeweiligen Ausspielungsservers ein.</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['port']</code> den SSH Port ein, über den der Ausspielungsserver per SSH erreichbar ist.</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['username']</code> den Namen des Benutzers, der sich per SSH mit dem jeweiligen Ausspielungsserver verbinden soll, ein.</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['key']</code> den absoluten Dateipfad zu der privaten Schlüsseldatei, mit dem sich der Benutzer am Redaktionsserver anmeldet, ein. Es empfiehlt sich selbst einen neuen RSA-Key auf dem Redaktionsserver zu erzeugen. Sie müssen dann den öffentlichen Schlüssel auf dem Ausspielungsserver in die <code>authorized_keys</code> Datei des Benutzers (unter <code>home/benutzername/.ssh/authorized_keys</code>) importieren. Achten Sie darauf, dass der Schlüssel selbst nicht durch eine Passphrase geschützt sein darf, da die Server-zu-Server Anmeldung sonst nicht automatisiert ablaufen kann. Vergewissern sie sich ggf. auch, dass die Schlüsseldatei dem entsprechenden Benutzer (und der Gruppe) gehört und ändern Sie ggf. die Zugriffsrechte.</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['docroot']</code> den absoluten Pfad zu dem in der Apache-Konfiguration (Virtaul Host) festgelegten <code>DOCUMENT_ROOT</code> des Ausspielungsservers ein. Beachten sie, dass dieser zwingend auf das Verzeichnis <code>public</code> des Ausspielungsservers zeigen muss (s.u.)</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['datadir']</code> den absulten Pfad zu dem <code>data</code> Verzeichnis des Ausspielungsservers ein. Beachten Sie, dass dieser zwingend auf das Verzeichnis <code>data</code> des Ausspielungsservers zeigen muss.</li>
+<li>Tragen Sie unter <code>['remote']['n']['production']['ssh']['group']</code> die Gruppe ein, unter der Apache / PHP auf dem Ausspielungsserver ausgeführt wird.</li>
+<li>Tragen Sie in den Unterschlüsseln von <code>['remote']['n']['production']['db']</code> die Datenbankangaben für den <strong>Ausspielungsserver</strong> ein.<ul>
+<li>Tragen Sie unter <code>database</code>, <code>username</code> und <code>password</code> die Angaben für die MySQL-Datenbank auf dem Ausspielungsserver ein (s.u. unter "MySQL Datenbank").</li>
+<li>Passen Sie ggf. den Pfad <code>unix_socket</code> zu der Unix Socket Datei an.</li>
+<li>Beachten Sie, dass diese Einstellungen in die Omeka-DB-INI-Dateien auf dem Ausspielungsserver übernommen werden. Das bedeutet, dass sich z.B. die Angabe 'localhost' auf den Ausspielungsserver bezieht.</li>
+</ul>
+</li>
+</ul>
+<h5 id="datarsaddb_rsa-und-datarsaddb_rsapub">data/rsa/ddb/_rsa und data/rsa/ddb/_rsa.pub<a class="headerlink" href="#datarsaddb_rsa-und-datarsaddb_rsapub" title="Permanent link">&para;</a></h5>
+<p>Private und öffentliche Schlüsseldatei zur Verwendung für die Authentifizierung bei SSH-Verbindungen.
+Bitte generieren Sie aus Sicherheitsgründen selbst ein Schlüsselpaar (s.o.).</p>
+<h5 id="public">public<a class="headerlink" href="#public" title="Permanent link">&para;</a></h5>
+<p>Dieses Verzeichnis muss in der Apache-Konfiguration des Redaktionsservers das <code>DOCUMENT_ROOT</code> der Domäne sein (s.o).
+Übernehmen Sie bei einer Upgrade-Installation alle Verzeichnisse von bereits angelegten Instanzen.</p>
+<h2 id="konvertieren-vorhander-ausstellungen">Konvertieren vorhander Ausstellungen<a class="headerlink" href="#konvertieren-vorhander-ausstellungen" title="Permanent link">&para;</a></h2>
+<p>Um bereits vorhandene Ausstellungen zu konvertieren, kopieren Sie aus <code>data/deploy.tar.gz</code> die Dateien:</p>
+<ul>
+<li>files/layout/pagethumbnail/default-page-icon.jpg</li>
+<li>files/layout/pagethumbnail/default-summary-icon.jpg</li>
+<li>bootstrap.php</li>
+<li>index.php</li>
+</ul>
+<p>in alle Verzeichnisse von Ausstellungs-Instanzen unter <code>public</code> und ersetzen so alle alten Dateien.</p>
+<h2 id="cronjobs">Cronjobs<a class="headerlink" href="#cronjobs" title="Permanent link">&para;</a></h2>
+<p>Um erzeugte Download-Dateien regelmäßig automatisch löschen zu lassen, richten Sie einen Cronjob ein.</p>
+<p>Für den Cronjob finden Sie im OMIM die <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/blob/master/cron.php">cron.php</a>. Aktualisieren Sie Ihr Repository, falls die Datei auf Ihrem Server noch nicht vorhanden ist.</p>
+<p>Sie können in der cron.php-Datei unter  <code class="highlight"><span class="x">$threshold = 1 * 24 * 60 * 60; // a day;</span></code> die Zeit in Sekunden einstellen, die bestimmt, wie alt die Dateien maximal sein dürfen, um nicht gelöscht zu werden. Standardmäßig steht der Wert auf einem Tag, d.h. alle Dateien, die älter als ein Tag sind, werden, bei Aufruf der cron.php, aus dem Verzeichnis <code>public/downloads</code> gelöscht.</p>
+<p>Damit die cron.php als Cronjpb ausgeführt werden kann, muss auf dem Server php-cli &gt;= v.5.x installiert sein. Das sollte i.d.R. der Fall sein. Überprüfen Sie das, indem Sie auf der Kommandozeile den Befehl <code>php -v</code> eingeben. Sollte php nicht im Pfad stehen, suchen Sie php mit dem Befehl <code>whereis php</code>. Die Ausgabe sollte i.d.R. den Pfad <code>/usr/bin/php</code> enthalten. Für diesen Pfad sollte der Versionstest entsprechend funktionieren: <code>/usr/bin/php -v</code>.</p>
+<p>Richten Sie Crontab (<code>crontab -e</code>) ein. Fügen Sie eine Zeile hinzu mit:</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="m">0</span> <span class="m">0</span> * * * php /pfad/auf/server/zu/cron.php
+</pre></div>
+</td></tr></table>
+Alternativ setzen sie den vollen Pfad zur PHP-Executable:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="m">0</span> <span class="m">0</span> * * * /usr/bin/php /pfad/auf/server/zu/cron.php
+</pre></div>
+</td></tr></table>
+
+<p>In dem Beispiel wird der Job einmal täglich ausgeführt. Sie können die Frequenz natürlich ändern.</p>
+<div class="admonition warning">
+<p class="admonition-title">Lese- und Schreibrechte des Benutzers</p>
+<p>Beachten Sie, dass der Benutzer, der den Cronjob ausführt, Lese- und Schreibrechte 
+für die Dateien im Verzeichnis <code>public/downloads</code> haben muss! Sollte das nicht der Fall sein,
+konfigurieren Sie den Cronjob in einem Benutzerkontext, der über entsprechende Rechte verfügt.</p>
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="prod-srv.html" class="btn btn-neutral float-right" title="Ausspielungsserver"> <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral" title="Anforderungen"><span class="icon icon-circle-arrow-left"></span> </a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p class="copyright">Copyright &copy; 2017 Viktor Grandgeorg, Grandgeorg Websolutions</p>
+    
+  </div>
+
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="install.html" style="color: #fcfcfc;">&laquo; </a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="prod-srv.html" style="color: #fcfcfc"> &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="js/jquery-3.1.1.min.js" defer></script>
+      <script src="js/extra.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>

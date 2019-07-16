@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Virtuelle Ausstellungen der Deutschen Digitalen Bibliothek">
+  
   <meta name="author" content="Viktor Grandgeorg <viktor@grandgeorg.de>">
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Einleitung - OMIM Dokumentation</title>
+  <title>Aktualisierungen - OMIM Dokumentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Einleitung";
-    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_name = "Aktualisierungen";
+    var mkdocs_page_input_path = "updates.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -46,21 +46,9 @@
 	<ul class="current">
 	  
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="index.html">Einleitung</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#omeka-multiinstanz-manager-omim">Omeka Multiinstanz Manager - OMIM</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#testserver">Testserver</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="index.html">Einleitung</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -78,9 +66,21 @@
     <a class="" href="prod-srv.html">Ausspielungsserver</a>
 	    </li>
           
-            <li class="toctree-l1">
+            <li class="toctree-l1 current">
 		
-    <a class="" href="updates.html">Aktualisierungen</a>
+    <a class="current" href="updates.html">Aktualisierungen</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#aktualisierungen">Aktualisierungen</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#sprachdateien-cache">Sprachdateien Cache</a></li>
+        
+        </ul>
+    
+
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
@@ -110,7 +110,7 @@
     
       
     
-    <li>Einleitung</li>
+    <li>Aktualisierungen</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -120,23 +120,21 @@
           <div role="main">
             <div class="section">
               
-                <p><em>Stand:</em> 16.07.2019
-<em>Version:</em> 2.0.5</p>
-<h1 id="omeka-multiinstanz-manager-omim">Omeka Multiinstanz Manager - OMIM<a class="headerlink" href="#omeka-multiinstanz-manager-omim" title="Permanent link">&para;</a></h1>
-<p>OMIM ermöglicht das Bereitstellen und die Verwaltung von Omeka Instanzen.
-Es setzt dabei eine Produktionslinie von min. zwei Servern voraus.</p>
-<ul>
-<li>Entwicklungs- bzw. Redaktionsserver (Ausstellungsredaktionssystem)</li>
-<li>Produktions- bzw. Liveserver (Mutterinstanz) bzw. Produktions-Ausspielungsserver mit 1-n Servern (für Loadbalancing)</li>
-</ul>
-<p>OMIM wird auf dem Redaktionsserver installiert und eingerichtet.
-Die Software ermöglicht das Veröffentlichen von Instanzen auf den Ausspielungsservern.</p>
-<h2 id="testserver">Testserver<a class="headerlink" href="#testserver" title="Permanent link">&para;</a></h2>
-<p>Bei der Einrichtung von Testservern, ist das Vorgehen grundsätzlich identisch zu dem im Folgenden beschriebenen. Allerdings wird dort, sowohl von OMIM als auch DDB Omeka die <strong>develop-Branch</strong> bei GitHub verwendet:</p>
-<ul>
-<li><a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/tree/develop">DDB Virtualexhibitions Manager - develop</a></li>
-<li><a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions/tree/develop">DDB Omeka - develop</a></li>
-</ul>
+                <h1 id="aktualisierungen">Aktualisierungen<a class="headerlink" href="#aktualisierungen" title="Permanent link">&para;</a></h1>
+<p>Aktualisierungen erhalten alle Server über die GitHub-Repositories.
+Bei Updates von OMIM über dieses <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager">Repository</a> auf der <strong>"master"</strong>-Branch.
+Bei Updates von Omeka über dieses <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions">Repository</a> auf der <strong>"master"</strong>-Branch.</p>
+<div class="admonition danger">
+<p class="admonition-title">Aktualisierungen von Testservern</p>
+<p>Bei der Aktualisierungen von Testservern, verwenden Sie bitte immer die <strong>develop-Branch</strong>!</p>
+</div>
+<p>Bei Updates die lokalen Repositories dann entsprechend mit <code>git pull</code> aktualisieren.</p>
+<h2 id="sprachdateien-cache">Sprachdateien Cache<a class="headerlink" href="#sprachdateien-cache" title="Permanent link">&para;</a></h2>
+<p>Omeka (bzw. die Zend Framework Komponente) legt für die verwendeten Sprachdateien bzw. Übersetzungen einen Cache auf dem Server an.
+Dieser muss nach Updates von Omeka vom Server gelöscht werden, da sonst Änderungen in den Sprachdateien nicht (gleich) wirksam werden.</p>
+<p>Die Dateien liegen in dem Standard-Temp-Verzeichnis des Servers, was standardmäßig <code>/tmp</code> sein sollte.
+Die Dateinamen fangen immer mit der Zeichenfolge <code>omeka_i18n_cache---</code> an. Diese Dateien bitte auf allen Server nach jedem Omeka Update bitte einfach löschen.
+Sie werden beim nächsten Seitenaufruf automatisch wieder neu erstellt.</p>
               
             </div>
           </div>
@@ -144,8 +142,10 @@ Die Software ermöglicht das Veröffentlichen von Instanzen auf den Ausspielungs
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="install.html" class="btn btn-neutral float-right" title="Anforderungen"> <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="config.html" class="btn btn-neutral float-right" title="Konfiguration"> <span class="icon icon-circle-arrow-right"></span></a>
       
+      
+        <a href="prod-srv.html" class="btn btn-neutral" title="Ausspielungsserver"><span class="icon icon-circle-arrow-left"></span> </a>
       
     </div>
   
@@ -172,8 +172,10 @@ Die Software ermöglicht das Veröffentlichen von Instanzen auf den Ausspielungs
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="prod-srv.html" style="color: #fcfcfc;">&laquo; </a></span>
       
-        <span style="margin-left: 15px"><a href="install.html" style="color: #fcfcfc"> &raquo;</a></span>
+      
+        <span style="margin-left: 15px"><a href="config.html" style="color: #fcfcfc"> &raquo;</a></span>
       
     </span>
 </div>
@@ -185,8 +187,3 @@ Die Software ermöglicht das Veröffentlichen von Instanzen auf den Ausspielungs
 
 </body>
 </html>
-
-<!--
-MkDocs version : 1.0.4
-Build Date UTC : 2019-07-16 18:43:26
--->

@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Virtuelle Ausstellungen der Deutschen Digitalen Bibliothek">
+  
   <meta name="author" content="Viktor Grandgeorg <viktor@grandgeorg.de>">
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Einleitung - OMIM Dokumentation</title>
+  <title>Anforderungen - OMIM Dokumentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Einleitung";
-    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_name = "Anforderungen";
+    var mkdocs_page_input_path = "install.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -46,26 +46,32 @@
 	<ul class="current">
 	  
           
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">Einleitung</a>
+	    </li>
+          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="index.html">Einleitung</a>
+    <a class="current" href="install.html">Anforderungen</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#omeka-multiinstanz-manager-omim">Omeka Multiinstanz Manager - OMIM</a></li>
+    <li class="toctree-l2"><a href="#allgemeine-anforderungen">Allgemeine Anforderungen</a></li>
     
-        <ul>
-        
-            <li><a class="toctree-l3" href="#testserver">Testserver</a></li>
-        
-        </ul>
+
+    <li class="toctree-l2"><a href="#apache-server">Apache Server</a></li>
+    
+
+    <li class="toctree-l2"><a href="#mysql-server">MySQL Server</a></li>
+    
+
+    <li class="toctree-l2"><a href="#php">PHP</a></li>
+    
+
+    <li class="toctree-l2"><a href="#imagemagick">ImageMagick</a></li>
     
 
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="install.html">Anforderungen</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -110,7 +116,7 @@
     
       
     
-    <li>Einleitung</li>
+    <li>Anforderungen</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -120,23 +126,44 @@
           <div role="main">
             <div class="section">
               
-                <p><em>Stand:</em> 16.07.2019
-<em>Version:</em> 2.0.5</p>
-<h1 id="omeka-multiinstanz-manager-omim">Omeka Multiinstanz Manager - OMIM<a class="headerlink" href="#omeka-multiinstanz-manager-omim" title="Permanent link">&para;</a></h1>
-<p>OMIM ermöglicht das Bereitstellen und die Verwaltung von Omeka Instanzen.
-Es setzt dabei eine Produktionslinie von min. zwei Servern voraus.</p>
+                <h2 id="allgemeine-anforderungen">Allgemeine Anforderungen<a class="headerlink" href="#allgemeine-anforderungen" title="Permanent link">&para;</a></h2>
+<p>Die Installation erfolgt auf <a href="http://en.wikipedia.org/wiki/Unix-like">*nix-Servern</a> mit eingerichteter <a href="http://de.wikipedia.org/wiki/LAMP_%28Softwarepaket%29">LAMP</a> Konfiguration.</p>
+<p>Voraussetzung ist, dass der Redaktionsserver mit den Ausspielungsservern per SSH mit schlüsselbasierter Authentifizierung kommunizieren kann.</p>
+<p>Die Server sollten jeweils über nicht weniger als 1GB RAM verfügen.</p>
+<p>Für diese Dokumentation wird für die Beispiele und Erläuterungen der Redaktionsserver mit der Beispieldomäne <code>redaktion.tld</code> und der Ausspielungsserver mit <code>live.tld</code> sowie <code>live-two.tld</code> gleichgesetzt.</p>
+<h2 id="apache-server">Apache Server<a class="headerlink" href="#apache-server" title="Permanent link">&para;</a></h2>
+<p>Auf allen Apache http-Servern (Entwicklung und Produktion) müssen mindestens folgende Module installiert und aktiviert sein:</p>
 <ul>
-<li>Entwicklungs- bzw. Redaktionsserver (Ausstellungsredaktionssystem)</li>
-<li>Produktions- bzw. Liveserver (Mutterinstanz) bzw. Produktions-Ausspielungsserver mit 1-n Servern (für Loadbalancing)</li>
+<li><code>deflate</code></li>
+<li><code>mime</code></li>
+<li><code>rewrite</code></li>
 </ul>
-<p>OMIM wird auf dem Redaktionsserver installiert und eingerichtet.
-Die Software ermöglicht das Veröffentlichen von Instanzen auf den Ausspielungsservern.</p>
-<h2 id="testserver">Testserver<a class="headerlink" href="#testserver" title="Permanent link">&para;</a></h2>
-<p>Bei der Einrichtung von Testservern, ist das Vorgehen grundsätzlich identisch zu dem im Folgenden beschriebenen. Allerdings wird dort, sowohl von OMIM als auch DDB Omeka die <strong>develop-Branch</strong> bei GitHub verwendet:</p>
+<p>Das Modul <code>rewrite</code> muss für .htaccess-Dateien des jeweiligen Hosts erlaubt sein.</p>
+<p>Darüber hinaus muss in der Apachekonfiguration für den jeweiligen Host die Option <code>FollowSymLinks</code> muss gesetzt sein.</p>
+<h2 id="mysql-server">MySQL Server<a class="headerlink" href="#mysql-server" title="Permanent link">&para;</a></h2>
+<p>Version 5 oder höher und mit Verbindung über UNIX-SOCKET</p>
+<h2 id="php">PHP<a class="headerlink" href="#php" title="Permanent link">&para;</a></h2>
+<p>Version 5.4 oder höher.
+Erforderliche Module/Extensions:</p>
 <ul>
-<li><a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/tree/develop">DDB Virtualexhibitions Manager - develop</a></li>
-<li><a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions/tree/develop">DDB Omeka - develop</a></li>
+<li>MCrypt</li>
+<li>PHP JSON</li>
+<li>MYSQLI und PDO_MySQL</li>
+<li>EXIF</li>
+<li>php-imagick</li>
+<li>cURL</li>
 </ul>
+<p>Bitte die Einstellungen für große Dateiuploads innerhalb Omeka (z.B. Audiodateien) insbes. auf dem Redaktionsserver in der php.ini anpassen.
+Empfohlene Werte:</p>
+<ul>
+<li>max_execution_time = 7200</li>
+<li>max_input_time = 7200</li>
+<li>memory_limit = 256M</li>
+<li>post_max_size = 200M</li>
+<li>upload_max_filesize = 200M</li>
+</ul>
+<h2 id="imagemagick">ImageMagick<a class="headerlink" href="#imagemagick" title="Permanent link">&para;</a></h2>
+<p>Muss auf allen Servern installiert sein.</p>
               
             </div>
           </div>
@@ -144,8 +171,10 @@ Die Software ermöglicht das Veröffentlichen von Instanzen auf den Ausspielungs
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="install.html" class="btn btn-neutral float-right" title="Anforderungen"> <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="dev-srv.html" class="btn btn-neutral float-right" title="Redaktionsserver"> <span class="icon icon-circle-arrow-right"></span></a>
       
+      
+        <a href="index.html" class="btn btn-neutral" title="Einleitung"><span class="icon icon-circle-arrow-left"></span> </a>
       
     </div>
   
@@ -172,8 +201,10 @@ Die Software ermöglicht das Veröffentlichen von Instanzen auf den Ausspielungs
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="index.html" style="color: #fcfcfc;">&laquo; </a></span>
       
-        <span style="margin-left: 15px"><a href="install.html" style="color: #fcfcfc"> &raquo;</a></span>
+      
+        <span style="margin-left: 15px"><a href="dev-srv.html" style="color: #fcfcfc"> &raquo;</a></span>
       
     </span>
 </div>
@@ -185,8 +216,3 @@ Die Software ermöglicht das Veröffentlichen von Instanzen auf den Ausspielungs
 
 </body>
 </html>
-
-<!--
-MkDocs version : 1.0.4
-Build Date UTC : 2019-07-16 18:43:26
--->
