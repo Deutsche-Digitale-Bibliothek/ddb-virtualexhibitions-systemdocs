@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Virtuelle Ausstellungen der Deutschen Digitalen Bibliothek">
+  
   <meta name="author" content="Viktor Grandgeorg <viktor@grandgeorg.de>">
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Einleitung - OMIM Dokumentation</title>
+  <title>Einleitung - DDB Studio Installations- & Instandhaltungs-Handbuch</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="css/theme.css" type="text/css" />
@@ -34,7 +34,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="index.html" class="icon icon-home"> OMIM Dokumentation</a>
+        <a href="." class="icon icon-home"> DDB Studio Installations- & Instandhaltungs-Handbuch</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
     <input type="text" name="q" placeholder="" title="Type search term here" />
@@ -51,11 +51,13 @@
     <a class="current" href="index.html">Einleitung</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#omeka-multiinstanz-manager-omim">Omeka Multiinstanz Manager - OMIM</a></li>
+    <li class="toctree-l2"><a href="#ddb-studio-installations-instandhaltungs-handbuch">DDB Studio Installations- &amp; Instandhaltungs-Handbuch</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#testserver">Testserver</a></li>
+            <li><a class="toctree-l3" href="#nomenklatur">Nomenklatur</a></li>
+        
+            <li><a class="toctree-l3" href="#git-repositorien">Git-Repositorien</a></li>
         
         </ul>
     
@@ -80,12 +82,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="updates.html">Aktualisierungen</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="config.html">Konfiguration</a>
+    <a class="" href="config.html">Erweiterte Konfiguration</a>
 	    </li>
           
         </ul>
@@ -98,7 +95,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">OMIM Dokumentation</a>
+        <a href=".">DDB Studio Installations- & Instandhaltungs-Handbuch</a>
       </nav>
 
       
@@ -106,7 +103,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html"></a> &raquo;</li>
+    <li><a href="."></a> &raquo;</li>
     
       
     
@@ -120,22 +117,61 @@
           <div role="main">
             <div class="section">
               
-                <p><em>Stand:</em> 16.07.2019
-<em>Version:</em> 2.0.5</p>
-<h1 id="omeka-multiinstanz-manager-omim">Omeka Multiinstanz Manager - OMIM<a class="headerlink" href="#omeka-multiinstanz-manager-omim" title="Permanent link">&para;</a></h1>
-<p>OMIM ermöglicht das Bereitstellen und die Verwaltung von Omeka Instanzen.
-Es setzt dabei eine Produktionslinie von min. zwei Servern voraus.</p>
+                <p><em>Stand:</em> 26.08.2020
+<em>Version:</em> 3.0.0</p>
+<h1 id="ddb-studio-installations-instandhaltungs-handbuch">DDB Studio Installations- &amp; Instandhaltungs-Handbuch<a class="headerlink" href="#ddb-studio-installations-instandhaltungs-handbuch" title="Permanent link">&para;</a></h1>
+<h2 id="nomenklatur">Nomenklatur<a class="headerlink" href="#nomenklatur" title="Permanent link">&para;</a></h2>
+<h3 id="ddb-studio">DDB Studio<a class="headerlink" href="#ddb-studio" title="Permanent link">&para;</a></h3>
+<p>DDB Studio besteht technisch aus zwei Komponenten,
+zum einen aus dem <a href="#omeka-multiinstanz-manager-omim">Omeka Multiinstanz Manager</a> 
+und zum anderen aus der angepassten Version von <a href="#omeka">Omeka</a>.<br />
+Je nach <strong><a href="#servertypen">Servertyp</a></strong> werden diese Komponenten <strong>unterschiedlich</strong> 
+installiert und aktualisiert.</p>
+<h4 id="omeka-multiinstanz-manager-omim">Omeka Multiinstanz Manager - OMIM<a class="headerlink" href="#omeka-multiinstanz-manager-omim" title="Permanent link">&para;</a></h4>
+<p>OMIM ermöglicht das Bereitstellen, die Verwaltung und Veröffentlichung
+von einzelnen virtuellen Ausstellungen d.h. von Omeka Instanzen.</p>
+<p>Darüber hinaus können in OMIM Benutzer, Farbpaletten etc. der Ausstellungen verwaltet werden.</p>
+<p>Das Repository bei github heißt <strong>ddb-virtualexhibitions-manager</strong> 
+und findet sich unter<br />
+<a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager">https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager</a></p>
+<h4 id="omeka">Omeka<a class="headerlink" href="#omeka" title="Permanent link">&para;</a></h4>
+<p>Für die virtuellen Ausstellungen der DDB angepasste Version von Omeka.</p>
+<p>Das Repository bei github heißt <strong>ddb-virtualexhibitions</strong> und findet sich unter<br />
+<a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions">https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions</a></p>
+<h3 id="servertypen">Servertypen<a class="headerlink" href="#servertypen" title="Permanent link">&para;</a></h3>
+<h4 id="redaktionsserver">Redaktionsserver<a class="headerlink" href="#redaktionsserver" title="Permanent link">&para;</a></h4>
+<p>Bezeichnet Server, auf denen die DDB-Studio-Redaktion neue Ausstellungen anlegt,
+bearbeitet oder löscht und von denen aus sie Ausstellungen auf den 
+Ausspielungsservern veröffentlicht.</p>
+<p>Die Ausstellungen werden vor der Veröffentlichung hier von Kuratoren bearbeitet.<br />
+Auf diesen Servern sind die zwei Komponenten von DDB Studio vollständig 
+installiert.</p>
+<p>In diesem Handbuch wird, für Beispiele und Erläuterungen, der 
+Redaktionsserver mit der Beispieldomäne <code>redaktion.tld</code> gleichgesetzt.</p>
+<h4 id="ausspielungsserver">Ausspielungsserver<a class="headerlink" href="#ausspielungsserver" title="Permanent link">&para;</a></h4>
+<p>Bezeichnet Server, die zum Anzeigen der Ausstellungen für die Besucher dienen.<br />
+Ausstellungen werden vom jeweiligen Redaktionsserver bei der Veröffentlichung 
+automatisch hierhin übertragen.</p>
+<p>Auf diesen Servern ist die Omeka-Komponente vollständig installiert, 
+während von OMIM nur einzelne, spezielle Dateien installiert sind.</p>
+<p>In diesem Handbuch werden, für Beispiele und Erläuterungen, die 
+Ausspielungsserver mit den Beispieldomänen <code>live.tld</code> sowie <code>live-two.tld</code> 
+gleichgesetzt.</p>
+<h4 id="produktionsserver">Produktionsserver<a class="headerlink" href="#produktionsserver" title="Permanent link">&para;</a></h4>
+<p>Bezeichnet Server, die der Öffentlichkeit (Kuratoren oder Besuchern) zugänglich sind.
+Dabei gibt es einen Produktions-Redaktionsserver, sowie 1-n (derzeit zwei) Produktions-Ausspielungsserver.
+Die Produktions-Ausspielungsserver sind hinter einen Loadbalancer geschaltet.</p>
+<h4 id="testserver">Testserver<a class="headerlink" href="#testserver" title="Permanent link">&para;</a></h4>
+<p>Bezeichnet Server, die zum Testen durch die DDB insbes. bei neuen Releases der Komponenten dienen.
+Dabei gibt es einen Test-Redaktionsserver, sowie 1-n Test-Ausspielungsserver.</p>
+<h2 id="git-repositorien">Git-Repositorien<a class="headerlink" href="#git-repositorien" title="Permanent link">&para;</a></h2>
+<p>Bei der Installation oder Aktualisierung aus den beiden Git-Repositorien wird bei der
+Aufforderung (Jira-Ticket) der zu verwendende Branch bzw. Tag angegeben.</p>
 <ul>
-<li>Entwicklungs- bzw. Redaktionsserver (Ausstellungsredaktionssystem)</li>
-<li>Produktions- bzw. Liveserver (Mutterinstanz) bzw. Produktions-Ausspielungsserver mit 1-n Servern (für Loadbalancing)</li>
-</ul>
-<p>OMIM wird auf dem Redaktionsserver installiert und eingerichtet.
-Die Software ermöglicht das Veröffentlichen von Instanzen auf den Ausspielungsservern.</p>
-<h2 id="testserver">Testserver<a class="headerlink" href="#testserver" title="Permanent link">&para;</a></h2>
-<p>Bei der Einrichtung von Testservern, ist das Vorgehen grundsätzlich identisch zu dem im Folgenden beschriebenen. Allerdings wird dort, sowohl von OMIM als auch DDB Omeka die <strong>develop-Branch</strong> bei GitHub verwendet:</p>
-<ul>
-<li><a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/tree/develop">DDB Virtualexhibitions Manager - develop</a></li>
-<li><a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions/tree/develop">DDB Omeka - develop</a></li>
+<li>OMIM<br />
+<a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager">https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager</a></li>
+<li>Omeka<br />
+<a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions">https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions</a></li>
 </ul>
               
             </div>
@@ -155,7 +191,7 @@ Die Software ermöglicht das Veröffentlichen von Instanzen auf den Ausspielungs
   <div role="contentinfo">
     <!-- Copyright etc -->
     
-      <p class="copyright">Copyright &copy; 2017 Viktor Grandgeorg, Grandgeorg Websolutions</p>
+      <p class="copyright">Copyright &copy; 2020 Viktor Grandgeorg, Grandgeorg Websolutions</p>
     
   </div>
 
@@ -173,7 +209,7 @@ Die Software ermöglicht das Veröffentlichen von Instanzen auf den Ausspielungs
       
       
       
-        <span style="margin-left: 15px"><a href="install.html" style="color: #fcfcfc"> &raquo;</a></span>
+        <span class="container-next"><a href="install.html" class="prevnext next">&#10095;</a></span>
       
     </span>
 </div>
@@ -185,8 +221,3 @@ Die Software ermöglicht das Veröffentlichen von Instanzen auf den Ausspielungs
 
 </body>
 </html>
-
-<!--
-MkDocs version : 1.0.4
-Build Date UTC : 2019-07-16 18:43:26
--->

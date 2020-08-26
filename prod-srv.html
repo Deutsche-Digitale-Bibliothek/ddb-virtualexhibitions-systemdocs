@@ -8,7 +8,7 @@
   
   <meta name="author" content="Viktor Grandgeorg <viktor@grandgeorg.de>">
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Ausspielungsserver - OMIM Dokumentation</title>
+  <title>Ausspielungsserver - DDB Studio Installations- & Instandhaltungs-Handbuch</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="css/theme.css" type="text/css" />
@@ -34,7 +34,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="index.html" class="icon icon-home"> OMIM Dokumentation</a>
+        <a href="." class="icon icon-home"> DDB Studio Installations- & Instandhaltungs-Handbuch</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
     <input type="text" name="q" placeholder="" title="Type search term here" />
@@ -66,13 +66,26 @@
     <a class="current" href="prod-srv.html">Ausspielungsserver</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#ausspielungsserver">Ausspielungsserver</a></li>
+    <li class="toctree-l2"><a href="#installation">Installation</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#mysql-datenbank">MySQL Datenbank</a></li>
+            <li><a class="toctree-l3" href="#mysql">MySQL</a></li>
         
             <li><a class="toctree-l3" href="#dateien">Dateien</a></li>
+        
+            <li><a class="toctree-l3" href="#stammverzeichnis">Stammverzeichnis</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#aktualisierungen">Aktualisierungen</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#mysql_1">MySQL</a></li>
+        
+            <li><a class="toctree-l3" href="#dateien_1">Dateien</a></li>
         
         </ul>
     
@@ -82,12 +95,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="updates.html">Aktualisierungen</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="config.html">Konfiguration</a>
+    <a class="" href="config.html">Erweiterte Konfiguration</a>
 	    </li>
           
         </ul>
@@ -100,7 +108,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">OMIM Dokumentation</a>
+        <a href=".">DDB Studio Installations- & Instandhaltungs-Handbuch</a>
       </nav>
 
       
@@ -108,7 +116,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html"></a> &raquo;</li>
+    <li><a href="."></a> &raquo;</li>
     
       
     
@@ -122,49 +130,77 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="ausspielungsserver">Ausspielungsserver<a class="headerlink" href="#ausspielungsserver" title="Permanent link">&para;</a></h1>
-<h2 id="mysql-datenbank">MySQL Datenbank<a class="headerlink" href="#mysql-datenbank" title="Permanent link">&para;</a></h2>
-<h3 id="bei-updates">Bei Updates<a class="headerlink" href="#bei-updates" title="Permanent link">&para;</a></h3>
-<p>Die bereits existierende Datenabnk kann weiter verwendet werden.</p>
-<h3 id="erst-installation">Erst-Installation<a class="headerlink" href="#erst-installation" title="Permanent link">&para;</a></h3>
+                <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
+<h2 id="mysql">MySQL<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h2>
 <p>Legen Sie bitte eine leere Datenbank mit der Kollation <code>utf8_unicode_ci</code> und einen MySQL Benutzer an. Gewähren Sie dem MySQL Benutzer alle Rechte auf die Datenbank.
-Die Datenbank bleibt leer und wird bei der Aktion "Veröffentlichen" des OMIM vom Redaktionsserver aus mit Daten befüllt.</p>
+Die Datenbank bleibt leer und wird, durch die Aktion "Veröffentlichen" bei der Verwendung von OMIM, vom Redaktionsserver aus mit Daten befüllt.</p>
+<div class="admonition warning">
+<p class="admonition-title">Konfiguration OMIM</p>
+<p>Achten darauf, dass die Angaben unter<br />
+<code>['remote']['n']['production']['db']</code> in der 
+<a href="dev-srv.html#appconfigomimphp">Konfiguration des Redaktionsservers</a>
+für die Datenbank auf diesen Ausspielungsserver korrekt sein müssen.</p>
+</div>
 <h2 id="dateien">Dateien<a class="headerlink" href="#dateien" title="Permanent link">&para;</a></h2>
-<h3 id="bei-updates_1">Bei Updates<a class="headerlink" href="#bei-updates_1" title="Permanent link">&para;</a></h3>
-<p>Erstellen Sie eine Kopie von allen Unterordnern von <code>public</code>.</p>
-<h3 id="installation-und-konfiguration">Installation und Konfiguration<a class="headerlink" href="#installation-und-konfiguration" title="Permanent link">&para;</a></h3>
-<p>Erstellen Sie in einem leeren Ordner drei Unterordner:</p>
+<h2 id="stammverzeichnis">Stammverzeichnis<a class="headerlink" href="#stammverzeichnis" title="Permanent link">&para;</a></h2>
+<p>Erstellen Sie in einem leeren Ordner ihrer Wahl (Stammverzeichnis) drei Unterordner:</p>
 <ul>
 <li><code>data</code></li>
 <li><code>lib</code></li>
 <li><code>public</code></li>
 </ul>
-<p>Speichern Sie aus der <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/tree/master/data/production">Repository des DDB Virtual-Exhibitions-Manager</a> die Dateien <code>.htaccees</code> und <code>deploy.tar.gz</code>. (Sie konnen die ganze Repository als ZIP herunter laden und die Dateien dann aus dem Ordner <code>ddb-virtualexhibitions-manager/data/production/</code> extrahieren.). Speichern Sie dabei die Datei <code>.htaccees</code> im Ordner <code>public</code> und die Dateien <code>deploy.tar.gz</code> und <code>deploy_lf.tar.gz</code> im Ordner <code>data</code>.</p>
+<p>Sorgen Sie dafür, dass in der Apache Serverkonfiguration der <code>DOCUMENT_ROOT</code> der Domäne auf das Unterverzeichnis <code>public</code> zeigt.</p>
 <div class="admonition warning">
-<p class="admonition-title">Repository für Repository des DDB Virtual-Exhibitions-Manager nicht klonen!</p>
-<p>Bitte klonen Sie auf Ausspielungsservern das Repository des DDB Virtual-Exhibitions-Manager <strong>nicht</strong> in das Stammverzeichnis!
-Die zwei Dateien aus dem Repository müssen nur einmalig per Hand kopiert werden. Später werden beim Veröffentlichen die Dateien ggf. automatisch erstzt.</p>
-</div>
-<p>Klonen jetzt Sie das <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions">Repository</a> direkt in den Unterordner <code>lib</code>.
-Verwenden sie dazu den Befehl <code>git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions.git . --branch master</code>
-um das Repositorium direkt in den Ordner zu klonen (es muss am Ende ein Pfad exisiteren mit <code>lib/omeka</code>).
-Falls Sie das Argument <code>--branch master</code> am Ende weggelassen haben und Sie noch nicht im master Branch sind, wechseln Sie jetzt in den Branch master mit <code>git checkout master</code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Der aktuelle Branch ist master</p>
-<p>Beachten Sie, dass Sie bis auf Weiteres immer nur mit der master Branch arbeiten. Nur dort sind die Dateien für die stabilen Releases enthalten.</p>
-</div>
-<div class="admonition danger">
-<p class="admonition-title">Installation von Testservern</p>
-<p>Bei der installation von Testservern, verwenden Sie bitte immer die <strong>develop-Branch</strong>!</p>
+<p class="admonition-title">Konfiguration OMIM</p>
+<p>Beachten Sie, dass die Pfadangaben in<br />
+<code>['remote']['n']['production']['ssh']['docroot']</code> und<br />
+<code>['remote']['n']['production']['ssh']['datadir']</code> in der 
+<a href="dev-srv.html#appconfigomimphp">Konfiguration des Redaktionsservers</a>
+für diesen Ausspielungsserver die korrekten absoluten Serverpfade für die Ordner <code>public</code> und <code>data</code> enthalten müssen.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Verzeichnis- und Dateirechte</p>
-<p>Es muss gewährleistet sein, dass einerseits der Benutzer, mit dessen Konto sich der Redaktionsserver per SSH verbindet und andererseits die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf alle erstellten Verzeichnisse und Dateien haben.
-Setzen Sie dazu den Benutzer für alle betreffenden Verzeichnisse und Dateien auf den SSH-Benutzer und die Gruppe auf die Gruppe von Apache / PHP (i.d.R. www-data) und die Rechte für Verzeichnisse auf 775 und für Dateien auf 664.</p>
+<p>Es muss gewährleistet sein, dass einerseits der Benutzer, mit dessen Konto sich der Redaktionsserver per SSH verbindet und andererseits die Gruppe, unter der Apache &amp; PHP auf dem Server ausgeführt werden, Lese- und Schreibzugriff auf alle erstellten Verzeichnisse und Dateien haben.</p>
+<p>Sie können dazu z.B. den Benutzer für alle betreffenden Verzeichnisse und Dateien auf den SSH-Benutzer und die Gruppe auf die Gruppe von Apache &amp; PHP und die Rechte für Verzeichnisse auf 775 und für Dateien auf 664 setzen.</p>
 </div>
-<p>Falls Sie ein Update vornehmen kopieren Sie die gesicherten Unterordner von <code>public</code> wieder dort hin.</p>
-<p>Das Verzeichnis <code>public</code> muss in der Apache-Konfiguration des Servers das <code>DOCUMENT_ROOT</code> der Domäne sein.</p>
-<p>Denken Sie daran, den öffentlichen Schlüssel des SSH Benutzers vom Redaktionsserver in die <code>authorized_keys</code> Datei einzutragen.</p>
+<h3 id="omim">OMIM<a class="headerlink" href="#omim" title="Permanent link">&para;</a></h3>
+<p>Klonen Sie das <strong><a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager">Git-Repositorium von OMIM</a></strong> in ein <strong>leeres</strong> Verzeichnis auf dem Server. Checken Sie den jeweils abgesprochenen Branch für die Installation aus. </p>
+<div class="admonition warning">
+<p class="admonition-title">Speicherort für Git-Repositorium von OMIM</p>
+<p>Bitte klonen Sie auf Ausspielungsservern das Repositorium von OMIM <strong>NICHT</strong> in das <a href="#stammverzeichnis">Stammverzeichnis</a>, wo sich <code>data</code>, <code>lib</code> und <code>public</code> befinden!</p>
+</div>
+<p>Kopieren Sie die Datei <code>.htaccess</code> aus dem Ordner <code>data/production</code> in dem Git-Repositorium von OMIM nach <code>public</code> im oben erstelltem Stammverzeichnis.</p>
+<p>Kopieren Sie die Dateien <code>deploy.tar.gz</code> und <code>deploy_lf.tar.gz</code> aus dem Ordner <code>data/production</code> in dem Git-Repositorium von OMIM nach <code>data</code> im oben erstelltem Stammverzeichnis. Bitte die Dateien hier wirklich kopieren und nicht per symbolischer Verknüpfung setzen.</p>
+<div class="admonition warning">
+<p class="admonition-title">Ordnername production</p>
+<p>Beachten Sie, dass sich der Ordnername <code>production</code>, aus historischen Gründen, 
+nicht nach der aktuellen Nomenklatur richtet! <code>production</code> steht für hier <strong>Ausspielungsserver</strong>.<br />
+Der Ordner hat nichts mit der Unterscheidung nach Test- oder Produktionsumgebungen zu tun!</p>
+</div>
+<h3 id="omeka">Omeka<a class="headerlink" href="#omeka" title="Permanent link">&para;</a></h3>
+<p>In das oben erstellte Verzeichnis <strong><code>lib</code></strong> im Stammverzeichnis, muss der Inhalt bzw. der Unterordner <code>omeka</code> des <strong><a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions">Git-Repositoriums von Omekas</a></strong> gelegt werden. Dazu gibt es zwei Möglichkeiten:</p>
+<p>Zum einen, können Sie das <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions">Git-Repositorium von Omeka</a> in ein beliebiges Verzeichnis auf dem Server klonen und dann eine symbolische Verknüpfung bei OMIM innerhalb von <code>lib</code> auf den Unterordner <code>omeka</code> erstellen (Die anderen Ordner und Dateien wie LICENSE, README.md etc. werden dort nicht benötigt). </p>
+<p>Zum anderen können Sie auch direkt das <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions">Git-Repositorium von Omeka</a> innerhalb des Unterverzeichnis <code>lib</code> klonen.</p>
+<p>Gleich für welche Methode Sie sich entscheiden, muss am Ende in OMIM ein Pfad existieren mit <code>lib/omeka</code>.</p>
+<p>Vergessen Sie auch beim <strong><a href="https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions">Git-Repositorium von Omeka</a></strong> nicht, den jeweils abgesprochenen Branch für die Installation auszuchecken.</p>
+<h3 id="ssh">SSH<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h3>
+<p>Denken Sie daran, den öffentlichen Schlüssel des SSH Benutzers vom <a href="index.html#redaktionsserver">Redaktionsserver</a> in die <code>authorized_keys</code> Datei einzutragen.</p>
+<h1 id="aktualisierungen">Aktualisierungen<a class="headerlink" href="#aktualisierungen" title="Permanent link">&para;</a></h1>
+<h2 id="mysql_1">MySQL<a class="headerlink" href="#mysql_1" title="Permanent link">&para;</a></h2>
+<p>Die bereits existierende Datenbank kann, sofern Sie die <a href="install.html#mysql-server">Anforderungen</a> erfüllt, weiterhin verwendet werden.
+Die Datenbankinhalte werden über <a href="index.html#omeka-multiinstanz-manager-omim">OMIM</a> aktualisiert, sodass hier i.d.R. kein Handlungsbedarf besteht.</p>
+<h2 id="dateien_1">Dateien<a class="headerlink" href="#dateien_1" title="Permanent link">&para;</a></h2>
+<h3 id="omim_1">OMIM<a class="headerlink" href="#omim_1" title="Permanent link">&para;</a></h3>
+<p>In der Regel werden die benötigten Dateien vom Redaktionsserver aus automatisch aktualisiert.
+Falls dennoch Handlungsbedarf besteht, werden Sie explizit dazu aufgefordert.</p>
+<h3 id="omeka_1">Omeka<a class="headerlink" href="#omeka_1" title="Permanent link">&para;</a></h3>
+<p>Vergewissern Sie sich, dass Sie sich im Ordner von Omeka in der richtigen Git-Branch befinden und checken Sie ggf. die erforderlioche Branch aus. Führen Sie dann den <code>git pull</code> bzw. <code>git fetch</code> und <code>git merge</code> Befehl aus. </p>
+<h3 id="sprachdateien-cache">Sprachdateien Cache<a class="headerlink" href="#sprachdateien-cache" title="Permanent link">&para;</a></h3>
+<p>Omeka (bzw. die Zend Framework Komponente) legt für die verwendeten Sprachdateien bzw. Übersetzungen einen Cache auf dem jeweiligen Server an.
+Dieser muss nach Aktualisierungen von Omeka, die die Sprachdateien betreffen (wir weisen entsprechend im Ticket darauf hin), vom Server gelöscht werden, da sonst Änderungen in den Sprachdateien nicht unmittelbar wirksam werden.</p>
+<p>Die Dateien liegen in dem Standard-Temp-Verzeichnis des Servers, was standardmäßig <code>/tmp</code> sein sollte.
+Die Dateinamen fangen immer mit der Zeichenfolge <code>omeka_i18n_cache---</code> an. Diese Dateien bitte auf allen Servern nach der Aktualisierung von Omeka bitte löschen.
+Die Dateien werden beim nächsten Seitenaufruf automatisch wieder neu erstellt.</p>
               
             </div>
           </div>
@@ -172,7 +208,7 @@ Setzen Sie dazu den Benutzer für alle betreffenden Verzeichnisse und Dateien au
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="updates.html" class="btn btn-neutral float-right" title="Aktualisierungen"> <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="config.html" class="btn btn-neutral float-right" title="Erweiterte Konfiguration"> <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="dev-srv.html" class="btn btn-neutral" title="Redaktionsserver"><span class="icon icon-circle-arrow-left"></span> </a>
@@ -185,7 +221,7 @@ Setzen Sie dazu den Benutzer für alle betreffenden Verzeichnisse und Dateien au
   <div role="contentinfo">
     <!-- Copyright etc -->
     
-      <p class="copyright">Copyright &copy; 2017 Viktor Grandgeorg, Grandgeorg Websolutions</p>
+      <p class="copyright">Copyright &copy; 2020 Viktor Grandgeorg, Grandgeorg Websolutions</p>
     
   </div>
 
@@ -202,10 +238,10 @@ Setzen Sie dazu den Benutzer für alle betreffenden Verzeichnisse und Dateien au
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="dev-srv.html" style="color: #fcfcfc;">&laquo; </a></span>
+        <span class="container-prev"><a href="dev-srv.html" class="prevnext prev">&#10094;</a></span>
       
       
-        <span style="margin-left: 15px"><a href="updates.html" style="color: #fcfcfc"> &raquo;</a></span>
+        <span class="container-next"><a href="config.html" class="prevnext next">&#10095;</a></span>
       
     </span>
 </div>

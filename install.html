@@ -8,7 +8,7 @@
   
   <meta name="author" content="Viktor Grandgeorg <viktor@grandgeorg.de>">
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Anforderungen - OMIM Dokumentation</title>
+  <title>Anforderungen - DDB Studio Installations- & Instandhaltungs-Handbuch</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="css/theme.css" type="text/css" />
@@ -34,7 +34,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="index.html" class="icon icon-home"> OMIM Dokumentation</a>
+        <a href="." class="icon icon-home"> DDB Studio Installations- & Instandhaltungs-Handbuch</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
     <input type="text" name="q" placeholder="" title="Type search term here" />
@@ -67,8 +67,17 @@
 
     <li class="toctree-l2"><a href="#php">PHP</a></li>
     
+        <ul>
+        
+            <li><a class="toctree-l3" href="#phpini">php.ini</a></li>
+        
+        </ul>
+    
 
     <li class="toctree-l2"><a href="#imagemagick">ImageMagick</a></li>
+    
+
+    <li class="toctree-l2"><a href="#mozjpeg-und-jpeg-archive">mozjpeg und jpeg-archive</a></li>
     
 
     </ul>
@@ -86,12 +95,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="updates.html">Aktualisierungen</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="config.html">Konfiguration</a>
+    <a class="" href="config.html">Erweiterte Konfiguration</a>
 	    </li>
           
         </ul>
@@ -104,7 +108,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">OMIM Dokumentation</a>
+        <a href=".">DDB Studio Installations- & Instandhaltungs-Handbuch</a>
       </nav>
 
       
@@ -112,7 +116,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html"></a> &raquo;</li>
+    <li><a href="."></a> &raquo;</li>
     
       
     
@@ -127,24 +131,25 @@
             <div class="section">
               
                 <h2 id="allgemeine-anforderungen">Allgemeine Anforderungen<a class="headerlink" href="#allgemeine-anforderungen" title="Permanent link">&para;</a></h2>
-<p>Die Installation erfolgt auf <a href="http://en.wikipedia.org/wiki/Unix-like">*nix-Servern</a> mit eingerichteter <a href="http://de.wikipedia.org/wiki/LAMP_%28Softwarepaket%29">LAMP</a> Konfiguration.</p>
-<p>Voraussetzung ist, dass der Redaktionsserver mit den Ausspielungsservern per SSH mit schlüsselbasierter Authentifizierung kommunizieren kann.</p>
+<p>Die Installation erfolgt auf <a href="https://en.wikipedia.org/wiki/Unix-like">*nix-Servern</a> mit eingerichteter <a href="https://de.wikipedia.org/wiki/LAMP_%28Softwarepaket%29">LAMP</a> Konfiguration.</p>
+<p>Voraussetzung ist, dass der <a href="index.html#redaktionsserver">Redaktionsserver</a> mit den <a href="index.html#ausspielungsserver">Ausspielungsservern</a> per SSH mit schlüsselbasierter Authentifizierung kommunizieren kann.</p>
 <p>Die Server sollten jeweils über nicht weniger als 1GB RAM verfügen.</p>
-<p>Für diese Dokumentation wird für die Beispiele und Erläuterungen der Redaktionsserver mit der Beispieldomäne <code>redaktion.tld</code> und der Ausspielungsserver mit <code>live.tld</code> sowie <code>live-two.tld</code> gleichgesetzt.</p>
 <h2 id="apache-server">Apache Server<a class="headerlink" href="#apache-server" title="Permanent link">&para;</a></h2>
-<p>Auf allen Apache http-Servern (Entwicklung und Produktion) müssen mindestens folgende Module installiert und aktiviert sein:</p>
+<p>Auf allen Apache http-Servern müssen mindestens folgende Module installiert und aktiviert sein:</p>
 <ul>
 <li><code>deflate</code></li>
 <li><code>mime</code></li>
 <li><code>rewrite</code></li>
 </ul>
 <p>Das Modul <code>rewrite</code> muss für .htaccess-Dateien des jeweiligen Hosts erlaubt sein.</p>
-<p>Darüber hinaus muss in der Apachekonfiguration für den jeweiligen Host die Option <code>FollowSymLinks</code> muss gesetzt sein.</p>
+<p>Darüber hinaus muss in der Apachekonfiguration für den jeweiligen Host die Option <code>FollowSymLinks</code> gesetzt sein.</p>
 <h2 id="mysql-server">MySQL Server<a class="headerlink" href="#mysql-server" title="Permanent link">&para;</a></h2>
-<p>Version 5 oder höher und mit Verbindung über UNIX-SOCKET</p>
+<p>Version 5 oder höher und mit Verbindung über UNIX-SOCKET<br />
+<small>(Getestet Version: MariaDB 10.1.44, sowie MySQL 5.7.26)</small></p>
 <h2 id="php">PHP<a class="headerlink" href="#php" title="Permanent link">&para;</a></h2>
-<p>Version 5.4 oder höher.
-Erforderliche Module/Extensions:</p>
+<p>Version 5.4 oder höher.<br />
+<small>(Getestete Version: 7.2 (mit FastCGI-Prozessmanager php7.2-fpm))</small></p>
+<p>Erforderliche Module/Extensions:</p>
 <ul>
 <li>MCrypt</li>
 <li>PHP JSON</li>
@@ -153,17 +158,22 @@ Erforderliche Module/Extensions:</p>
 <li>php-imagick</li>
 <li>cURL</li>
 </ul>
-<p>Bitte die Einstellungen für große Dateiuploads innerhalb Omeka (z.B. Audiodateien) insbes. auf dem Redaktionsserver in der php.ini anpassen.
-Empfohlene Werte:</p>
+<h3 id="phpini">php.ini<a class="headerlink" href="#phpini" title="Permanent link">&para;</a></h3>
+<p>Empfohlene Mindestwerte insbes. auf Redaktionsservern:</p>
 <ul>
-<li>max_execution_time = 7200</li>
-<li>max_input_time = 7200</li>
-<li>memory_limit = 256M</li>
-<li>post_max_size = 200M</li>
-<li>upload_max_filesize = 200M</li>
+<li><code>max_execution_time = 7200</code></li>
+<li><code>max_input_time = 7200</code></li>
+<li><code>memory_limit = 256M</code></li>
+<li><code>post_max_size = 200M</code></li>
+<li><code>upload_max_filesize = 200M</code></li>
 </ul>
 <h2 id="imagemagick">ImageMagick<a class="headerlink" href="#imagemagick" title="Permanent link">&para;</a></h2>
 <p>Muss auf allen Servern installiert sein.</p>
+<h2 id="mozjpeg-und-jpeg-archive">mozjpeg und jpeg-archive<a class="headerlink" href="#mozjpeg-und-jpeg-archive" title="Permanent link">&para;</a></h2>
+<p>mozjpeg muss auf <a href="index.html#redaktionsserver">Redaktionsservern</a> installiert sein:<br />
+<a href="https://github.com/mozilla/mozjpeg">https://github.com/mozilla/mozjpeg</a></p>
+<p>jpeg-archive muss auf <a href="index.html#redaktionsserver">Redaktionsservern</a> installiert sein:<br />
+<a href="https://github.com/danielgtaylor/jpeg-archive/">https://github.com/danielgtaylor/jpeg-archive/</a></p>
               
             </div>
           </div>
@@ -184,7 +194,7 @@ Empfohlene Werte:</p>
   <div role="contentinfo">
     <!-- Copyright etc -->
     
-      <p class="copyright">Copyright &copy; 2017 Viktor Grandgeorg, Grandgeorg Websolutions</p>
+      <p class="copyright">Copyright &copy; 2020 Viktor Grandgeorg, Grandgeorg Websolutions</p>
     
   </div>
 
@@ -201,10 +211,10 @@ Empfohlene Werte:</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="index.html" style="color: #fcfcfc;">&laquo; </a></span>
+        <span class="container-prev"><a href="index.html" class="prevnext prev">&#10094;</a></span>
       
       
-        <span style="margin-left: 15px"><a href="dev-srv.html" style="color: #fcfcfc"> &raquo;</a></span>
+        <span class="container-next"><a href="dev-srv.html" class="prevnext next">&#10095;</a></span>
       
     </span>
 </div>

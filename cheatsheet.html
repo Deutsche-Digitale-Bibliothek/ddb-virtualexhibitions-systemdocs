@@ -8,7 +8,7 @@
   
   <meta name="author" content="Viktor Grandgeorg <viktor@grandgeorg.de>">
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Erläuterung der verwendeten Zeichen und Symbole - OMIM Dokumentation</title>
+  <title>Erläuterung der verwendeten Zeichen und Symbole - DDB Studio Installations- & Instandhaltungs-Handbuch</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="css/theme.css" type="text/css" />
@@ -34,7 +34,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="index.html" class="icon icon-home"> OMIM Dokumentation</a>
+        <a href="." class="icon icon-home"> DDB Studio Installations- & Instandhaltungs-Handbuch</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
     <input type="text" name="q" placeholder="" title="Type search term here" />
@@ -68,12 +68,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="updates.html">Aktualisierungen</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="config.html">Konfiguration</a>
+    <a class="" href="config.html">Erweiterte Konfiguration</a>
 	    </li>
           
         </ul>
@@ -86,7 +81,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">OMIM Dokumentation</a>
+        <a href=".">DDB Studio Installations- & Instandhaltungs-Handbuch</a>
       </nav>
 
       
@@ -94,7 +89,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html"></a> &raquo;</li>
+    <li><a href="."></a> &raquo;</li>
     
       
     
@@ -178,58 +173,41 @@ Dies ist <a href="https://google.de" title="google Deutschland">ein Beispiel</a>
 </table>
 <h2 id="code-blocke">Code Blöcke<a class="headerlink" href="#code-blocke" title="Permanent link">&para;</a></h2>
 <h3 id="php">PHP<a class="headerlink" href="#php" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;MY_CONST&#39;</span><span class="p">,</span> <span class="s2">&quot;My Constant&quot;</span><span class="p">);</span>
-<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bar</span><span class="p">();</span>
-<span class="k">if</span><span class="p">(</span><span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">baz</span><span class="p">(</span><span class="nx">MY_CONST</span><span class="p">)</span> <span class="o">!==</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// do something ...</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</pre></div>
+<pre class="highlight"><code class="language-php">&lt;?php
+define('MY_CONST', "My Constant");
+$foo = new Bar();
+if($foo-&gt;baz(MY_CONST) !== true) {
+    // do something ...
+}
+?&gt;</code></pre>
 
 <h3 id="js">JS<a class="headerlink" href="#js" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">;</span>
-    <span class="kd">let</span> <span class="nx">baz</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Hello &#39;</span> <span class="o">+</span> <span class="nx">foo</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nx">baz</span><span class="p">();</span>
-<span class="p">})();</span>
-</pre></div>
+<pre class="highlight"><code class="language-js">(function () {
+    const foo = 'bar';
+    let baz = function () {
+        alert('Hello ' + foo);
+    }
+    baz();
+})();</code></pre>
 
 <h3 id="zeilennummerierung">Zeilennummerierung<a class="headerlink" href="#zeilennummerierung" title="Permanent link">&para;</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">;</span>
-    <span class="kd">let</span> <span class="nx">baz</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Hello &#39;</span> <span class="o">+</span> <span class="nx">foo</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nx">baz</span><span class="p">();</span>
-<span class="p">})();</span>
-</pre></div>
-</td></tr></table>
+<pre class="highlight"><code class="language-js linenums">(function () {
+    const foo = 'bar';
+    let baz = function () {
+        alert('Hello ' + foo);
+    }
+    baz();
+})();</code></pre>
 
 <h3 id="zeilennummerierung-und-hervorhebung-44-46">Zeilennummerierung und Hervorhebung (44, 46)<a class="headerlink" href="#zeilennummerierung-und-hervorhebung-44-46" title="Permanent link">&para;</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>42
-43
-44
-45
-46
-47</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Eine Datei ab Zeile 42 ...</span>
-<span class="kr">import</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">bar</span>
-<span class="hll"><span class="kr">import</span> <span class="nx">boo</span><span class="p">.</span><span class="nx">baz</span>
-</span><span class="kr">import</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">bar</span><span class="p">.</span><span class="nx">baz</span>
-<span class="hll"><span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="p">}</span>
-</pre></div>
-</td></tr></table>
+<pre class="highlight"><code class="language-js linenums">// Eine Datei ab Zeile 42 ...
+import foo.bar
+import boo.baz
+import foo.bar.baz
+function init() {
+}</code></pre>
 
-<p>Code innerhalb von Fließtext ist auch möglich, z.B. <code class="highlight"><span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span></code> etc.</p>
+<p>Code innerhalb von Fließtext ist auch möglich, z.B. <code class="highlight language-js">var test = 0;</code> etc.</p>
 <h2 id="html-attribute">HTML Attribute<a class="headerlink" href="#html-attribute" title="Permanent link">&para;</a></h2>
 <p class="foo bar" title="Some title!">Dieser Absatz hat <code>foo</code> und <code>bar</code> als <code>class</code>.</p>
 <h2 id="hinweise">Hinweise<a class="headerlink" href="#hinweise" title="Permanent link">&para;</a></h2>
@@ -361,7 +339,7 @@ massa, nec semper lorem quam in massa.&#160;<a class="footnote-backref" href="#f
   <div role="contentinfo">
     <!-- Copyright etc -->
     
-      <p class="copyright">Copyright &copy; 2017 Viktor Grandgeorg, Grandgeorg Websolutions</p>
+      <p class="copyright">Copyright &copy; 2020 Viktor Grandgeorg, Grandgeorg Websolutions</p>
     
   </div>
 

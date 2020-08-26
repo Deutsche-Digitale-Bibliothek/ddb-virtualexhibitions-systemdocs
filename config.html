@@ -8,7 +8,7 @@
   
   <meta name="author" content="Viktor Grandgeorg <viktor@grandgeorg.de>">
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Konfiguration - OMIM Dokumentation</title>
+  <title>Erweiterte Konfiguration - DDB Studio Installations- & Instandhaltungs-Handbuch</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Konfiguration";
+    var mkdocs_page_name = "Erweiterte Konfiguration";
     var mkdocs_page_input_path = "config.md";
     var mkdocs_page_url = null;
   </script>
@@ -34,7 +34,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="index.html" class="icon icon-home"> OMIM Dokumentation</a>
+        <a href="." class="icon icon-home"> DDB Studio Installations- & Instandhaltungs-Handbuch</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
     <input type="text" name="q" placeholder="" title="Type search term here" />
@@ -66,21 +66,18 @@
     <a class="" href="prod-srv.html">Ausspielungsserver</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="updates.html">Aktualisierungen</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="config.html">Konfiguration</a>
+    <a class="current" href="config.html">Erweiterte Konfiguration</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#konfiguration">Konfiguration</a></li>
+    <li class="toctree-l2"><a href="#erweiterte-konfiguration">Erweiterte Konfiguration</a></li>
     
         <ul>
         
             <li><a class="toctree-l3" href="#ddb-video-quellen">DDB Video-Quellen</a></li>
+        
+            <li><a class="toctree-l3" href="#ddb-proxyserver">DDB Proxyserver</a></li>
         
             <li><a class="toctree-l3" href="#lizenz-shortcodes">Lizenz-Shortcodes</a></li>
         
@@ -102,7 +99,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">OMIM Dokumentation</a>
+        <a href=".">DDB Studio Installations- & Instandhaltungs-Handbuch</a>
       </nav>
 
       
@@ -110,11 +107,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html"></a> &raquo;</li>
+    <li><a href="."></a> &raquo;</li>
     
       
     
-    <li>Konfiguration</li>
+    <li>Erweiterte Konfiguration</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -124,34 +121,42 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="konfiguration">Konfiguration<a class="headerlink" href="#konfiguration" title="Permanent link">&para;</a></h1>
+                <h1 id="erweiterte-konfiguration">Erweiterte Konfiguration<a class="headerlink" href="#erweiterte-konfiguration" title="Permanent link">&para;</a></h1>
 <p>Es können in den Skriptdateien verschiedene Konfigurationen vorgenommen werden.</p>
 <h2 id="ddb-video-quellen">DDB Video-Quellen<a class="headerlink" href="#ddb-video-quellen" title="Permanent link">&para;</a></h2>
-<p>In der Datei </p>
+<p>Für Ausstellungen vom Typ "Leporello" in der Datei </p>
 <p><code>ddb-virtualexhibitions/omeka/plugins/ExhibitBuilder/helpers/ExhibitDdbHelper.php</code></p>
+<p>und für Ausstellungen vom Typ "Litfaß" in der Datei </p>
+<p><code>ddb-virtualexhibitions/omeka/plugins_lf/ExhibitBuilder/helpers/ExhibitDdbHelper.php</code></p>
 <p>können die Schlüssel der Eigenschaft <code>$config</code> geändert werden, um die Videoquellen der DDB festzulegen. Folgende Schlüssel können angepasst werden:</p>
 <ul>
-<li><code>ddbXmlSrv</code> Server mit XML Daten</li>
+<li><code>ddbXmlSrv</code> Server mit XML-Daten</li>
 <li><code>ddbIIFResHelperSrvPrefix</code> Server mit JSON Daten für Videobildgrößen</li>
 <li><code>ddbIIIFSrvPrefix</code> IIIF Server mit Bilddateien</li>
 <li><code>ddbVideoSrvPrefix</code> Server mit Videodateien</li>
 </ul>
-<h2 id="lizenz-shortcodes">Lizenz-Shortcodes<a class="headerlink" href="#lizenz-shortcodes" title="Permanent link">&para;</a></h2>
-<p>In der Datei </p>
+<h2 id="ddb-proxyserver">DDB Proxyserver<a class="headerlink" href="#ddb-proxyserver" title="Permanent link">&para;</a></h2>
+<p>Für Ausstellungen vom Typ "Leporello" in der Datei </p>
 <p><code>ddb-virtualexhibitions/omeka/plugins/ExhibitBuilder/helpers/ExhibitDdbHelper.php</code></p>
+<p>und für Ausstellungen vom Typ "Litfaß" in der Datei </p>
+<p><code>ddb-virtualexhibitions/omeka/plugins_lf/ExhibitBuilder/helpers/ExhibitDdbHelper.php</code></p>
+<p>kann der Eintrag für den Proxyserver der DDB bei Vimeovideos geändert werden.
+Ämdern Sie dazu den Wert für <code>CURLOPT_PROXY</code> in der Methode <code>setVideoVimeoInfo</code>.</p>
+<h2 id="lizenz-shortcodes">Lizenz-Shortcodes<a class="headerlink" href="#lizenz-shortcodes" title="Permanent link">&para;</a></h2>
+<p>Für Ausstellungen vom Typ "Leporello" in der Datei </p>
+<p><code>ddb-virtualexhibitions/omeka/plugins/ExhibitBuilder/helpers/ExhibitDdbHelper.php</code></p>
+<p>und für Ausstellungen vom Typ "Litfaß" in der Datei </p>
+<p><code>ddb-virtualexhibitions/omeka/plugins_lf/ExhibitBuilder/helpers/ExhibitDdbHelper.php</code></p>
 <p>in der Methode <code>getLicenseFromShortcode</code> können in der Variable <code>$licenses</code> die Lizenz-Shortcodes angepasst werden.</p>
 <p>Der Aufbau der jeweiligen Einträge ist:
-<div class="highlight"><pre><span></span>&#39;SHORTCODE&#39; =&gt; array(
-    &#39;name&#39; =&gt; &#39;Name der Lizenz&#39;,
-    &#39;link&#39; =&gt; &#39;URL zu der Lizenzdefinition&#39;,
-    &#39;icon&#39; =&gt; &#39;HTML Markup für die Ausgabe von Icons&#39;
-)
-</pre></div></p>
+<pre class="highlight"><code>'SHORTCODE' =&gt; array(
+    'name' =&gt; 'Name der Lizenz',
+    'link' =&gt; 'URL zu der Lizenzdefinition',
+    'icon' =&gt; 'HTML Markup für die Ausgabe von Icons'
+)</code></pre></p>
 <p>Beim Schlüssel icon können mehrere Icons angegeben werden.<br />
 HTML Format für Icons:</p>
-<div class="highlight"><pre><span></span>&lt;i class=&quot;license CSS-KLASSE-DES-JEWEILGEN-ICONS&quot;&gt; &lt;/i&gt;
-</pre></div>
-
+<p><code>&lt;i class="license CSS-KLASSE-DES-JEWEILGEN-ICONS"&gt; &lt;/i&gt;</code></p>
 <p>Die Grafikdatei für die Icons befindet sich unter:</p>
 <p><code>&lt;root-der-installation&gt;/lib/omeka/themes/ddb/images/licenses.png</code></p>
 <p>CSS-Definitionen sind in der Datei:</p>
@@ -183,7 +188,7 @@ HTML Format für Icons:</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="updates.html" class="btn btn-neutral" title="Aktualisierungen"><span class="icon icon-circle-arrow-left"></span> </a>
+        <a href="prod-srv.html" class="btn btn-neutral" title="Ausspielungsserver"><span class="icon icon-circle-arrow-left"></span> </a>
       
     </div>
   
@@ -193,7 +198,7 @@ HTML Format für Icons:</p>
   <div role="contentinfo">
     <!-- Copyright etc -->
     
-      <p class="copyright">Copyright &copy; 2017 Viktor Grandgeorg, Grandgeorg Websolutions</p>
+      <p class="copyright">Copyright &copy; 2020 Viktor Grandgeorg, Grandgeorg Websolutions</p>
     
   </div>
 
@@ -210,7 +215,7 @@ HTML Format für Icons:</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="updates.html" style="color: #fcfcfc;">&laquo; </a></span>
+        <span class="container-prev"><a href="prod-srv.html" class="prevnext prev">&#10094;</a></span>
       
       
     </span>
