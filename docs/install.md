@@ -2,28 +2,30 @@
 
 Die Installation erfolgt auf [*nix-Servern] mit eingerichteter [LAMP] Konfiguration.
 
-Voraussetzung ist, dass der Redaktionsserver mit den Ausspielungsservern per SSH mit schlüsselbasierter Authentifizierung kommunizieren kann.
+Voraussetzung ist, dass der [Redaktionsserver] mit den [Ausspielungsservern] per SSH mit schlüsselbasierter Authentifizierung kommunizieren kann.
 
 Die Server sollten jeweils über nicht weniger als 1GB RAM verfügen.
 
-Für diese Dokumentation wird für die Beispiele und Erläuterungen der Redaktionsserver mit der Beispieldomäne ``redaktion.tld`` und der Ausspielungsserver mit ``live.tld`` sowie ``live-two.tld`` gleichgesetzt.
 
 ## Apache Server
-Auf allen Apache http-Servern (Entwicklung und Produktion) müssen mindestens folgende Module installiert und aktiviert sein:
+Auf allen Apache http-Servern müssen mindestens folgende Module installiert und aktiviert sein:
 
-- ``deflate``
-- ``mime``
-- ``rewrite``
+- `deflate`
+- `mime`
+- `rewrite`
 
-Das Modul ``rewrite`` muss für .htaccess-Dateien des jeweiligen Hosts erlaubt sein.
+Das Modul `rewrite` muss für .htaccess-Dateien des jeweiligen Hosts erlaubt sein.
 
-Darüber hinaus muss in der Apachekonfiguration für den jeweiligen Host die Option `FollowSymLinks` muss gesetzt sein.
+Darüber hinaus muss in der Apachekonfiguration für den jeweiligen Host die Option `FollowSymLinks` gesetzt sein.
 
 ## MySQL Server
-Version 5 oder höher und mit Verbindung über UNIX-SOCKET
+Version 5 oder höher und mit Verbindung über UNIX-SOCKET  
+<small>(Getestet Version: MariaDB 10.1.44, sowie MySQL 5.7.26)</small>
 
 ## PHP
-Version 5.4 oder höher.
+Version 5.4 oder höher.  
+<small>(Getestete Version: 7.2 (mit FastCGI-Prozessmanager php7.2-fpm))</small>
+
 Erforderliche Module/Extensions:
 
 - MCrypt
@@ -33,18 +35,30 @@ Erforderliche Module/Extensions:
 - php-imagick
 - cURL
 
-Bitte die Einstellungen für große Dateiuploads innerhalb Omeka (z.B. Audiodateien) insbes. auf dem Redaktionsserver in der php.ini anpassen.
-Empfohlene Werte:
+### php.ini
 
-- max\_execution\_time = 7200
-- max\_input\_time = 7200
-- memory\_limit = 256M
-- post\_max\_size = 200M
-- upload\_max\_filesize = 200M
+Empfohlene Mindestwerte insbes. auf Redaktionsservern:
+
+- `max_execution_time = 7200`
+- `max_input_time = 7200`
+- `memory_limit = 256M`
+- `post_max_size = 200M`
+- `upload_max_filesize = 200M`
 
 ## ImageMagick
+
 Muss auf allen Servern installiert sein.
 
+## mozjpeg und jpeg-archive
 
-[*nix-Servern]:http://en.wikipedia.org/wiki/Unix-like
-[LAMP]:http://de.wikipedia.org/wiki/LAMP_%28Softwarepaket%29
+mozjpeg muss auf [Redaktionsservern][Redaktionsserver] installiert sein:  
+https://github.com/mozilla/mozjpeg
+
+jpeg-archive muss auf [Redaktionsservern][Redaktionsserver] installiert sein:  
+https://github.com/danielgtaylor/jpeg-archive/
+
+
+[*nix-Servern]:https://en.wikipedia.org/wiki/Unix-like
+[LAMP]:https://de.wikipedia.org/wiki/LAMP_%28Softwarepaket%29
+[Redaktionsserver]:index.html#redaktionsserver
+[Ausspielungsservern]:index.html#ausspielungsserver

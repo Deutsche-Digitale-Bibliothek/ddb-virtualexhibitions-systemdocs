@@ -1,10 +1,10 @@
 # Project information
-site_name: 'OMIM Dokumentation'
+site_name: 'DDB Studio Installations- & Instandhaltungs-Handbuch'
 site_description: 'Virtuelle Ausstellungen der Deutschen Digitalen Bibliothek'
 site_author: 'Viktor Grandgeorg <viktor@grandgeorg.de>'
 
 # Copyright
-copyright: 'Copyright &copy; 2017 Viktor Grandgeorg, Grandgeorg Websolutions'
+copyright: 'Copyright &copy; 2020 Viktor Grandgeorg, Grandgeorg Websolutions'
 
 # Structure
 nav:
@@ -12,8 +12,8 @@ nav:
     - Anforderungen: install.md
     - Redaktionsserver: dev-srv.md
     - Ausspielungsserver: prod-srv.md
-    - Aktualisierungen: updates.md
-    - Konfiguration: config.md
+    # - Aktualisierungen: updates.md
+    - Erweiterte Konfiguration: config.md
     # - Cheatsheet: cheatsheet.md
 
 # Theme
@@ -37,23 +37,26 @@ use_directory_urls: false
 
 # Extensions
 markdown_extensions:
-  - admonition
-  # - codehilite:
-  #     guess_lang: false
-  #     linenums: false
-  - footnotes
-  - meta
-  - toc:
-      permalink: True
-  - sane_lists
-  - attr_list
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.inlinehilite
-  - pymdownx.magiclink
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.superfences
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - figureAltCaption
+    - extra
+    - admonition
+    # - codehilite:
+    #     guess_lang: false
+    #     linenums: false
+    - footnotes
+    - meta
+    - toc:
+        permalink: True
+    - sane_lists
+    - attr_list
+    - pymdownx.betterem:
+        smart_enable: all
+    # - pymdownx.highlight:
+    #     linenums: true
+    - pymdownx.inlinehilite
+    - pymdownx.magiclink
+    - pymdownx.mark
+    - pymdownx.smartsymbols
+    - pymdownx.superfences
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - figureAltCaption

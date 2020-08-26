@@ -51,3 +51,101 @@ figure > img {
 pre, code, .rst-content tt, kbd, samp {
     font-family: Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace;
 }
+
+h4 {
+    font-size: 110%;
+}
+
+.copyright {
+    font-size: 0.8rem;
+}
+
+.task-list label,
+.task-list .task-list-control {
+    display: inline;
+}
+
+.container-prev {
+    margin-right: 8px;
+    display: inline-block;
+}
+
+.container-next {
+    margin-left: 8px;
+    display: inline-block;
+}
+
+.prevnext {
+    display: inline-block;
+    width:30px;
+    padding: 3px 0 4px 0;
+    font-size: 26px;
+    line-height: 1;
+    text-align: center;
+    background-color: #636060;
+    border-radius: 50%;
+}
+
+.prevnext.prev {
+    padding-right: 3px;
+}
+
+.prevnext.next {
+    padding-left: 3px;
+}
+
+.rst-versions {
+    bottom: 8px;
+}
+
+.rst-versions .rst-current-version {
+    text-align: center;
+}
+.rst-versions .prevnext {
+    color: #fcfcfc;
+}
+
+
+/* nav */
+
+.wy-menu-vertical li.on a, .wy-menu-vertical li.current>a {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.wy-menu-vertical li.current a {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.wy-menu-vertical li.current .subnav ul a {
+    padding-left: 3rem;
+}
+
+/* dl */
+
+.rst-content dl:not(.docutils) dt {
+    margin: 3px 0;
+    font-size: 100%;
+    background: #ffffff;
+    color: #404040;
+    border: 0 none transparent;
+    /* border-bottom: solid 1px #666666; */
+    padding: 3px 0;
+    font-weight: bold;
+}
+
+/* notes */
+
+.rst-content .info {
+    background: #e7f2fa;
+    padding: 12px;
+    line-height: 24px;
+    margin-bottom: 24px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* nav */
+.wy-nav-top {
+    line-height: 30px;
+}

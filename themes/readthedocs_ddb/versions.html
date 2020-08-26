@@ -8,10 +8,10 @@
           <a href="{{ config.repo_url }}" class="icon icon-gitlab" style="float: left; color: #fcfcfc"> GitLab</a>
       {% endif %}
       {% if page.previous_page %}
-        <span><a href="{{ page.previous_page.url|url }}" style="color: #fcfcfc;">&laquo; {{ config.extra.wording_previous}}</a></span>
+        <span class="container-prev"><a href="{{ page.previous_page.url|url }}" class="prevnext prev">&#10094;{{ config.extra.wording_previous}}</a></span>
       {% endif %}
       {% if page.next_page %}
-        <span style="margin-left: 15px"><a href="{{ page.next_page.url|url }}" style="color: #fcfcfc">{{ config.extra.wording_next}} &raquo;</a></span>
+        <span class="container-next"><a href="{{ page.next_page.url|url }}" class="prevnext next">{{ config.extra.wording_next}}&#10095;</a></span>
       {% endif %}
     </span>
 </div>

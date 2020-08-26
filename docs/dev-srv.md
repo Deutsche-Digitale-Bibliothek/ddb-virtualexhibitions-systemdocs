@@ -1,60 +1,43 @@
-# Redaktionsserver
+# Installation
+## MySQL
 
-## MySQL Datenbank
-
-### Bei Updates
-Die bereits existierende Datenabnk kann weiter verwendet werden.
-
-### Erst-Installation
-Legen Sie bitte eine leere Datenbank mit der Kollation ``utf8_unicode_ci`` und einen MySQL Benutzer an. Gewähren Sie dem MySQL Benutzer alle Rechte auf die Datenbank.
+Legen Sie bitte eine leere Datenbank mit der Kollation `utf8_unicode_ci` und einen MySQL Benutzer an. Gewähren Sie dem MySQL Benutzer alle Rechte auf die Datenbank.
 Sie erhalten initial eine MySQL-Datenbank-Dump-Datei, die Sie **einmalig** auf dem Redaktionsserver in die von Ihnen erstellte Datenbank einlesen müssen.
 
 ## Dateien
+### OMIM
 
-### Vorbereitung bei Upgrade auf Git-Verion
-Falls Sie ein Upgrade auf die Git-Version durchführen, sichern Sie zunächst alle Dateien aus dem Verzeichnis ``app/config`` und die SSH-Schlüssel aus dem Verzeichnis ``data/rsa/``, sowie die bereits vorhandenen Omneka Instanzen aus dem Ordner ``public``!
-Das sind alle Verzeichnisse unter ``public`` außer diesen:
+Klonen Sie zunächst das **[Git-Repositorium von OMIM][repo_omim]** in ein **leeres** Verzeichnis auf dem Server. Checken Sie den jeweils abgesprochenen Branch für die Installation aus.
 
-- js
-- css
-- fonts
-- assets
-- packages
+Sorgen Sie dafür, dass in der Apache Serverkonfiguration der `DOCUMENT_ROOT` der Domäne auf das Unterverzeichnis `public` zeigt.
 
-### Installation
-Klonen Sie zunächst das [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager) für OMIM in eine **leeres** Verzeichnis auf Server.
+Sorgen Sie ebenfalls dafür, dass der Benutzer bzw. die Gruppe, unter der Apache & PHP auf dem Server ausgeführt werden, **Lese- und Schreibzugriff** auf **alle** erstellten Verzeichnisse und Dateien hat.
 
-!!! danger "Installation von Testservern"
-    Bei der installation von Testservern, verwenden Sie bitte immer von beiden Repositorien die __develop-Branch__!
+### Omeka
 
-!!! note "Verzeichnis- und Dateirechte"
-    Es muss gewährleistet sein, dass der Benutzer bzw. die Gruppe, unter der Apache / PHP auf dem Server ausgeführt wird, Lese- und Schreibzugriff auf alle erstellten Verzeichnisse und Dateien hat. Dazu sollten die Berechtigungen gesetzt sein, indem die **Gruppe** gleich der primären Gruppe von Apache / PHP ist (i.d.R. ``www-data``) und die Rechte für Verzeichnisse auf ``775`` und für Dateien auf ``664`` gesetzt sind.
+In dem oben geklonten [Git-Repositorium von OMIM][repo_omim] befindet sich ein Unterverzeichnis **`lib`**. Dort hinein muss der Inhalt bzw. der Unterordner `omeka` des **[Git-Repositoriums von Omeka][repo_omeka]** gelegt werden. Dazu gibt es zwei Möglichkeiten:
 
-Klonen jetzt Sie das [Repository](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions) direkt in den Unterordner ``lib``.
-Verwenden sie dazu den Befehl ```git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions.git . --branch master```
-um das Repositorium direkt in den Ordner zu klonen (es muss am Ende ein Pfad exisiteren mit ``lib/omeka``).
-Falls Sie das Argument ```--branch master``` am Ende weggelassen haben und Sie noch nicht im master Branch sind, wechseln Sie jetzt in den Branch master mit ```git checkout master```.
+Zum einen, können Sie das [Git-Repositorium von Omeka][repo_omeka] in ein beliebiges Verzeichnis auf dem Server klonen und dann eine symbolische Verknüpfung bei OMIM innerhalb von `lib` auf den Unterordner `omeka` erstellen (Die anderen Ordner und Dateien wie LICENSE, README.md etc. werden dort nicht benötigt). 
 
-!!! warning "Der aktuelle Branch ist master"
-    Beachten Sie, dass Sie bis auf Weiteres immer nur mit der master-Branch arbeiten. Nur dort sind die Dateien für die stabilen Releases enthalten. Nur bei der Installation auf Testservern verwenden Sie bitte die develop-Branch.
+Zum anderen können Sie auch direkt das [Git-Repositorium von Omeka][repo_omeka] innerhalb des Unterverzeichnis `lib` klonen.
 
-Bei einer **Upgrade-Installation** Verschieben oder kopieren Sie jetzt, die im vorigen Schritt gesicherten, Dateien und Ordner an Ihre jeweiligen Orte (``app/config``, ``data/rsa/``, ``public``)!
+Gleich für welche Methode Sie sich entscheiden, muss am Ende in OMIM ein Pfad existieren mit `lib/omeka`.
 
-Achten Sie darauf, dass in der Apache Serverkonfiguration das ``DOCUMENT_ROOT`` von der Domäne auf das ``public`` Verzeichnis zeigt.
+Vergessen Sie auch beim **[Git-Repositorium von Omeka][repo_omeka]** nicht, den jeweils abgesprochenen Branch für die Installation auszuchecken.
 
-### Konfiguration
+## Konfiguration
+### OMIM
 
-!!! note "Upgrade Installation"
-    Wenn Sie eine Upgrade Installation durchführen, brauchen Sie die Konfigurationsdateien nicht weiter anzupassen, sondern nur aus der Sicherung zu übernehmen.
+Die Konfiguration erfolgt über die Dateien im Unterverzeichnis `app/config` des [Git-Repositoriums von OMIM][repo_omim].
 
-Benennen Sie zunächst in dem Ornder ``app/config`` folgende Dateien um:
+Benennen oder kopieren Sie zunächst in dem Ornder `app/config` folgende Dateien um:
 
-- ``app.sample.php`` zu ``app.php``
-- ``database.sample.php`` zu ``database.php``
-- ``omim.sample.php`` zu ``omim.php``
+- `app.sample.php` zu `app.php`
+- `database.sample.php` zu `database.php`
+- `omim.sample.php` zu `omim.php`
 
-Hier der für die Konfiguration relevanten Dateien:  
-<small>(Alle anderen Konfigurationsdateien könnnen mit den Standardeinstellungen beibehalten werden)</small>
+Für die Konfiguration sind insgesamt folgende Dateien anzupassen:  
+<small>(Alle anderen Konfigurationsdateien können mit den Standardeinstellungen beibehalten werden)</small>
 
 * * *
 
@@ -62,32 +45,28 @@ Hier der für die Konfiguration relevanten Dateien:
     - config
         - app.php
         - database.php
-        - mail.php
+        - (mail.php)
         - omim.php
-- data
-    -  rsa
-        -  ddb_rsa
-        -  ddb_rsa.pub
-- public
 
 * * *
 
 #### app/config/app.php
 
-Allgemeine Konfiguration des OMIM
+Passen Sie hier die allgemeine Konfiguration der OMIM-APP an.
 
-- 'debug'
-    - Standardwert: ``false``
-    - Falls ``true`` werden bei Fehlern des OMIM detaillierte Meldungen angezeigt
+Relevanter Konfigurationsabschnitt:
+
 - 'url'
-    -  Standardwert: ``'http://redaktion.tld'``
+    -  Standardwert: `'http://redaktion.tld'`
     -  Hier bitte die URL des Redaktionsservers angeben
 - 'key'
-    -  Standardwert: ``'R5rt8vDRd3z75QyPqwEk1q88y5sCIH08'``
+    -  Standardwert: `'R5rt8vDRd3z75QyPqwEk1q88y5sCIH08'`
     - Hier bitte einen 32 Zeichen lange Zeichenkette eingeben
 
 #### app/config/database.php
-Datenbankeinstellungen des **Redaktionsservers**
+
+Passen Sie hier die Datenbankeinstellungen des **Redaktionsservers** an.
+
 Relevanter Konfigurationsabschnitt:
 
 ``` php linenums="43"
@@ -113,20 +92,18 @@ Relevanter Konfigurationsabschnitt:
 
 ```
 
-- Tragen Sie unter ``database``, ``username`` und ``password`` die Angaben für die MySQL-Datenbank auf dem Redaktionsserver ein (s.o. unter "MySQL Datenbank").
-- Passen Sie ggf. den Pfad ``unix_socket`` zu der Unix Socket Datei an.
+- Tragen Sie unter `database`, `username` und `password` die Angaben für die MySQL-Datenbank auf dem Redaktionsserver ein.
+- Passen Sie ggf. den Pfad `unix_socket` zu der Unix Socket Datei an.
 
-##### app/config/mail.php
+#### app/config/mail.php
+
 Sollten Sie wünschen, dass OMIM E-Mails versenden kann, tragen Sie hier bitte die entsprechenden Werte ein.
 
-##### app/config/omim.php
-Spezifische Konfiguration für die OMIM Anwendung.
+#### app/config/omim.php
 
-!!! warning "Aktualisierungen und neue Versionen von OMIM"
-    Beachten Sie, dass die Einträge in der aktuellen omim.sample.php, unter dem Schlüssel  
-    ```'common' => 'db' => 'tables'``` mit ihrer Konfiguration übereinstimmen müssen!
+Passen Sie hier die spezifische Konfiguration für die OMIM Anwendung an.
 
-Relevanter Konfigurationsabschnitt für Development- und Remote-Server:
+Relevanter Konfigurationsabschnitt:
 
 ``` php linenums="49"
 <?php
@@ -154,7 +131,7 @@ Relevanter Konfigurationsabschnitt für Development- und Remote-Server:
                     'datadir' => '/path/to/data/dir/on/live/server',
                     'group' => 'www-data'
                 ),
-                    'db' => array(
+                'db' => array(
                     'host'      => 'localhost',
                     'database'  => 'Name der Datenbank',
                     'username'  => 'Benutzername',
@@ -196,69 +173,120 @@ Relevanter Konfigurationsabschnitt für Development- und Remote-Server:
 
 ```
 
+`['development']['user']['group']` 
+:   Tragen Sie hier die Apache **Benutzergruppe** des Redaktionsservers ein.
 
-- Tragen Sie unter ``['development']['user']['group']`` die Apache Benutzergruppe des Redaktionsservers ein.
-- Tragen Sie unter ``['remote']['n']['production']['http']['url']`` die URL des jeweiligen Ausspielungsservers ein.
-- Tragen Sie unter ``['remote']['n']['production']['ssh']['host']`` den Hostnamen oder die IP-Adresse des jeweiligen Ausspielungsservers ein.
-- Tragen Sie unter ``['remote']['n']['production']['ssh']['port']`` den SSH Port ein, über den der Ausspielungsserver per SSH erreichbar ist.
-- Tragen Sie unter ``['remote']['n']['production']['ssh']['username']`` den Namen des Benutzers, der sich per SSH mit dem jeweiligen Ausspielungsserver verbinden soll, ein.
-- Tragen Sie unter ``['remote']['n']['production']['ssh']['key']`` den absoluten Dateipfad zu der privaten Schlüsseldatei, mit dem sich der Benutzer am Redaktionsserver anmeldet, ein. Es empfiehlt sich selbst einen neuen RSA-Key auf dem Redaktionsserver zu erzeugen. Sie müssen dann den öffentlichen Schlüssel auf dem Ausspielungsserver in die ``authorized_keys`` Datei des Benutzers (unter ``home/benutzername/.ssh/authorized_keys``) importieren. Achten Sie darauf, dass der Schlüssel selbst nicht durch eine Passphrase geschützt sein darf, da die Server-zu-Server Anmeldung sonst nicht automatisiert ablaufen kann. Vergewissern sie sich ggf. auch, dass die Schlüsseldatei dem entsprechenden Benutzer (und der Gruppe) gehört und ändern Sie ggf. die Zugriffsrechte.
-- Tragen Sie unter ``['remote']['n']['production']['ssh']['docroot']`` den absoluten Pfad zu dem in der Apache-Konfiguration (Virtaul Host) festgelegten ``DOCUMENT_ROOT`` des Ausspielungsservers ein. Beachten sie, dass dieser zwingend auf das Verzeichnis ``public`` des Ausspielungsservers zeigen muss (s.u.)
-- Tragen Sie unter ``['remote']['n']['production']['ssh']['datadir']`` den absulten Pfad zu dem ``data`` Verzeichnis des Ausspielungsservers ein. Beachten Sie, dass dieser zwingend auf das Verzeichnis ``data`` des Ausspielungsservers zeigen muss.
-- Tragen Sie unter ``['remote']['n']['production']['ssh']['group']`` die Gruppe ein, unter der Apache / PHP auf dem Ausspielungsserver ausgeführt wird.
-- Tragen Sie in den Unterschlüsseln von ``['remote']['n']['production']['db']`` die Datenbankangaben für den **Ausspielungsserver** ein.
-    - Tragen Sie unter ``database``, ``username`` und ``password`` die Angaben für die MySQL-Datenbank auf dem Ausspielungsserver ein (s.u. unter "MySQL Datenbank").
-    - Passen Sie ggf. den Pfad ``unix_socket`` zu der Unix Socket Datei an.
-    - Beachten Sie, dass diese Einstellungen in die Omeka-DB-INI-Dateien auf dem Ausspielungsserver übernommen werden. Das bedeutet, dass sich z.B. die Angabe 'localhost' auf den Ausspielungsserver bezieht.
+`['remote']['n']['production']['http']['url']`
+:   Tragen Sie die **URL** des jeweiligen Ausspielungsservers ein.
 
-##### data/rsa/ddb/_rsa und data/rsa/ddb/_rsa.pub
-Private und öffentliche Schlüsseldatei zur Verwendung für die Authentifizierung bei SSH-Verbindungen.
-Bitte generieren Sie aus Sicherheitsgründen selbst ein Schlüsselpaar (s.o.).
+`['remote']['n']['production']['ssh']['host']`
+:   Tragen Sie den **Hostnamen** oder die IP-Adresse des jeweiligen Ausspielungsservers ein.
 
-##### public
-Dieses Verzeichnis muss in der Apache-Konfiguration des Redaktionsservers das ``DOCUMENT_ROOT`` der Domäne sein (s.o).
-Übernehmen Sie bei einer Upgrade-Installation alle Verzeichnisse von bereits angelegten Instanzen.
+`['remote']['n']['production']['ssh']['port']`
+:   Tragen Sie den SSH **Port** ein, über den der Ausspielungsserver per SSH erreichbar ist.
 
-## Konvertieren vorhander Ausstellungen
+`['remote']['n']['production']['ssh']['username']`
+:   Tragen Sie den **Benutzernamen** des Benutzers, der sich per SSH mit dem jeweiligen Ausspielungsserver verbinden soll, ein.
 
-Um bereits vorhandene Ausstellungen zu konvertieren, kopieren Sie aus ``data/deploy.tar.gz`` die Dateien:
+`['remote']['n']['production']['ssh']['key']`
+:   Tragen Sie den absoluten Dateipfad zu der privaten **Schlüsseldatei**, mit dem sich der Benutzer am Redaktionsserver anmeldet, ein. Sie müssen zunächst einen RSA-Key auf dem Redaktionsserver erzeugen. Sie müssen dann den öffentlichen Schlüssel auf dem Ausspielungsserver in die `authorized_keys` Datei des Benutzers importieren. Achten Sie darauf, dass der Schlüssel selbst nicht durch eine Passphrase geschützt sein darf, da die Server-zu-Server Anmeldung sonst nicht automatisiert ablaufen kann. Vergewissern sie sich ggf. auch, dass die Schlüsseldatei dem entsprechenden Benutzer (und der Gruppe) gehört und ändern Sie ggf. die Zugriffsrechte.
 
-- files/layout/pagethumbnail/default-page-icon.jpg
-- files/layout/pagethumbnail/default-summary-icon.jpg
-- bootstrap.php
-- index.php
+`['remote']['n']['production']['ssh']['docroot']`
+:   Tragen Sie den absoluten Pfad, zu dem in der Apache-Konfiguration festgelegten `DOCUMENT_ROOT` des Ausspielungsservers, ein. Beachten sie, dass dieser zwingend auf das Verzeichnis `public` des Ausspielungsservers zeigen muss.
 
-in alle Verzeichnisse von Ausstellungs-Instanzen unter ``public`` und ersetzen so alle alten Dateien.
+`['remote']['n']['production']['ssh']['datadir']`
+:   Tragen Sie den absoluten Pfad zu dem `data` Verzeichnis des Ausspielungsservers ein. Beachten Sie, dass dieser zwingend auf das Verzeichnis `data` des Ausspielungsservers zeigen muss (s.u.).
 
+`['remote']['n']['production']['ssh']['group']`
+:   Tragen Sie die Benutzergruppe ein, unter der Apache & PHP auf dem Ausspielungsserver ausgeführt wird.
+
+`['remote']['n']['production']['db']['database']`
+:   Tragen Sie hier den Namen der Datenbank auf dem **Ausspielungsserver** ein.
+
+`['remote']['n']['production']['db']['username']`
+:   Tragen Sie hier den Benutzernamen der Datenbank auf dem **Ausspielungsserver** ein.
+
+`['remote']['n']['production']['db']['password']`
+:   Tragen Sie hier das Passwort für den Benutzer der Datenbank auf dem **Ausspielungsserver** ein.
+
+`['remote']['n']['production']['db']['unix_socket']`
+:   Passen Sie ggf. den Pfad zu der Unix Socket Datei auf dem **Ausspielungsserver** an.
+
+
+!!! danger "Variablenbezeichnungen"
+    Beachten Sie, dass in der Konfigurationsdatei die Bezeichnungen sich, aus historischen Gründen, nicht nach der aktuellen Nomenklatur richten!  
+    Der Konfigurationsschlüssel `development` steht für den **Redaktionsserver**.  
+    Der Konfigurationsschlüssel `production` steht für einen **Ausspielungsserver**.  
+    Die Variablenbezeichnungen haben nichts mit der Unterscheidung nach Entwicklungs- oder Produktionsumgebungen zu tun!
+
+!!! info "Remotekonfiguration"
+    Beachten Sie, dass die Einstellungen für `db` unter `remote` in die Omeka-DB-INI-Dateien auf den Ausspielungsservern übernommen werden. Das bedeutet, dass sich z.B. die Angabe 'localhost' auf den jeweiligen Ausspielungsserver bezieht.
+
+#### Verzeichnis /public
+Dieses Verzeichnis muss in der Apache-Konfiguration des Redaktionsservers das `DOCUMENT_ROOT` der Domäne sein.
 
 ## Cronjobs
 
-Um erzeugte Download-Dateien regelmäßig automatisch löschen zu lassen, richten Sie einen Cronjob ein.
+Um unter OMIM erzeugte Download-Dateien regelmäßig automatisch löschen zu lassen, richten Sie einen Cronjob ein.
 
-Für den Cronjob finden Sie im OMIM die [cron.php](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/blob/master/cron.php). Aktualisieren Sie Ihr Repository, falls die Datei auf Ihrem Server noch nicht vorhanden ist.
+Für den Cronjob finden Sie im OMIM die [cron.php](https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager/blob/master/cron.php). Aktualisieren Sie Ihr Repositorium, falls die Datei auf Ihrem Server nicht vorhanden ist.
 
-Sie können in der cron.php-Datei unter  `#!php $threshold = 1 * 24 * 60 * 60; // a day;` die Zeit in Sekunden einstellen, die bestimmt, wie alt die Dateien maximal sein dürfen, um nicht gelöscht zu werden. Standardmäßig steht der Wert auf einem Tag, d.h. alle Dateien, die älter als ein Tag sind, werden, bei Aufruf der cron.php, aus dem Verzeichnis ```public/downloads``` gelöscht.
+Sie können in der cron.php-Datei unter  `#!php $threshold = 1 * 24 * 60 * 60; // a day;` die Zeit in Sekunden einstellen, die bestimmt, wie alt die Dateien maximal sein dürfen, um nicht gelöscht zu werden. Standardmäßig steht der Wert auf einem Tag, d.h. alle Dateien, die älter als ein Tag sind, werden, bei Aufruf der cron.php, aus dem Verzeichnis `public/downloads` gelöscht.
 
-Damit die cron.php als Cronjpb ausgeführt werden kann, muss auf dem Server php-cli >= v.5.x installiert sein. Das sollte i.d.R. der Fall sein. Überprüfen Sie das, indem Sie auf der Kommandozeile den Befehl ```php -v``` eingeben. Sollte php nicht im Pfad stehen, suchen Sie php mit dem Befehl ```whereis php```. Die Ausgabe sollte i.d.R. den Pfad ```/usr/bin/php ``` enthalten. Für diesen Pfad sollte der Versionstest entsprechend funktionieren: ```/usr/bin/php -v```.
+Damit die cron.php als Cronjpb ausgeführt werden kann, muss auf dem Server php-cli >= v.5.x installiert sein. Das sollte i.d.R. der Fall sein. Überprüfen Sie das, indem Sie auf der Kommandozeile den Befehl `php -v` eingeben. Sollte php nicht im Pfad stehen, suchen Sie php mit dem Befehl `whereis php`. Die Ausgabe sollte i.d.R. den Pfad `/usr/bin/php ` enthalten. Für diesen Pfad sollte der Versionstest entsprechend funktionieren: `/usr/bin/php -v`.
 
-Richten Sie Crontab (```crontab -e```) ein. Fügen Sie eine Zeile hinzu mit:
+Richten Sie Crontab (`crontab -e`) ein. Fügen Sie eine Zeile hinzu mit:
 
-```sh linenums="1"
-
+``` sh linenums="1"
 0 0 * * * php /pfad/auf/server/zu/cron.php
-
 ```
+
 Alternativ setzen sie den vollen Pfad zur PHP-Executable:
 
-```sh linenums="1"
-
+``` sh linenums="1"
 0 0 * * * /usr/bin/php /pfad/auf/server/zu/cron.php
-
 ```
 
 In dem Beispiel wird der Job einmal täglich ausgeführt. Sie können die Frequenz natürlich ändern.
 
 !!! warning "Lese- und Schreibrechte des Benutzers"
     Beachten Sie, dass der Benutzer, der den Cronjob ausführt, Lese- und Schreibrechte 
-    für die Dateien im Verzeichnis ```public/downloads``` haben muss! Sollte das nicht der Fall sein,
+    für die Dateien im Verzeichnis `public/downloads` haben muss! Sollte das nicht der Fall sein,
     konfigurieren Sie den Cronjob in einem Benutzerkontext, der über entsprechende Rechte verfügt.
+
+
+
+# Aktualisierungen
+
+Alle Aktualisierungen werden über die jeweiligen [GitHub-Repositorien bereit](index.html#git-repositorien) gestellt.
+
+## MySQL
+
+Die bereits existierende Datenbank kann, sofern Sie die [Anforderungen](install.html#mysql-server) erfüllt, weiterhin verwendet werden.
+Die Datenbankinhalte werden über [OMIM](index.html#omeka-multiinstanz-manager-omim) aktualisiert, sodass hier i.d.R. kein Handlungsbedarf besteht.
+
+## Dateien
+### OMIM
+
+Falls Sie im Verzeichnis `app/config` Dateien editiert haben, sichern Sie diese zunächst. 
+
+Vergewissern Sie sich, dass Sie sich im Ordner von OMIM in der richtigen Git-Branch befinden und checken Sie ggf. die erforderliche Branch aus.
+Führen Sie dann den `git pull` bzw. `git fetch` und `git merge` Befehl aus. 
+
+Spielen Sie ggf. gesicherte Konfigurationsdateien zurück.
+
+### Omeka
+
+Vergewissern Sie sich, dass Sie sich im Ordner von Omeka in der richtigen Git-Branch befinden und checken Sie ggf. die erforderliche Branch aus. Führen Sie dann den `git pull` bzw. `git fetch` und `git merge` Befehl aus. 
+
+### Sprachdateien Cache
+
+Omeka (bzw. die Zend Framework Komponente) legt für die verwendeten Sprachdateien bzw. Übersetzungen einen Cache auf dem jeweiligen Server an.
+Dieser muss nach Aktualisierungen von Omeka, die die Sprachdateien betreffen (wir weisen entsprechend im Ticket darauf hin), vom Server gelöscht werden, da sonst Änderungen in den Sprachdateien nicht unmittelbar wirksam werden.
+
+Die Dateien liegen in dem Standard-Temp-Verzeichnis des Servers, was standardmäßig `/tmp` sein sollte.
+Die Dateinamen fangen immer mit der Zeichenfolge `omeka_i18n_cache---` an. Diese Dateien bitte auf allen Servern nach der Aktualisierung von Omeka bitte löschen.
+Die Dateien werden beim nächsten Seitenaufruf automatisch wieder neu erstellt.
+
+[repo_omim]:https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions-manager
+[repo_omeka]:https://github.com/Deutsche-Digitale-Bibliothek/ddb-virtualexhibitions
